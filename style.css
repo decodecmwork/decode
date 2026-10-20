@@ -23,3 +23,41 @@ blockquote{font-family:inherit;font-weight:500;letter-spacing:-1px;line-height:1
 .art-brand{color:#ad817a;font-family:"Microsoft JhengHei","PingFang TC",sans-serif}
 /* Match section eyebrow size to Let’s Talk */
 #top .eyebrow,#approach .eyebrow,#services .eyebrow,#ai .eyebrow{font-size:13px}
+
+
+/* DECODE hero: subtle continuous motion, maintaining the original composition */
+@keyframes decode-float-c {
+  0%,100% {transform:translate3d(0,0,0) rotate(-14deg)}
+  50% {transform:translate3d(5px,-9px,0) rotate(-8deg)}
+}
+@keyframes decode-float-o {
+  0%,100% {transform:translate3d(0,0,0) rotate(9deg)}
+  50% {transform:translate3d(-5px,7px,0) rotate(4deg)}
+}
+@keyframes decode-float-d {
+  0%,100% {transform:translate3d(0,0,0) rotate(-6deg)}
+  50% {transform:translate3d(5px,8px,0) rotate(-10deg)}
+}
+@keyframes decode-float-e {
+  0%,100% {transform:translate3d(0,0,0) rotate(0deg)}
+  50% {transform:translate3d(-5px,-7px,0) rotate(3deg)}
+}
+@media (prefers-reduced-motion: no-preference) {
+  .decode-art.is-active .block {
+    transition:none;
+    animation-timing-function:ease-in-out;
+    animation-iteration-count:infinite;
+    animation-fill-mode:both;
+    will-change:transform;
+  }
+  .decode-art.is-active .block-one {animation-name:decode-float-c;animation-duration:11s}
+  .decode-art.is-active .block-two {animation-name:decode-float-o;animation-duration:12s}
+  .decode-art.is-active .block-three {animation-name:decode-float-d;animation-duration:10s}
+  .decode-art.is-active .block-four {animation-name:decode-float-e;animation-duration:11.5s}
+  .decode-art:hover .block {animation-play-state:paused}
+}
+@media (prefers-reduced-motion: reduce) {
+  .decode-art .block, .decode-art.is-active .block {animation:none!important;transition:none!important}
+  .decode-art.is-active .block-one, .decode-art:hover .block-one {transform:rotate(-14deg)}
+  .decode-art.is-active .block-two, .decode-art:hover .block-two {transform:rotate(9deg)}
+}
