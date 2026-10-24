@@ -3,11 +3,11 @@
   'use strict';
 
   const PIXEL_ID = '1432853895037254';
-  const KEY = 'decode_tracking_consent_v1';
+  const KEY = 'decode_tracking_consent_v2';
   const VALID_FOR = 180 * 24 * 60 * 60 * 1000;
-  // Fill the actual container ID (GTM-...) only after the DECODE container exists.
-  // An empty ID intentionally prevents any Google network request or tag execution.
-  const GTM_CONTAINER_ID = '';
+  // DECODE-owned GTM container. It loads strictly after new, explicit consent.
+  // Existing Meta-only opt-ins must be reconfirmed for newly added Google analytics.
+  const GTM_CONTAINER_ID = 'GTM-W5D87HLC';
   let gtmStarted = false;
   let choice = 'unset';
   let pixelStarted = false;
