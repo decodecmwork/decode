@@ -18,6 +18,8 @@ s.parentNode.insertBefore(t,s)}(window, document,'script',
 'https://connect.facebook.net/en_US/fbevents.js');
 // DECODE is one scrolling page: prevent URL/history/hash navigation from creating extra PageView events.
 fbq.disablePushState = true;
+// Disable Meta's automatic event and button classification; explicit events remain enabled.
+fbq('set', 'autoConfig', false, '1432853895037254');
 fbq('init', '1432853895037254');
 fbq('track', 'PageView');
 </script>
