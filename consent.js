@@ -5,6 +5,10 @@
   const PIXEL_ID = '1432853895037254';
   const KEY = 'decode_tracking_consent_v1';
   const VALID_FOR = 180 * 24 * 60 * 60 * 1000;
+  // Fill the actual container ID (GTM-...) only after the DECODE container exists.
+  // An empty ID intentionally prevents any Google network request or tag execution.
+  const GTM_CONTAINER_ID = '';
+  let gtmStarted = false;
   let choice = 'unset';
   let pixelStarted = false;
 
@@ -48,6 +52,50 @@
     return choice === 'accepted';
   }
 
+  // Google Consent Mode v2 — Basic Mode, nothing is loaded before opt-in.
+  // We permit analytics_storage only; Google ads storage/personalization stay denied.
+  window.dataLayer = window.dataLayer || [];
+  window.gtag = window.gtag || function () { window.dataLayer.push(arguments); };
+  window.gtag('consent', 'default', {
+    analytics_storage: 'denied',
+    ad_storage: 'denied',
+    ad_user_data: 'denied',
+    ad_personalization: 'denied'
+  });
+
+  function startGoogleTagManager() {
+    if (!canTrack() || gtmStarted || !/^GTM-[A-Z0-9]+$/.test(GTM_CONTAINER_ID)) return;
+    window.gtag('consent', 'update', {
+      analytics_storage: 'granted',
+      ad_storage: 'denied',
+      ad_user_data: 'denied',
+      ad_personalization: 'denied'
+    });
+    window.dataLayer.push({'gtm.start': Date.now(), event: 'gtm.js'});
+    const tag = document.createElement('script');
+    tag.async = true;
+    tag.src = 'https://www.googletagmanager.com/gtm.js?id=' + encodeURIComponent(GTM_CONTAINER_ID);
+    document.head.appendChild(tag);
+    gtmStarted = true;
+  }
+
+  function sendGtmEvent(name, params) {
+    if (!canTrack() || !gtmStarted) return;
+    window.dataLayer.push(Object.assign({event: name}, params || {}));
+  }
+
+  function removeGoogleCookies() {
+    // Best effort for first-party cookies; cannot erase data previously sent to Google.
+    document.cookie.split(';').forEach(function (entry) {
+      const name = entry.split('=')[0].trim();
+      if (!/^(_ga($|_)|_gid$|_gat($|_)|_gcl_)/.test(name)) return;
+      ['', window.location.hostname, '.' + window.location.hostname, 'decode.com.tw', '.decode.com.tw'].forEach(function (domain) {
+        document.cookie = name + '=; Max-Age=0; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/' +
+          (domain ? '; domain=' + domain : '') + '; SameSite=Lax';
+      });
+    });
+  }
+
   function startPixel() {
     if (!canTrack() || pixelStarted) return;
     // No Facebook script, pixel initialization, or PageView before explicit consent.
@@ -87,14 +135,22 @@
 
   function setChoice(value) {
     if (value !== 'accepted' && value !== 'rejected') return;
-    const wasTracking = pixelStarted || typeof window.fbq === 'function';
+    const wasTracking = pixelStarted || gtmStarted || typeof window.fbq === 'function';
     choice = value;
     storeChoice(value);
     if (value === 'accepted') {
       startPixel();
+      startGoogleTagManager();
       showBanner(false);
     } else {
       removeMetaCookies();
+      window.gtag('consent', 'update', {
+        analytics_storage: 'denied',
+        ad_storage: 'denied',
+        ad_user_data: 'denied',
+        ad_personalization: 'denied'
+      });
+      removeGoogleCookies();
       if (wasTracking) {
         // Fully stop the third-party SDK on this page after withdrawal of consent.
         window.location.reload();
@@ -128,11 +184,17 @@
 
     if (link.getAttribute('href') === '#contact') {
       sendEvent('trackCustom', 'ContactSectionClick');
+      sendGtmEvent('decode_contact_section_click', {section: 'contact'});
     } else if (link.getAttribute('href')?.toLowerCase().startsWith('mailto:contact@decode.com.tw')) {
       sendEvent('track', 'Contact', {contact_method: 'email'});
+      sendGtmEvent('decode_email_click', {contact_method: 'email'});
     } else if (link.href === 'https://www.instagram.com/decode.tw/' ||
                link.href === 'https://www.instagram.com/decode.tw') {
       sendEvent('trackCustom', 'InstagramClick', {
+        destination: 'instagram',
+        link_location: link.closest('.contact-actions') ? 'contact_button' : 'contact_details'
+      });
+      sendGtmEvent('decode_instagram_click', {
         destination: 'instagram',
         link_location: link.closest('.contact-actions') ? 'contact_button' : 'contact_details'
       });
@@ -145,7 +207,10 @@
   function init() {
     document.addEventListener('click', onClick);
     showBanner(choice === 'unset');
-    if (choice === 'accepted') startPixel();
+    if (choice === 'accepted') {
+      startPixel();
+      startGoogleTagManager();
+    }
   }
 
   if (document.readyState === 'loading') {
@@ -157,6 +222,7 @@
   window.DECODE_CONSENT = {
     canTrack: canTrack,
     getChoice: function () { return choice; },
-    openSettings: function () { showBanner(true); }
+    openSettings: function () { showBanner(true); },
+    isGoogleTagManagerConfigured: function () { return /^GTM-[A-Z0-9]+$/.test(GTM_CONTAINER_ID); }
   };
 })();
