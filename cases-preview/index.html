@@ -38,18 +38,33 @@
 /* Film sources were updated to landscape; never stretch or pad the frame excessively. */
 .case-film video,.case-film .landscape-film{height:auto!important;max-height:none!important;aspect-ratio:16/9;object-fit:contain;width:100%;background:#16130f}
 @media(max-width:650px){.case-film{padding:12px}.case-film video,.case-film .landscape-film{height:auto!important;max-height:none!important}}
+
+/* CASES V3: updates approved in the 2026-10-27 copy review. */
+.site-menu .nav-cta{display:inline-flex;justify-content:center;text-align:center;min-width:94px}
+.hero-actions .btn{justify-content:center;text-align:center;gap:0}
+.hero-note-only{justify-content:flex-start;padding-top:18px;padding-bottom:19px}
+.hero-note-only .stat-note{margin-left:0;width:auto;font-size:10px;line-height:1.75;letter-spacing:.06em}
+.brief-faq{margin-top:34px;padding:23px 27px;border:1px solid #c9b8a0;background:#e5dbcd}
+.brief-faq h3{font-weight:550;font-size:16px;color:#4c3522;margin:0 0 7px}
+.brief-faq p{font-size:12px;color:#6a5d4e;line-height:1.95;max-width:930px;margin:0}
+.case-head>.case-strategy{max-width:450px;flex:0 1 450px;min-width:0;font-size:12px;line-height:1.95;color:#bfb5a8}
+.case-strategy p{margin:0 0 10px}
+.case-strategy p:last-child{margin-bottom:0}
+.case-strategy strong{color:#debd91;font-weight:550}
+#budget-custom[hidden]{display:none}
+@media(max-width:900px){.case-head>.case-strategy{max-width:740px;flex:auto}}
+@media(max-width:650px){.brief-faq{padding:20px}.hero-note-only .stat-note{font-size:9px}.case-head>.case-strategy{font-size:12px}}
 </style>
 
 </head>
 <body>
 <a href="#main" class="skip-link">跳至主要內容</a>
-<div class="preview-strip"><span class="preview-dot"></span> CASES V2 · ONLINE PREVIEW <span class="preview-zh">線上預覽・內容審稿中</span></div>
 <header class="header" id="top">
   <div class="container header-inner">
     <a href="/" class="brand" aria-label="DECODE 官網首頁"><img src="/assets/decode-rose-gold.svg" alt="DECODE"><span class="brand-suffix">方解策略行銷</span></a>
     <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-menu"><span></span><span></span><span class="sr-only">開啟選單</span></button>
     <nav id="site-menu" class="site-menu" aria-label="作品集導覽">
-      <a href="#capabilities">OUR SERVICES</a><a href="#process">OUR PROCESS</a><a href="#works">SELECTED WORKS</a><a href="#motion">AI MOTION</a><a class="nav-cta" href="#inquiry">START A PROJECT <span>↗</span></a>
+      <a href="#capabilities">OUR SERVICES</a><a href="#process">OUR PROCESS</a><a href="#works">SELECTED WORKS</a><a href="#motion">AI MOTION</a><a class="nav-cta" href="#inquiry">開始合作</a>
     </nav>
   </div>
 </header>
@@ -61,9 +76,9 @@
     <div class="hero-copy">
       <p class="eyebrow"><span class="small-diamond">✧</span> DECODE CREATIVE PORTFOLIO <span class="decor-line"></span> 2026</p>
       <h1 id="hero-title">Ideas with purpose.<br><em>Creative with impact.</em></h1>
-      <p class="hero-zh">從策略出發，讓產品成為<span>看得見的品牌故事。</span></p>
-      <p class="hero-desc">以消費者洞察為起點，整合 AI 圖像、人物情境、廣告視覺與動態影片。<br class="desktop-only">讓每一份素材，不只好看，更有清楚的溝通任務。</p>
-      <div class="hero-actions"><a class="btn btn-gold" href="#works">探索精選作品 <span>↗</span></a><a class="btn btn-line" href="#process">了解合作方式 <span>↓</span></a></div>
+      <p class="hero-zh">從策略出發，讓每一份創意，<span>都有清楚的行銷任務</span></p>
+      <p class="hero-desc">從產品亮點、消費者洞察到實際溝通情境，DECODE 結合策略思考、創意企劃與 AI 製作，打造兼顧品牌質感與使用目的的圖像、廣告素材及短影音</p>
+      <div class="hero-actions"><a class="btn btn-gold" href="#works">探索精選作品</a><a class="btn btn-line" href="#process">了解合作流程</a></div>
       <div class="hero-bottom-line"><span>STRATEGY × CONTENT × GROWTH</span><span>SCROLL TO EXPLORE ↓</span></div>
     </div>
     <div class="hero-gallery" aria-label="DECODE AI 商品視覺作品精選">
@@ -72,18 +87,18 @@
       <div class="hero-square" aria-hidden="true"></div>
     </div>
   </div>
-  <div class="container hero-stat"><span><strong>03</strong> PRODUCT STORIES</span><span><strong>12</strong> CREATIVE STILLS</span><span><strong>05</strong> MOTION WORKS</span><span class="stat-note">AI CREATIVE CONCEPTS · 非實際客戶專案</span></div>
+  <div class="container hero-stat hero-note-only"><span class="stat-note">AI CREATIVE CONCEPTS｜DECODE 自主創意示範</span></div>
 </section>
 
 <!-- CAPABILITY -->
 <section class="section capabilities" id="capabilities">
   <div class="container">
-    <div class="section-heading split-heading"><div><p class="eyebrow">01 / WHAT WE CREATE</p><h2>從單張產品圖，<br>延伸一整套<span class="accent">品牌內容。</span></h2></div><p class="section-desc">不同的商業任務，需要不同的視覺語言。DECODE 從受眾與溝通目標出發，規劃真正適合使用情境的素材組合。</p></div>
+    <div class="section-heading split-heading"><div><p class="eyebrow">01 / WHAT WE CREATE</p><h2>從單張產品圖，<br>規劃一套有明確用途的<br><span class="accent">品牌內容</span></h2></div><p class="section-desc">不同的商業任務，需要不同的視覺語言。DECODE 從受眾與溝通目標出發，規劃真正適合使用情境的素材組合。</p></div>
     <div class="cap-grid">
-      <article class="cap-item"><div class="cap-count">01 <span>↗</span></div><h3>Product Visual</h3><p class="cap-zh">產品主視覺</p><p>保留包裝、材質與比例，建立穩定且一致的商品印象。</p></article>
-      <article class="cap-item"><div class="cap-count">02 <span>↗</span></div><h3>Creative Context</h3><p class="cap-zh">情境與人物創作</p><p>規劃品牌世界觀、AI 模特兒、使用情境與穿搭氛圍。</p></article>
-      <article class="cap-item"><div class="cap-count">03 <span>↗</span></div><h3>Campaign Creative</h3><p class="cap-zh">廣告素材應用</p><p>依據平台格式，延伸可呈現價值主張與 CTA 的視覺。</p></article>
-      <article class="cap-item"><div class="cap-count">04 <span>↗</span></div><h3>Motion & Film</h3><p class="cap-zh">AI 商業影音</p><p>讓靜態創意延伸成動態敘事，兼顧節奏、品牌及產品一致性。</p></article>
+      <article class="cap-item"><div class="cap-count">01 <span>↗</span></div><h3>Product Visual</h3><p class="cap-zh">產品主視覺</p><p>以產品真實外觀與品牌識別為基礎，建立一致且有辨識度的商品視覺</p></article>
+      <article class="cap-item"><div class="cap-count">02 <span>↗</span></div><h3>Creative Context</h3><p class="cap-zh">情境與人物創作</p><p>結合受眾生活情境、人物設定與品牌風格，讓產品自然融入消費者的想像</p></article>
+      <article class="cap-item"><div class="cap-count">03 <span>↗</span></div><h3>Campaign Creative</h3><p class="cap-zh">廣告素材應用</p><p>依照媒體平台與溝通目標，規劃主張、視覺、文案與 CTA，延伸適合投放的廣告版本</p></article>
+      <article class="cap-item"><div class="cap-count">04 <span>↗</span></div><h3>Motion & Film</h3><p class="cap-zh">AI 商業影音</p><p>將產品特色與創意概念轉化成有節奏的短影音，兼顧開場吸引力、訊息與品牌呈現</p></article>
     </div>
   </div>
 </section>
@@ -93,27 +108,28 @@
   <div class="container">
     <div class="section-heading"><p class="eyebrow">02 / HOW WE WORK</p><h2>我們怎麼從 Brief，<br>走到<span class="accent">作品交付？</span></h2><p class="section-desc">清楚說明合作需求，讓每一次製作都有策略理由，也讓人物、商品與視覺風格更容易維持一致。</p></div>
     <div class="process-rail" aria-label="四階段製作流程">
-      <article><span class="process-no">01</span><span class="process-icon">◇</span><h3>Discover</h3><p class="process-zh">理解品牌與問題</p><p>釐清產品優勢、目標受眾、溝通痛點、素材用途與期待結果。</p></article>
-      <article><span class="process-no">02</span><span class="process-icon">⌁</span><h3>Direction</h3><p class="process-zh">制定創意方向</p><p>確認視覺風格、情境腳本、模特兒需求及產品呈現規則。</p></article>
-      <article><span class="process-no">03</span><span class="process-icon">✳</span><h3>Create & QA</h3><p class="process-zh">製作與品質檢查</p><p>產出圖像／影片，逐項檢視人物、標籤、商品比例與畫面細節。</p></article>
-      <article><span class="process-no">04</span><span class="process-icon">↗</span><h3>Deliver</h3><p class="process-zh">交付與素材延伸</p><p>依媒體尺寸輸出定稿，交付社群、廣告及品牌展示可用素材。</p></article>
+      <article><span class="process-no">01</span><span class="process-icon">◇</span><h3>Discover</h3><p class="process-zh">理解需求</p><p>釐清商業目標、受眾、產品賣點、素材用途與預期交付</p></article>
+      <article><span class="process-no">02</span><span class="process-icon">⌁</span><h3>Direction</h3><p class="process-zh">確認創意方向</p><p>規劃人物、場景、視覺風格與影片分鏡；確認方向後再進入正式製作</p></article>
+      <article><span class="process-no">03</span><span class="process-icon">✳</span><h3>Create & QA</h3><p class="process-zh">製作與品質檢查</p><p>產出素材初稿，檢查商品、人物及視覺一致性，依約定修改範圍完成定稿</p></article>
+      <article><span class="process-no">04</span><span class="process-icon">↗</span><h3>Deliver</h3><p class="process-zh">正式交付</p><p>依照約定格式、尺寸與平台需求交付，並評估是否延伸其他素材版本</p></article>
     </div>
     <div class="process-demo">
-      <div class="demo-copy"><p class="eyebrow">EXAMPLE / AI MODEL DIRECTION</p><h3>一位 AI 模特兒，<br>從人物設定到商業情境。</h3><p>不同於直接生成一張漂亮的照片，我們先設定人物的氣質、妝容、髮型、服裝與產品關係，再延伸至持物與使用情境。</p><div class="mini-list"><span>角色設定</span><span>人物一致性</span><span>產品保持原貌</span></div><p class="process-disclaimer">此區使用「2-4 AI 模特兒建議」示範前期製作流程，不列為正式作品。</p></div>
+      <div class="demo-copy"><p class="eyebrow">EXAMPLE / AI MODEL DIRECTION</p><h3>一位 AI 模特兒，<br>從人物設定到商業情境。</h3><p>不同於直接生成一張漂亮的照片，我們先設定人物的氣質、妝容、髮型、服裝與產品關係，再延伸至持物與使用情境。</p><div class="mini-list"><span>角色設定</span><span>人物一致性</span><span>產品保持原貌</span></div><p class="process-disclaimer">此為 AI 人物提案至商品情境的製作流程示意</p></div>
       <div class="demo-images">
-        <figure><button data-lightbox data-src="https://d2ol7oe51mr4n9.cloudfront.net/user_3Jb85Thbp6wwOYRd5nIaoln4p3W/cbe02f85-c6ea-400b-a66c-b64027bc5598.png" data-title="前期角色設定｜2-4 AI 模特兒建議"><img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3Jb85Thbp6wwOYRd5nIaoln4p3W/cbe02f85-c6ea-400b-a66c-b64027bc5598.png" alt="AI 模特兒前期人物設定"></button><figcaption><span>STEP A / DIRECTION</span>角色視覺設定</figcaption></figure>
+        <figure><button data-lightbox data-src="https://d2ol7oe51mr4n9.cloudfront.net/user_3Jb85Thbp6wwOYRd5nIaoln4p3W/cbe02f85-c6ea-400b-a66c-b64027bc5598.png" data-title="前期角色設定｜2-4 AI 模特兒建議"><img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3Jb85Thbp6wwOYRd5nIaoln4p3W/cbe02f85-c6ea-400b-a66c-b64027bc5598.png" alt="AI 模特兒前期人物設定"></button><figcaption><span>STEP A</span>角色與風格提案</figcaption></figure>
         <span class="demo-arrow" aria-hidden="true">→</span>
-        <figure><button data-lightbox data-src="https://d2ol7oe51mr4n9.cloudfront.net/user_3Jb85Thbp6wwOYRd5nIaoln4p3W/47b2d31a-29d8-475c-97b0-1dfb30aa85b6.png" data-title="延伸情境成果｜2-5 人物手持商品"><img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3Jb85Thbp6wwOYRd5nIaoln4p3W/47b2d31a-29d8-475c-97b0-1dfb30aa85b6.png" alt="AI 模特兒與保養品同框成果"></button><figcaption><span>STEP B / EXECUTION</span>人物 × 商品情境</figcaption></figure>
+        <figure><button data-lightbox data-src="https://d2ol7oe51mr4n9.cloudfront.net/user_3Jb85Thbp6wwOYRd5nIaoln4p3W/47b2d31a-29d8-475c-97b0-1dfb30aa85b6.png" data-title="延伸情境成果｜2-5 人物手持商品"><img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3Jb85Thbp6wwOYRd5nIaoln4p3W/47b2d31a-29d8-475c-97b0-1dfb30aa85b6.png" alt="AI 模特兒與保養品同框成果"></button><figcaption><span>STEP B</span>人物與商品情境</figcaption></figure>
       </div>
     </div>
-    <div class="brief-needs"><div class="brief-title"><span>TO GET STARTED</span><h3>合作前，您可以先準備什麼？</h3></div><div class="needs-grid"><div><b>01 / PRODUCT</b><span>產品照片、包裝標示、Logo 與品牌識別</span></div><div><b>02 / AUDIENCE</b><span>目標受眾、痛點與希望傳達的核心訊息</span></div><div><b>03 / CREATIVE</b><span>偏好風格、參考圖片、是否需要 AI 模特兒</span></div><div><b>04 / DELIVERABLES</b><span>圖像／影片數量、比例、使用平台與預計時程</span></div></div></div>
+    <div class="brief-needs"><div class="brief-title"><span>TO GET STARTED</span><h3>第一次合作，需要提供哪些資料？</h3></div><div class="needs-grid"><div><b>01 / PRODUCT</b><span>產品照片、包裝與 Logo；若有品牌規範請一併提供</span></div><div><b>02 / AUDIENCE</b><span>希望溝通的對象、產品賣點，以及最想解決的行銷問題</span></div><div><b>03 / CREATIVE</b><span>偏好風格或參考案例；若無方向，也可由 DECODE 協助建議</span></div><div><b>04 / DELIVERABLES</b><span>預計用途、數量、尺寸及時程；未確認項目可先討論</span></div></div></div>
+    <div class="brief-faq"><h3>沒有模特兒、也沒有完整 Brief，可以合作嗎？</h3><p>可以。只要先提供產品資訊、品牌目標與想呈現的方向，我們就能一起討論適合的製作方式；AI 人物與場景的可行性，會依資料與需求評估</p></div>
   </div>
 </section>
 
 <!-- CASES -->
 <section class="section works" id="works">
   <div class="container">
-    <div class="section-heading split-heading"><div><p class="eyebrow">03 / SELECTED WORKS</p><h2>Selected <em>Creative</em> Works<span class="accent">.</span></h2></div><p class="section-desc">三種產品、三套創意語言。每個案例從產品識別、情境延伸、廣告應用到動態影片，完整呈現素材的商業可能。</p></div>
+    <div class="section-heading split-heading"><div><p class="eyebrow">03 / SELECTED WORKS</p><h2>Selected <em>Creative</em> Works<span class="accent">.</span></h2></div><p class="section-desc">三個自主創意案例，示範從產品主視覺、人物與情境設定，到廣告版位及動態影片的內容延伸方式</p></div>
     <div class="case-overview">
       <button class="overview-item is-current" data-case-target="perfume"><div class="overview-thumb"><img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3Jb85Thbp6wwOYRd5nIaoln4p3W/a1b08d0f-031f-40a5-8eb1-95a1266fb8d3.png" alt="琥珀香氛"></div><div><span>CASE 01 · FRAGRANCE</span><strong>琥珀香氛</strong><small>3 IMAGES / 1 FILM</small></div><span class="overview-arrow">↗</span></button>
       <button class="overview-item" data-case-target="skincare"><div class="overview-thumb"><img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3Jb85Thbp6wwOYRd5nIaoln4p3W/47b2d31a-29d8-475c-97b0-1dfb30aa85b6.png" alt="保養精華"></div><div><span>CASE 02 · SKINCARE</span><strong>保養精華</strong><small>5 IMAGES / 1 FILM</small></div><span class="overview-arrow">↗</span></button>
@@ -126,49 +142,51 @@
     </div>
     <div class="case-panels" id="case-panels">
       <article class="case-panel" id="panel-perfume" role="tabpanel" aria-labelledby="tab-perfume" data-case="perfume">
-        <div class="case-head"><div><span class="case-index">CASE 01 / FRAGRANCE CAMPAIGN</span><h3>Amber in Motion<span class="accent">.</span></h3><p class="case-zh">琥珀香氛｜深邃光影的精品敘事</p></div><p>以煙燻琥珀色與香檳金光影演繹香氛質感，從瓶身形象出發，延伸情境、廣告視覺與動態演出。</p></div>
+        <div class="case-head"><div><span class="case-index">CASE 01 / FRAGRANCE CAMPAIGN</span><h3>Amber in Motion<span class="accent">.</span></h3><p class="case-zh">香氛形象 × 精品光影敘事</p></div><div class="case-strategy"><p><strong>創意策略：</strong>香氛難以透過畫面直接傳達氣味，因此以深琥珀色、流動光線及瓶身質感建立感官聯想，將無形的香氣轉化為可感受的品牌印象。</p><p><strong>應用情境：</strong>品牌認知、形象廣告、社群短影音</p></div></div>
         <div class="deliverables"><span>PRODUCT HERO</span><span>CREATIVE SCENE</span><span>CAMPAIGN VISUAL</span><span>AI FILM</span></div>
-        <div class="case-main-grid"><div class="case-primary-photo"><button data-lightbox data-src="https://d2ol7oe51mr4n9.cloudfront.net/user_3Jb85Thbp6wwOYRd5nIaoln4p3W/a1b08d0f-031f-40a5-8eb1-95a1266fb8d3.png" data-title="1-2｜香水情境圖"><img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3Jb85Thbp6wwOYRd5nIaoln4p3W/a1b08d0f-031f-40a5-8eb1-95a1266fb8d3.png" alt="深琥珀香水情境主視覺" loading="lazy"></button><p>01 / CREATIVE SCENE · 1-2</p></div><div class="case-film"><div class="case-film-head"><span>AI MOTION / 1-4</span><span>00:07 · 16:9</span></div><video controls preload="none" playsinline poster="https://d2ol7oe51mr4n9.cloudfront.net/user_3Jb85Thbp6wwOYRd5nIaoln4p3W/a1b08d0f-031f-40a5-8eb1-95a1266fb8d3.png" aria-label="1-4 香水影音"><source src="https://d2ol7oe51mr4n9.cloudfront.net/user_3Jb85Thbp6wwOYRd5nIaoln4p3W/bd8f7cee-6c13-476b-9b74-d05438773cb2.mp4" type="video/mp4">您的瀏覽器不支援影片播放。</video><p>透過流動光影與產品運鏡，延伸靜態香氛創意。</p></div></div>
-        <div class="thumb-grid grid-3"><figure><button data-lightbox data-src="https://d2ol7oe51mr4n9.cloudfront.net/user_3Jb85Thbp6wwOYRd5nIaoln4p3W/034d57e7-b586-4ffb-9695-6a173f88d603.png" data-title="1-1｜香水產品圖"><img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3Jb85Thbp6wwOYRd5nIaoln4p3W/034d57e7-b586-4ffb-9695-6a173f88d603.png" loading="lazy" alt="香水產品主視覺"></button><figcaption>1-1 <span>PRODUCT VISUAL</span></figcaption></figure><figure><button data-lightbox data-src="https://d2ol7oe51mr4n9.cloudfront.net/user_3Jb85Thbp6wwOYRd5nIaoln4p3W/6b13d703-443d-403e-811e-5a02f919c7e5.png" data-title="1-3｜香水投廣素材"><img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3Jb85Thbp6wwOYRd5nIaoln4p3W/6b13d703-443d-403e-811e-5a02f919c7e5.png" loading="lazy" alt="香水廣告應用素材"></button><figcaption>1-3 <span>AD CREATIVE</span></figcaption></figure><figure class="story-copy"><span class="story-count">01 / 03</span><h4>Consistency is the creative.</h4><p>同一件商品，從靜態形象到影片保持瓶身、Logo 與色彩一致，是商業創意真正的挑戰。</p></figure></div>
+        <div class="case-main-grid"><div class="case-primary-photo"><button data-lightbox data-src="https://d2ol7oe51mr4n9.cloudfront.net/user_3Jb85Thbp6wwOYRd5nIaoln4p3W/a1b08d0f-031f-40a5-8eb1-95a1266fb8d3.png" data-title="1-2｜香水情境圖"><img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3Jb85Thbp6wwOYRd5nIaoln4p3W/a1b08d0f-031f-40a5-8eb1-95a1266fb8d3.png" alt="深琥珀香水情境主視覺" loading="lazy"></button><p>01 / CREATIVE SCENE · 1-2</p></div><div class="case-film"><div class="case-film-head"><span>AI MOTION / 1-4</span><span>00:07 · 16:9</span></div><video controls preload="none" playsinline poster="https://d2ol7oe51mr4n9.cloudfront.net/user_3Jb85Thbp6wwOYRd5nIaoln4p3W/a1b08d0f-031f-40a5-8eb1-95a1266fb8d3.png" aria-label="1-4 香水影音"><source src="https://d2ol7oe51mr4n9.cloudfront.net/user_3Jb85Thbp6wwOYRd5nIaoln4p3W/bd8f7cee-6c13-476b-9b74-d05438773cb2.mp4" type="video/mp4">您的瀏覽器不支援影片播放。</video><p>透過流動光線、瓶身特寫與運鏡節奏，延伸香氛的質感想像</p></div></div>
+        <div class="thumb-grid grid-3"><figure><button data-lightbox data-src="https://d2ol7oe51mr4n9.cloudfront.net/user_3Jb85Thbp6wwOYRd5nIaoln4p3W/034d57e7-b586-4ffb-9695-6a173f88d603.png" data-title="1-1｜香水產品圖"><img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3Jb85Thbp6wwOYRd5nIaoln4p3W/034d57e7-b586-4ffb-9695-6a173f88d603.png" loading="lazy" alt="香水產品主視覺"></button><figcaption>1-1 <span>PRODUCT VISUAL</span></figcaption></figure><figure><button data-lightbox data-src="https://d2ol7oe51mr4n9.cloudfront.net/user_3Jb85Thbp6wwOYRd5nIaoln4p3W/6b13d703-443d-403e-811e-5a02f919c7e5.png" data-title="1-3｜香水投廣素材"><img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3Jb85Thbp6wwOYRd5nIaoln4p3W/6b13d703-443d-403e-811e-5a02f919c7e5.png" loading="lazy" alt="香水廣告應用素材"></button><figcaption>1-3 <span>AD CREATIVE</span></figcaption></figure><figure class="story-copy"><span class="story-count">01 / 03</span><h4>Consistency is the creative.</h4><p>讓瓶身結構、品牌標示與色彩在不同素材中維持高度一致，是這組創意製作的重要品質檢查重點</p></figure></div>
       </article>
       <article class="case-panel" id="panel-skincare" role="tabpanel" aria-labelledby="tab-skincare" data-case="skincare" hidden>
-        <div class="case-head"><div><span class="case-index">CASE 02 / BEAUTY & SKINCARE</span><h3>A Moment for Yourself<span class="accent">.</span></h3><p class="case-zh">保養精華｜晨光裡的日常儀式</p></div><p>將同一瓶保養精華，延伸為產品形象、自然光影、人物手持、生活情境與影音作品。</p></div>
+        <div class="case-head"><div><span class="case-index">CASE 02 / BEAUTY & SKINCARE</span><h3>A Moment for Yourself<span class="accent">.</span></h3><p class="case-zh">保養儀式 × 人物生活情境</p></div><div class="case-strategy"><p><strong>創意策略：</strong>從日常保養的情緒需求出發，以自然晨光、人物互動及真實產品呈現，將保養品與生活中的自我照顧時刻連結，建立親近且具有質感的產品印象。</p><p><strong>應用情境：</strong>品牌形象、產品溝通、社群影音</p></div></div>
         <div class="deliverables"><span>PRODUCT HERO</span><span>LIFESTYLE</span><span>AI MODEL</span><span>AD CREATIVE</span><span>AI FILM</span></div>
-        <div class="case-main-grid"><div class="case-primary-photo"><button data-lightbox data-src="https://d2ol7oe51mr4n9.cloudfront.net/user_3Jb85Thbp6wwOYRd5nIaoln4p3W/47b2d31a-29d8-475c-97b0-1dfb30aa85b6.png" data-title="2-5｜保養品人物手持商品"><img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3Jb85Thbp6wwOYRd5nIaoln4p3W/47b2d31a-29d8-475c-97b0-1dfb30aa85b6.png" loading="lazy" alt="AI 模特兒手持保養精華"></button><p>01 / MODEL × PRODUCT · 2-5</p></div><div class="case-film"><div class="case-film-head"><span>AI MOTION / 2-7</span><span>00:15 · 16:9</span></div><video controls preload="none" playsinline poster="https://d2ol7oe51mr4n9.cloudfront.net/user_3Jb85Thbp6wwOYRd5nIaoln4p3W/e85549ed-440f-49ac-bd96-af2ec882af4c.png" aria-label="2-7 保養品影音"><source src="https://d2ol7oe51mr4n9.cloudfront.net/user_3Jb85Thbp6wwOYRd5nIaoln4p3W/8579a57e-ec7e-4e85-8548-f327619613e0.mp4" type="video/mp4">您的瀏覽器不支援影片播放。</video><p>以晨光人物、精華液與品牌視覺，延伸出完整的動態保養情境。</p></div></div>
-        <div class="thumb-grid grid-5"><figure><button data-lightbox data-src="https://d2ol7oe51mr4n9.cloudfront.net/user_3Jb85Thbp6wwOYRd5nIaoln4p3W/a03b38ef-f0bd-40c6-80a4-2a57ff5cbea0.png" data-title="2-1｜保養品產品圖"><img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3Jb85Thbp6wwOYRd5nIaoln4p3W/a03b38ef-f0bd-40c6-80a4-2a57ff5cbea0.png" loading="lazy" alt="精華液產品主視覺"></button><figcaption>2-1 <span>PRODUCT</span></figcaption></figure><figure><button data-lightbox data-src="https://d2ol7oe51mr4n9.cloudfront.net/user_3Jb85Thbp6wwOYRd5nIaoln4p3W/dd1edf6e-b174-4c17-ac8a-e357921ba453.png" data-title="2-2｜保養品產品情境"><img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3Jb85Thbp6wwOYRd5nIaoln4p3W/dd1edf6e-b174-4c17-ac8a-e357921ba453.png" loading="lazy" alt="精華液情境視覺"></button><figcaption>2-2 <span>SCENE</span></figcaption></figure><figure><button data-lightbox data-src="https://d2ol7oe51mr4n9.cloudfront.net/user_3Jb85Thbp6wwOYRd5nIaoln4p3W/5fc4a059-afea-4cad-8f99-3a651294ebe7.png" data-title="2-6｜保養品人物保養情境"><img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3Jb85Thbp6wwOYRd5nIaoln4p3W/5fc4a059-afea-4cad-8f99-3a651294ebe7.png" loading="lazy" alt="人物保養生活情境"></button><figcaption>2-6 <span>LIFESTYLE</span></figcaption></figure><figure><button data-lightbox data-src="https://d2ol7oe51mr4n9.cloudfront.net/user_3Jb85Thbp6wwOYRd5nIaoln4p3W/b57d889e-5b0f-4c0a-89fb-cf0f924d95a4.png" data-title="2-3｜保養品投廣素材"><img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3Jb85Thbp6wwOYRd5nIaoln4p3W/b57d889e-5b0f-4c0a-89fb-cf0f924d95a4.png" loading="lazy" alt="精華液廣告投放素材"></button><figcaption>2-3 <span>CAMPAIGN</span></figcaption></figure><figure class="story-copy"><span class="story-count">02 / 03</span><h4>Human first, product always.</h4><p>先設定角色，再建立持物與生活情境，兼顧情緒表現與商品正確性。</p></figure></div>
+        <div class="case-main-grid"><div class="case-primary-photo"><button data-lightbox data-src="https://d2ol7oe51mr4n9.cloudfront.net/user_3Jb85Thbp6wwOYRd5nIaoln4p3W/47b2d31a-29d8-475c-97b0-1dfb30aa85b6.png" data-title="2-5｜保養品人物手持商品"><img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3Jb85Thbp6wwOYRd5nIaoln4p3W/47b2d31a-29d8-475c-97b0-1dfb30aa85b6.png" loading="lazy" alt="AI 模特兒手持保養精華"></button><p>01 / MODEL × PRODUCT · 2-5</p></div><div class="case-film"><div class="case-film-head"><span>AI MOTION / 2-7</span><span>00:15 · 16:9</span></div><video controls preload="none" playsinline poster="https://d2ol7oe51mr4n9.cloudfront.net/user_3Jb85Thbp6wwOYRd5nIaoln4p3W/e85549ed-440f-49ac-bd96-af2ec882af4c.png" aria-label="2-7 保養品影音"><source src="https://d2ol7oe51mr4n9.cloudfront.net/user_3Jb85Thbp6wwOYRd5nIaoln4p3W/8579a57e-ec7e-4e85-8548-f327619613e0.mp4" type="video/mp4">您的瀏覽器不支援影片播放。</video><p>以晨光、人物與精華液為主要視覺元素，呈現日常保養情境</p></div></div>
+        <div class="thumb-grid grid-5"><figure><button data-lightbox data-src="https://d2ol7oe51mr4n9.cloudfront.net/user_3Jb85Thbp6wwOYRd5nIaoln4p3W/a03b38ef-f0bd-40c6-80a4-2a57ff5cbea0.png" data-title="2-1｜保養品產品圖"><img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3Jb85Thbp6wwOYRd5nIaoln4p3W/a03b38ef-f0bd-40c6-80a4-2a57ff5cbea0.png" loading="lazy" alt="精華液產品主視覺"></button><figcaption>2-1 <span>PRODUCT</span></figcaption></figure><figure><button data-lightbox data-src="https://d2ol7oe51mr4n9.cloudfront.net/user_3Jb85Thbp6wwOYRd5nIaoln4p3W/dd1edf6e-b174-4c17-ac8a-e357921ba453.png" data-title="2-2｜保養品產品情境"><img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3Jb85Thbp6wwOYRd5nIaoln4p3W/dd1edf6e-b174-4c17-ac8a-e357921ba453.png" loading="lazy" alt="精華液情境視覺"></button><figcaption>2-2 <span>SCENE</span></figcaption></figure><figure><button data-lightbox data-src="https://d2ol7oe51mr4n9.cloudfront.net/user_3Jb85Thbp6wwOYRd5nIaoln4p3W/5fc4a059-afea-4cad-8f99-3a651294ebe7.png" data-title="2-6｜保養品人物保養情境"><img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3Jb85Thbp6wwOYRd5nIaoln4p3W/5fc4a059-afea-4cad-8f99-3a651294ebe7.png" loading="lazy" alt="人物保養生活情境"></button><figcaption>2-6 <span>LIFESTYLE</span></figcaption></figure><figure><button data-lightbox data-src="https://d2ol7oe51mr4n9.cloudfront.net/user_3Jb85Thbp6wwOYRd5nIaoln4p3W/b57d889e-5b0f-4c0a-89fb-cf0f924d95a4.png" data-title="2-3｜保養品投廣素材"><img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3Jb85Thbp6wwOYRd5nIaoln4p3W/b57d889e-5b0f-4c0a-89fb-cf0f924d95a4.png" loading="lazy" alt="精華液廣告投放素材"></button><figcaption>2-3 <span>CAMPAIGN</span></figcaption></figure><figure class="story-copy"><span class="story-count">02 / 03</span><h4>Human first, product always.</h4><p>從角色設定延伸至人物持物與生活情境，並在製作過程核對瓶身比例、標示與人物一致性</p></figure></div>
       </article>
       <article class="case-panel" id="panel-jewelry" role="tabpanel" aria-labelledby="tab-jewelry" data-case="jewelry" hidden>
-        <div class="case-head"><div><span class="case-index">CASE 03 / FINE JEWELRY</span><h3>Everyday Elegance<span class="accent">.</span></h3><p class="case-zh">精品珠寶｜細緻光芒的優雅演繹</p></div><p>透過金屬與寶石特寫、珠寶情境、人物佩戴、精品廣告視覺與動態影片，展示高質感商品的細節控制。</p></div>
+        <div class="case-head"><div><span class="case-index">CASE 03 / FINE JEWELRY</span><h3>Everyday Elegance<span class="accent">.</span></h3><p class="case-zh">珠寶細節 × 日常精品穿搭</p></div><div class="case-strategy"><p><strong>創意策略：</strong>透過寶石細節、金屬光澤與人物佩戴情境，結合產品價值感和穿搭想像，使珠寶不只是一件精緻商品，也是日常風格的一部分。</p><p><strong>應用情境：</strong>商品展示、精品形象、廣告素材</p></div></div>
         <div class="deliverables"><span>JEWELRY DETAIL</span><span>EDITORIAL SCENE</span><span>MODEL STYLING</span><span>AD CREATIVE</span><span>AI FILM</span></div>
-        <div class="case-main-grid jewelry-layout"><div class="case-primary-photo"><button data-lightbox data-src="https://d2ol7oe51mr4n9.cloudfront.net/user_3Jb85Thbp6wwOYRd5nIaoln4p3W/a7b4a59f-0c3b-477f-a677-2d8c60a0c71b.png" data-title="3-3｜精品珠寶人物佩戴"><img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3Jb85Thbp6wwOYRd5nIaoln4p3W/a7b4a59f-0c3b-477f-a677-2d8c60a0c71b.png" loading="lazy" alt="模特兒佩戴精緻圓形鑽石項鍊"></button><p>01 / FASHION EDITORIAL · 3-3</p></div><div class="case-film"><div class="case-film-head"><span>AI MOTION / 3-5</span><span>00:15 · 16:9</span></div><video class="landscape-film" controls preload="none" playsinline poster="https://d2ol7oe51mr4n9.cloudfront.net/user_3Jb85Thbp6wwOYRd5nIaoln4p3W/a7b4a59f-0c3b-477f-a677-2d8c60a0c71b.png" aria-label="3-5 精品珠寶影音"><source src="https://d2ol7oe51mr4n9.cloudfront.net/user_3Jb85Thbp6wwOYRd5nIaoln4p3W/142de934-e726-495b-a077-1658518e1c75.mp4" type="video/mp4">您的瀏覽器不支援影片播放。</video><p>精緻寶石與珠寶光影的視覺表現；重點檢查吊墜輪廓、金屬色與佩戴比例。</p></div></div>
-        <div class="thumb-grid grid-4"><figure><button data-lightbox data-src="https://d2ol7oe51mr4n9.cloudfront.net/user_3Jb85Thbp6wwOYRd5nIaoln4p3W/71642154-93fa-474f-a016-6ac15cf8c620.png" data-title="3-1｜精品產品圖"><img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3Jb85Thbp6wwOYRd5nIaoln4p3W/71642154-93fa-474f-a016-6ac15cf8c620.png" loading="lazy" alt="圓形鑽石吊墜項鍊產品圖"></button><figcaption>3-1 <span>PRODUCT</span></figcaption></figure><figure><button data-lightbox data-src="https://d2ol7oe51mr4n9.cloudfront.net/user_3Jb85Thbp6wwOYRd5nIaoln4p3W/8cdba0c2-c424-4579-9d57-7c8dfcfcefc1.png" data-title="3-2｜精品產品情境"><img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3Jb85Thbp6wwOYRd5nIaoln4p3W/8cdba0c2-c424-4579-9d57-7c8dfcfcefc1.png" loading="lazy" alt="珠寶放置在金色器皿上的情境"></button><figcaption>3-2 <span>EDITORIAL</span></figcaption></figure><figure><button data-lightbox data-src="https://d2ol7oe51mr4n9.cloudfront.net/user_3Jb85Thbp6wwOYRd5nIaoln4p3W/f66cf9b7-020c-4c72-8834-8194c2168fb8.png" data-title="3-4｜精品投廣素材"><img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3Jb85Thbp6wwOYRd5nIaoln4p3W/f66cf9b7-020c-4c72-8834-8194c2168fb8.png" loading="lazy" alt="珠寶模特兒投廣素材"></button><figcaption>3-4 <span>CAMPAIGN</span></figcaption></figure><figure class="story-copy"><span class="story-count">03 / 03</span><h4>Details speak luxury.</h4><p>高價商品的說服力來自材質、佩戴比例與細節的一致性，而不只是視覺特效。</p></figure></div>
+        <div class="case-main-grid jewelry-layout"><div class="case-primary-photo"><button data-lightbox data-src="https://d2ol7oe51mr4n9.cloudfront.net/user_3Jb85Thbp6wwOYRd5nIaoln4p3W/a7b4a59f-0c3b-477f-a677-2d8c60a0c71b.png" data-title="3-3｜精品珠寶人物佩戴"><img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3Jb85Thbp6wwOYRd5nIaoln4p3W/a7b4a59f-0c3b-477f-a677-2d8c60a0c71b.png" loading="lazy" alt="模特兒佩戴精緻圓形鑽石項鍊"></button><p>01 / FASHION EDITORIAL · 3-3</p></div><div class="case-film"><div class="case-film-head"><span>AI MOTION / 3-5</span><span>00:15 · 16:9</span></div><video class="landscape-film" controls preload="none" playsinline poster="https://d2ol7oe51mr4n9.cloudfront.net/user_3Jb85Thbp6wwOYRd5nIaoln4p3W/a7b4a59f-0c3b-477f-a677-2d8c60a0c71b.png" aria-label="3-5 精品珠寶影音"><source src="https://d2ol7oe51mr4n9.cloudfront.net/user_3Jb85Thbp6wwOYRd5nIaoln4p3W/142de934-e726-495b-a077-1658518e1c75.mp4" type="video/mp4">您的瀏覽器不支援影片播放。</video><p>以寶石光影與人物佩戴情境呈現珠寶細節，製作時重視吊墜輪廓、金屬色澤與比例檢查</p></div></div>
+        <div class="thumb-grid grid-4"><figure><button data-lightbox data-src="https://d2ol7oe51mr4n9.cloudfront.net/user_3Jb85Thbp6wwOYRd5nIaoln4p3W/71642154-93fa-474f-a016-6ac15cf8c620.png" data-title="3-1｜精品產品圖"><img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3Jb85Thbp6wwOYRd5nIaoln4p3W/71642154-93fa-474f-a016-6ac15cf8c620.png" loading="lazy" alt="圓形鑽石吊墜項鍊產品圖"></button><figcaption>3-1 <span>PRODUCT</span></figcaption></figure><figure><button data-lightbox data-src="https://d2ol7oe51mr4n9.cloudfront.net/user_3Jb85Thbp6wwOYRd5nIaoln4p3W/8cdba0c2-c424-4579-9d57-7c8dfcfcefc1.png" data-title="3-2｜精品產品情境"><img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3Jb85Thbp6wwOYRd5nIaoln4p3W/8cdba0c2-c424-4579-9d57-7c8dfcfcefc1.png" loading="lazy" alt="珠寶放置在金色器皿上的情境"></button><figcaption>3-2 <span>EDITORIAL</span></figcaption></figure><figure><button data-lightbox data-src="https://d2ol7oe51mr4n9.cloudfront.net/user_3Jb85Thbp6wwOYRd5nIaoln4p3W/f66cf9b7-020c-4c72-8834-8194c2168fb8.png" data-title="3-4｜精品投廣素材"><img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3Jb85Thbp6wwOYRd5nIaoln4p3W/f66cf9b7-020c-4c72-8834-8194c2168fb8.png" loading="lazy" alt="珠寶模特兒投廣素材"></button><figcaption>3-4 <span>CAMPAIGN</span></figcaption></figure><figure class="story-copy"><span class="story-count">03 / 03</span><h4>Details speak luxury.</h4><p>珠寶視覺重視材質、寶石細節與真實佩戴比例；精緻的產品呈現，比堆疊特效更能傳遞價值</p></figure></div>
       </article>
     </div>
-    <p class="works-footnote">* 以上皆為 DECODE 自主 AI Creative Concept 作品，展示製作方法與表現能力；非真實委託客戶案例，未宣稱實際投放或銷售成效。</p>
+    <p class="works-footnote"><strong>Creative Concepts｜DECODE 自主創意示範</strong>。本頁作品為 DECODE 自主企劃及製作的 AI 創意示範，用於呈現產品視覺、人物情境、廣告素材與影音製作能力；不代表實際客戶委託或已驗證的廣告成效</p>
   </div>
 </section>
 
 <!-- MOTION -->
 <section class="section motion" id="motion"><div class="container">
-  <div class="section-heading split-heading"><div><p class="eyebrow">04 / AI MOTION SHOWCASE</p><h2>People in <em>Motion</em><span class="accent">.</span></h2></div><p class="section-desc">從人物神情、衣著、光線到場景連貫性，探索 AI 人物影像在不同風格的表現可能。</p></div>
-  <div class="motion-grid"><article><div class="motion-frame"><video controls preload="metadata" playsinline aria-label="時尚精品人物影音"><source src="https://d2ol7oe51mr4n9.cloudfront.net/user_3Jb85Thbp6wwOYRd5nIaoln4p3W/c9246f72-08c4-4f19-8487-6ffadf1ffc2b.mp4" type="video/mp4"></video></div><div class="motion-meta"><span>01 / FASHION EDITORIAL</span><h3>City in Motion</h3><p>城市漫步的時尚敘事。人物與環境動態、服裝輪廓及鏡頭節奏。</p></div></article><article><div class="motion-frame"><video controls preload="metadata" playsinline aria-label="潮流風格人物影音"><source src="https://d2ol7oe51mr4n9.cloudfront.net/user_3Jb85Thbp6wwOYRd5nIaoln4p3W/f910bdb1-8e52-4176-b728-ee21edacc3d4.mp4" type="video/mp4"></video></div><div class="motion-meta"><span>02 / URBAN LIFESTYLE</span><h3>Everyday Forward</h3><p>自然街拍的動態風格。人物行走、視線互動與日常生活場景。</p></div></article></div>
+  <div class="section-heading split-heading"><div><p class="eyebrow">04 / AI MOTION SHOWCASE</p><h2>People in <em>Motion</em><span class="accent">.</span></h2></div><p class="section-desc">從人物表情、服裝動態到鏡頭節奏，示範 AI 影像在時尚、街拍與生活風格中的應用可能</p></div>
+  <div class="motion-grid"><article><div class="motion-frame"><video controls preload="metadata" playsinline aria-label="時尚精品人物影音"><source src="https://d2ol7oe51mr4n9.cloudfront.net/user_3Jb85Thbp6wwOYRd5nIaoln4p3W/c9246f72-08c4-4f19-8487-6ffadf1ffc2b.mp4" type="video/mp4"></video></div><div class="motion-meta"><span>01 / FASHION EDITORIAL</span><h3>City in Motion</h3><p>時尚街景影像。以人物姿態、服裝動態與城市光影，呈現精品時尚的氛圍</p></div></article><article><div class="motion-frame"><video controls preload="metadata" playsinline aria-label="潮流風格人物影音"><source src="https://d2ol7oe51mr4n9.cloudfront.net/user_3Jb85Thbp6wwOYRd5nIaoln4p3W/f910bdb1-8e52-4176-b728-ee21edacc3d4.mp4" type="video/mp4"></video></div><div class="motion-meta"><span>02 / URBAN LIFESTYLE</span><h3>Everyday Forward</h3><p>潮流生活影像。以行走動作、視線與街道節奏，呈現自然且具有故事感的人物動態</p></div></article></div>
 </div></section>
 
 <!-- INQUIRY -->
 <section class="section inquiry" id="inquiry"><div class="container inquiry-wrap">
-  <div class="inquiry-intro"><p class="eyebrow">05 / START A PROJECT</p><h2>Tell us what<br>you <em>imagine.</em></h2><p class="inquiry-zh">從一個想法，到一組能使用的好素材。</p><p>還不確定需要幾張圖、幾支影片或是否需要 AI 模特兒？先告訴我們你要解決的問題，我們一起規劃合適的製作方向。</p><div class="inquiry-contact"><span>PROJECT INQUIRIES</span><a href="mailto:cm@decode.com.tw">cm@decode.com.tw ↗</a></div><div class="demo-note"><b>EMAIL DRAFT FORM</b><span>目前為線上預覽版。填寫後只會產生需求摘要或開啟 Email 草稿；請自行按下寄送。表單不會自動傳送或儲存。</span></div></div>
+  <div class="inquiry-intro"><p class="eyebrow">05 / START A PROJECT</p><h2>Tell us what<br>you <em>imagine.</em></h2><p class="inquiry-zh">從一個想法，開始規劃真正用得上的品牌素材</p><p>不確定需要幾張圖片、幾支影片，或是否需要 AI 模特兒？先告訴我們你的品牌、產品與希望達成的目標，DECODE 會協助評估合適的素材方向</p><div class="inquiry-contact"><span>PROJECT INQUIRIES</span><a href="mailto:contact@decode.com.tw">contact@decode.com.tw ↗</a></div><div class="demo-note"><b>EMAIL DRAFT FORM</b><span>目前為線上預覽版。填寫後只會產生需求摘要或開啟 Email 草稿；請自行按下寄送。表單不會自動傳送或儲存。</span></div></div>
   <div class="form-card"><div class="form-progress"><span id="form-step-label">STEP 01 / 03</span><div class="progress-track"><i id="progress-fill"></i></div></div>
     <form id="project-form" novalidate>
       <fieldset class="form-step" data-step="0"><legend>先說說你的專案</legend><p class="step-subtitle">我們會先從商業需求判斷最合適的素材方向。</p>
-        <label for="project-type">產品／產業類型</label><select id="project-type" name="project-type" required><option value="">請選擇</option><option>美妝保養</option><option>精品珠寶／時尚</option><option>香水／香氛</option><option>零售／電商</option><option>食品／生活</option><option>其他</option></select>
-        <label for="project-goal">這次最想解決什麼問題？</label><textarea id="project-goal" name="project-goal" rows="3" placeholder="例如：新品上市缺少產品圖、想做社群影音、需要模特兒示範……" required></textarea>
+        <label for="project-type">產品／產業類型</label><select id="project-type" name="project-type" required><option value="">請選擇</option><option>美妝保養</option><option>精品珠寶／時尚</option><option>香水／香氛</option><option>零售／電商</option><option>食品／生活</option><option>科技／服務</option><option>其他</option></select>
+        <label for="project-goal">這次最想解決什麼行銷或內容問題？</label><textarea id="project-goal" name="project-goal" rows="3" placeholder="例如：新品上市、品牌曝光、產品介紹、社群內容不足" required></textarea>
         <span class="form-label">希望製作的內容（可複選）</span><div class="check-grid"><label class="check-card"><input type="checkbox" name="formats" value="產品主視覺"><span>產品主視覺</span></label><label class="check-card"><input type="checkbox" name="formats" value="情境形象圖"><span>情境形象圖</span></label><label class="check-card"><input type="checkbox" name="formats" value="AI 人物／模特兒"><span>AI 人物／模特兒</span></label><label class="check-card"><input type="checkbox" name="formats" value="廣告投放素材"><span>廣告投放素材</span></label><label class="check-card"><input type="checkbox" name="formats" value="AI 動態影片"><span>AI 動態影片</span></label><label class="check-card"><input type="checkbox" name="formats" value="需要建議"><span>尚不確定</span></label></div>
       </fieldset>
-      <fieldset class="form-step" data-step="1" hidden><legend>創意方向與素材準備</legend><p class="step-subtitle">不需要一次提供完整 Brief，有方向即可先開始討論。</p>
+      <fieldset class="form-step" data-step="1" hidden><legend>創意方向與現有素材</legend><p class="step-subtitle">不需要先整理完整 Brief，有想法或參考圖片就可以開始討論</p>
         <label for="creative-style">希望呈現的視覺風格</label><select id="creative-style" name="creative-style"><option value="">還不確定／希望 DECODE 建議</option><option>精品時尚／電影感</option><option>乾淨自然／生活感</option><option>現代簡約／電商風格</option><option>鮮明活潑／社群風格</option><option>其他風格</option></select>
-        <span class="form-label">需要 AI 模特兒嗎？</span><div class="radio-row"><label><input type="radio" name="model" value="需要" checked><span>需要</span></label><label><input type="radio" name="model" value="不需要"><span>不需要</span></label><label><input type="radio" name="model" value="希望建議"><span>希望建議</span></label></div>
-        <label for="target-platform">預計使用在哪些平台？</label><input id="target-platform" name="target-platform" placeholder="例如：IG、Meta Ads、官網、YouTube">
-        <label for="available-assets">目前已準備的素材</label><select id="available-assets" name="available-assets"><option>有產品照片、Logo 與品牌規範</option><option>只有產品照片</option><option>目前只有產品構想</option><option>還在整理／不確定</option></select>
+        <span class="form-label">是否需要人物／模特兒？</span><div class="radio-row"><label><input type="radio" name="model" value="需要 AI 人物"><span>需要 AI 人物</span></label><label><input type="radio" name="model" value="不需要"><span>不需要</span></label><label><input type="radio" name="model" value="希望 DECODE 協助判斷" checked><span>希望 DECODE 協助判斷</span></label></div>
+        <label for="target-platform">預計使用在哪些平台？</label><input id="target-platform" name="target-platform" placeholder="例如：Instagram、Facebook、LINE、YouTube、電商頁面、官網">
+        <label for="available-assets">目前已準備的素材</label><select id="available-assets" name="available-assets"><option>有產品照片、Logo 與品牌規範</option><option>已有產品去背圖</option><option>只有產品照片</option><option>目前只有產品構想</option><option>還在整理／不確定</option></select>
+        <label for="production-count">預計製作數量（選填）</label><select id="production-count" name="production-count"><option value="">尚不確定</option><option>1–3 張</option><option>4–10 張</option><option>10 張以上</option><option>1 支影片</option><option>多支影片</option></select>
+        <label for="budget-choice">預計預算區間（選填）</label><select id="budget-choice" name="budget-choice"><option value="尚不確定">尚不確定</option><option>希望先了解費用</option><option value="自填">自行填寫大約範圍</option></select><input id="budget-custom" name="budget-custom" placeholder="例如：NT$ 10,000–30,000" aria-label="自行填寫預算範圍" hidden>
       </fieldset>
       <fieldset class="form-step" data-step="2" hidden><legend>留下聯絡方式</legend><p class="step-subtitle">預覽模式不會將這些資料傳送到伺服器；請自行確認 Email 寄送。</p>
         <label for="client-name">聯絡人稱呼 <span class="req">*</span></label><input id="client-name" name="client-name" required placeholder="如何稱呼你？">
@@ -179,7 +197,7 @@
       </fieldset>
       <div class="form-actions"><button type="button" class="btn-back" id="form-back" hidden>← 上一步</button><button type="button" class="btn btn-gold" id="form-next">繼續填寫 <span>→</span></button></div><div class="form-status" role="status" aria-live="polite" id="form-status"></div>
     </form>
-    <div class="form-complete" id="form-complete" hidden><div class="complete-icon">✓</div><h3>合作需求摘要已整理</h3><p>你可以複製內容，或開啟郵件軟體寄給 DECODE。<br>此預覽不會自動寄送資料，請由 Email 軟體手動寄出。</p><pre id="summary-text"></pre><div class="complete-actions"><button id="copy-summary" class="btn btn-gold" type="button">複製需求摘要 <span>⧉</span></button><a id="email-summary" class="btn btn-line" href="mailto:cm@decode.com.tw">開啟 Email 草稿 ↗</a></div><button id="restart-form" class="restart-form" type="button">重新填寫</button></div>
+    <div class="form-complete" id="form-complete" hidden><div class="complete-icon">✓</div><h3>合作需求摘要已整理</h3><p>你可以複製內容，或開啟郵件軟體寄給 DECODE。<br>此預覽不會自動寄送資料，請由 Email 軟體手動寄出。</p><pre id="summary-text"></pre><div class="complete-actions"><button id="copy-summary" class="btn btn-gold" type="button">複製需求摘要 <span>⧉</span></button><a id="email-summary" class="btn btn-line" href="mailto:contact@decode.com.tw">開啟 Email 草稿 ↗</a></div><button id="restart-form" class="restart-form" type="button">重新填寫</button></div>
   </div>
 </div></section>
 </main>
@@ -248,6 +266,16 @@ document.querySelectorAll('[data-lightbox]').forEach(btn=>btn.addEventListener('
 dialog?.querySelector('.lightbox-close')?.addEventListener('click',()=>dialog.close());
 dialog?.addEventListener('click',e=>{if(e.target === dialog) dialog.close()});
 
+const uncertainFormat=document.querySelector('input[name="formats"][value="需要建議"]');
+document.querySelectorAll('input[name="formats"]').forEach(input=>input.addEventListener('change',()=>{
+  if(!input.checked) return;
+  if(input===uncertainFormat) document.querySelectorAll('input[name="formats"]').forEach(other=>{if(other!==uncertainFormat) other.checked=false;});
+  else if(uncertainFormat) uncertainFormat.checked=false;
+}));
+const budgetChoice=document.getElementById('budget-choice');
+const budgetCustom=document.getElementById('budget-custom');
+function syncBudgetCustom(){budgetCustom.hidden=budgetChoice.value!=='自填';if(budgetCustom.hidden)budgetCustom.value='';}
+budgetChoice.addEventListener('change',syncBudgetCustom);syncBudgetCustom();
 const form = document.getElementById('project-form');
 const fieldsets = [...document.querySelectorAll('.form-step')];
 const next = document.getElementById('form-next');
@@ -288,6 +316,8 @@ next.addEventListener('click',()=>{
     'AI 模特兒：'+model,
     '預計平台：'+val('target-platform'),
     '現有素材：'+val('available-assets'),
+    '預計製作數量：'+val('production-count'),
+    '預計預算區間：'+(val('budget-choice')==='自填'?val('budget-custom'):val('budget-choice')),
     '聯絡人：'+val('client-name'),
     '公司／品牌：'+val('company-name'),
     '聯絡 Email：'+val('client-email'),
@@ -298,7 +328,7 @@ next.addEventListener('click',()=>{
   ];
   const summary=lines.join('\n');
   document.getElementById('summary-text').textContent=summary;
-  document.getElementById('email-summary').href='mailto:cm@decode.com.tw?subject='+encodeURIComponent('DECODE｜AI 創意製作合作洽詢')+'&body='+encodeURIComponent(summary);
+  document.getElementById('email-summary').href='mailto:contact@decode.com.tw?subject='+encodeURIComponent('DECODE｜AI 創意製作合作洽詢')+'&body='+encodeURIComponent(summary);
   form.hidden=true;
   document.querySelector('.form-progress').hidden=true;
   document.getElementById('form-complete').hidden=false;
