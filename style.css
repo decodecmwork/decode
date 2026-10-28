@@ -120,3 +120,7 @@ blockquote{font-family:inherit;font-weight:500;letter-spacing:-1px;line-height:1
 }
 @media(max-width:360px){.decode-consent-actions{flex-direction:column}}
 @media(prefers-reduced-motion:reduce){.decode-consent{animation:none}}
+
+/* CASES official portfolio entry */
+.ai-portfolio-link{margin-top:27px}
+.ai-portfolio-link .button{min-width:190px}
