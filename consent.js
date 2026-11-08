@@ -2,7 +2,7 @@
 (function () {
   'use strict';
 
-  const PIXEL_ID = '1432853895037254';
+  const PIXEL_ID = '1590538323116585';
   const KEY = 'decode_tracking_consent_v2';
   const VALID_FOR = 180 * 24 * 60 * 60 * 1000;
   // DECODE-owned GTM container. It loads strictly after new, explicit consent.
