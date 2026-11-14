@@ -1845,7 +1845,7 @@ html{font-family:Arial,'Microsoft JhengHei','PingFang TC',sans-serif;}
           <p class="hero-italic mb-7">An evening behind the secret door.</p>
           <p class="text-[#b5aa9f] text-sm leading-8 max-w-lg mb-10">一道隱身城市裡的入口，一場關於味覺與微醺的探索。<br>以東方風雅為引，邀你走進夜色深處的皇城司。</p>
           <div class="flex flex-wrap gap-3"><a class="action-primary" href="#booking">立即預約席位</a>
-          <a class="action-outline" href="#menu">探索當季菜單</a></div>
+          <a class="action-outline" href="#menu">探索最新菜單</a></div>
           <div class="mt-16 flex items-center gap-4 text-[#988975] text-[11px] tracking-[.22em]"><span class="thin-rule"></span> BY RESERVATION ONLY</div>
         </div>
       </div>
@@ -1916,7 +1916,7 @@ html{font-family:Arial,'Microsoft JhengHei','PingFang TC',sans-serif;}
       </div>
     </div>
 
-<div id="systemBanner" class="relative z-10 max-w-3xl mx-auto w-full px-4 pt-5">
+<div id="systemBanner" class="hidden relative z-10 max-w-3xl mx-auto w-full px-4 pt-5">
       <div id="systemBannerText" role="status" class="text-sm rounded-xl border border-amber-500/30 bg-amber-500/10 text-amber-100 px-4 py-3">正在確認訂位系統狀態…</div>
     </div>
 
@@ -2461,6 +2461,7 @@ html{font-family:Arial,'Microsoft JhengHei','PingFang TC',sans-serif;}
       const money = v => `NT$${Number(v).toLocaleString('zh-TW')}`;
       function banner(msg, kind='warn') {
         const e = el('systemBannerText');
+        el('systemBanner').classList.remove('hidden');
         e.textContent = msg;
         e.className = kind==='ok' ? 'text-sm rounded-xl border border-emerald-600/30 bg-emerald-500/10 text-emerald-200 px-4 py-3' :
           kind==='error' ? 'text-sm rounded-xl border border-rose-500/30 bg-rose-500/10 text-rose-100 px-4 py-3' :
@@ -2637,7 +2638,7 @@ function applyConfig() {
         document.querySelectorAll('.form-step').forEach((node,i)=>node.classList.toggle('hidden',i!==0));
         state.step=1;
         handleDateChange();
-        if(!IS_LIVE) banner('網站展示模式｜可體驗完整四步驟，但不會建立訂位或儲存資料。請使用測試聯絡資訊。');
+        if(!IS_LIVE) el('systemBanner').classList.add('hidden');
         else if(!c.enabled) banner('店家尚未開放線上訂位。網頁可瀏覽，但目前無法送出預約。請聯絡店家。');
         else banner(c.bookingMode==='AUTO'?'系統已連線：送出後即時核對並確認席位；首次入會及特殊需求仍依店家通知辦理。':'系統已連線：可提交訂位申請，收到店家確認後才算預約成功。','ok');
       }
