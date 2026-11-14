@@ -1,0 +1,2753 @@
+<!DOCTYPE html>
+<html lang="zh-TW" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>皇城司｜菜單與訂位網站（本機展示）</title>
+    <!-- Tailwind CSS CDN; online connection required -->
+    <!-- Google Fonts -->
+    <!-- FontAwesome -->
+    <style>
+/*! tailwindcss v4.1.10 | MIT License | https://tailwindcss.com */
+@layer properties;
+@layer theme, base, components, utilities;
+@layer theme {
+  :root, :host {
+    --font-sans: Arial,'Microsoft JhengHei',sans-serif;
+    --font-serif: Georgia, 'Noto Serif TC', 'Microsoft JhengHei', serif;
+    --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
+      "Courier New", monospace;
+    --color-amber-100: oklch(96.2% 0.059 95.617);
+    --color-amber-200: oklch(92.4% 0.12 95.746);
+    --color-amber-400: oklch(82.8% 0.189 84.429);
+    --color-amber-500: oklch(76.9% 0.188 70.08);
+    --color-amber-600: oklch(66.6% 0.179 58.318);
+    --color-amber-900: oklch(41.4% 0.112 45.904);
+    --color-emerald-200: oklch(90.5% 0.093 164.15);
+    --color-emerald-400: oklch(76.5% 0.177 163.223);
+    --color-emerald-500: oklch(69.6% 0.17 162.48);
+    --color-emerald-600: oklch(59.6% 0.145 163.225);
+    --color-purple-600: oklch(55.8% 0.288 302.321);
+    --color-pink-600: oklch(59.2% 0.249 0.584);
+    --color-rose-100: oklch(94.1% 0.03 12.58);
+    --color-rose-200: oklch(89.2% 0.058 10.001);
+    --color-rose-400: oklch(71.2% 0.194 13.428);
+    --color-rose-500: oklch(64.5% 0.246 16.439);
+    --color-gray-200: oklch(92.8% 0.006 264.531);
+    --color-gray-300: oklch(87.2% 0.01 258.338);
+    --color-gray-400: oklch(70.7% 0.022 261.325);
+    --color-gray-500: oklch(55.1% 0.027 264.364);
+    --color-gray-700: oklch(37.3% 0.034 259.733);
+    --color-gray-800: oklch(27.8% 0.033 256.848);
+    --color-black: #000;
+    --color-white: #fff;
+    --spacing: 0.25rem;
+    --container-md: 28rem;
+    --container-lg: 32rem;
+    --container-xl: 36rem;
+    --container-2xl: 42rem;
+    --container-3xl: 48rem;
+    --container-7xl: 80rem;
+    --text-xs: 0.75rem;
+    --text-xs--line-height: calc(1 / 0.75);
+    --text-sm: 0.875rem;
+    --text-sm--line-height: calc(1.25 / 0.875);
+    --text-base: 1rem;
+    --text-base--line-height: calc(1.5 / 1);
+    --text-lg: 1.125rem;
+    --text-lg--line-height: calc(1.75 / 1.125);
+    --text-xl: 1.25rem;
+    --text-xl--line-height: calc(1.75 / 1.25);
+    --text-2xl: 1.5rem;
+    --text-2xl--line-height: calc(2 / 1.5);
+    --text-3xl: 1.875rem;
+    --text-3xl--line-height: calc(2.25 / 1.875);
+    --font-weight-medium: 500;
+    --font-weight-semibold: 600;
+    --font-weight-bold: 700;
+    --tracking-wider: 0.05em;
+    --tracking-widest: 0.1em;
+    --leading-relaxed: 1.625;
+    --radius-lg: 0.5rem;
+    --radius-xl: 0.75rem;
+    --radius-2xl: 1rem;
+    --blur-md: 12px;
+    --blur-2xl: 40px;
+    --blur-3xl: 64px;
+    --default-transition-duration: 150ms;
+    --default-transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    --default-font-family: var(--font-sans);
+    --default-mono-font-family: var(--font-mono);
+    --color-brand-dark: #0B0B0E;
+    --color-brand-card: #141419;
+    --color-brand-gold: #D4AF37;
+  }
+}
+@layer base {
+  *, ::after, ::before, ::backdrop, ::file-selector-button {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    border: 0 solid;
+  }
+  html, :host {
+    line-height: 1.5;
+    -webkit-text-size-adjust: 100%;
+    tab-size: 4;
+    font-family: var(--default-font-family, ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji");
+    font-feature-settings: var(--default-font-feature-settings, normal);
+    font-variation-settings: var(--default-font-variation-settings, normal);
+    -webkit-tap-highlight-color: transparent;
+  }
+  hr {
+    height: 0;
+    color: inherit;
+    border-top-width: 1px;
+  }
+  abbr:where([title]) {
+    -webkit-text-decoration: underline dotted;
+    text-decoration: underline dotted;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-size: inherit;
+    font-weight: inherit;
+  }
+  a {
+    color: inherit;
+    -webkit-text-decoration: inherit;
+    text-decoration: inherit;
+  }
+  b, strong {
+    font-weight: bolder;
+  }
+  code, kbd, samp, pre {
+    font-family: var(--default-mono-font-family, ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace);
+    font-feature-settings: var(--default-mono-font-feature-settings, normal);
+    font-variation-settings: var(--default-mono-font-variation-settings, normal);
+    font-size: 1em;
+  }
+  small {
+    font-size: 80%;
+  }
+  sub, sup {
+    font-size: 75%;
+    line-height: 0;
+    position: relative;
+    vertical-align: baseline;
+  }
+  sub {
+    bottom: -0.25em;
+  }
+  sup {
+    top: -0.5em;
+  }
+  table {
+    text-indent: 0;
+    border-color: inherit;
+    border-collapse: collapse;
+  }
+  :-moz-focusring {
+    outline: auto;
+  }
+  progress {
+    vertical-align: baseline;
+  }
+  summary {
+    display: list-item;
+  }
+  ol, ul, menu {
+    list-style: none;
+  }
+  img, svg, video, canvas, audio, iframe, embed, object {
+    display: block;
+    vertical-align: middle;
+  }
+  img, video {
+    max-width: 100%;
+    height: auto;
+  }
+  button, input, select, optgroup, textarea, ::file-selector-button {
+    font: inherit;
+    font-feature-settings: inherit;
+    font-variation-settings: inherit;
+    letter-spacing: inherit;
+    color: inherit;
+    border-radius: 0;
+    background-color: transparent;
+    opacity: 1;
+  }
+  :where(select:is([multiple], [size])) optgroup {
+    font-weight: bolder;
+  }
+  :where(select:is([multiple], [size])) optgroup option {
+    padding-inline-start: 20px;
+  }
+  ::file-selector-button {
+    margin-inline-end: 4px;
+  }
+  ::placeholder {
+    opacity: 1;
+  }
+  @supports (not (-webkit-appearance: -apple-pay-button))  or (contain-intrinsic-size: 1px) {
+    ::placeholder {
+      color: currentcolor;
+      @supports (color: color-mix(in lab, red, red)) {
+        color: color-mix(in oklab, currentcolor 50%, transparent);
+      }
+    }
+  }
+  textarea {
+    resize: vertical;
+  }
+  ::-webkit-search-decoration {
+    -webkit-appearance: none;
+  }
+  ::-webkit-date-and-time-value {
+    min-height: 1lh;
+    text-align: inherit;
+  }
+  ::-webkit-datetime-edit {
+    display: inline-flex;
+  }
+  ::-webkit-datetime-edit-fields-wrapper {
+    padding: 0;
+  }
+  ::-webkit-datetime-edit, ::-webkit-datetime-edit-year-field, ::-webkit-datetime-edit-month-field, ::-webkit-datetime-edit-day-field, ::-webkit-datetime-edit-hour-field, ::-webkit-datetime-edit-minute-field, ::-webkit-datetime-edit-second-field, ::-webkit-datetime-edit-millisecond-field, ::-webkit-datetime-edit-meridiem-field {
+    padding-block: 0;
+  }
+  :-moz-ui-invalid {
+    box-shadow: none;
+  }
+  button, input:where([type="button"], [type="reset"], [type="submit"]), ::file-selector-button {
+    appearance: button;
+  }
+  ::-webkit-inner-spin-button, ::-webkit-outer-spin-button {
+    height: auto;
+  }
+  [hidden]:where(:not([hidden="until-found"])) {
+    display: none !important;
+  }
+}
+@layer utilities {
+  .pointer-events-none {
+    pointer-events: none;
+  }
+  .absolute {
+    position: absolute;
+  }
+  .fixed {
+    position: fixed;
+  }
+  .relative {
+    position: relative;
+  }
+  .sticky {
+    position: sticky;
+  }
+  .inset-0 {
+    inset: calc(var(--spacing) * 0);
+  }
+  .top-0 {
+    top: calc(var(--spacing) * 0);
+  }
+  .-right-12 {
+    right: calc(var(--spacing) * -12);
+  }
+  .-bottom-12 {
+    bottom: calc(var(--spacing) * -12);
+  }
+  .left-1\/2 {
+    left: calc(1/2 * 100%);
+  }
+  .z-10 {
+    z-index: 10;
+  }
+  .z-30 {
+    z-index: 30;
+  }
+  .z-50 {
+    z-index: 50;
+  }
+  .col-span-2 {
+    grid-column: span 2 / span 2;
+  }
+  .mx-2 {
+    margin-inline: calc(var(--spacing) * 2);
+  }
+  .mx-auto {
+    margin-inline: auto;
+  }
+  .mt-0\.5 {
+    margin-top: calc(var(--spacing) * 0.5);
+  }
+  .mt-1 {
+    margin-top: calc(var(--spacing) * 1);
+  }
+  .mt-2 {
+    margin-top: calc(var(--spacing) * 2);
+  }
+  .mt-3 {
+    margin-top: calc(var(--spacing) * 3);
+  }
+  .mt-4 {
+    margin-top: calc(var(--spacing) * 4);
+  }
+  .mt-6 {
+    margin-top: calc(var(--spacing) * 6);
+  }
+  .mt-8 {
+    margin-top: calc(var(--spacing) * 8);
+  }
+  .mt-11 {
+    margin-top: calc(var(--spacing) * 11);
+  }
+  .mt-16 {
+    margin-top: calc(var(--spacing) * 16);
+  }
+  .mr-1 {
+    margin-right: calc(var(--spacing) * 1);
+  }
+  .mr-1\.5 {
+    margin-right: calc(var(--spacing) * 1.5);
+  }
+  .mr-2 {
+    margin-right: calc(var(--spacing) * 2);
+  }
+  .mb-1 {
+    margin-bottom: calc(var(--spacing) * 1);
+  }
+  .mb-1\.5 {
+    margin-bottom: calc(var(--spacing) * 1.5);
+  }
+  .mb-2 {
+    margin-bottom: calc(var(--spacing) * 2);
+  }
+  .mb-3 {
+    margin-bottom: calc(var(--spacing) * 3);
+  }
+  .mb-4 {
+    margin-bottom: calc(var(--spacing) * 4);
+  }
+  .mb-5 {
+    margin-bottom: calc(var(--spacing) * 5);
+  }
+  .mb-6 {
+    margin-bottom: calc(var(--spacing) * 6);
+  }
+  .mb-7 {
+    margin-bottom: calc(var(--spacing) * 7);
+  }
+  .mb-8 {
+    margin-bottom: calc(var(--spacing) * 8);
+  }
+  .mb-9 {
+    margin-bottom: calc(var(--spacing) * 9);
+  }
+  .mb-10 {
+    margin-bottom: calc(var(--spacing) * 10);
+  }
+  .mb-11 {
+    margin-bottom: calc(var(--spacing) * 11);
+  }
+  .block {
+    display: block;
+  }
+  .flex {
+    display: flex;
+  }
+  .grid {
+    display: grid;
+  }
+  .hidden {
+    display: none;
+  }
+  .inline-block {
+    display: inline-block;
+  }
+  .h-0\.5 {
+    height: calc(var(--spacing) * 0.5);
+  }
+  .h-4 {
+    height: calc(var(--spacing) * 4);
+  }
+  .h-5 {
+    height: calc(var(--spacing) * 5);
+  }
+  .h-7 {
+    height: calc(var(--spacing) * 7);
+  }
+  .h-8 {
+    height: calc(var(--spacing) * 8);
+  }
+  .h-9 {
+    height: calc(var(--spacing) * 9);
+  }
+  .h-10 {
+    height: calc(var(--spacing) * 10);
+  }
+  .h-12 {
+    height: calc(var(--spacing) * 12);
+  }
+  .h-16 {
+    height: calc(var(--spacing) * 16);
+  }
+  .h-48 {
+    height: calc(var(--spacing) * 48);
+  }
+  .h-96 {
+    height: calc(var(--spacing) * 96);
+  }
+  .max-h-96 {
+    max-height: calc(var(--spacing) * 96);
+  }
+  .min-h-screen {
+    min-height: 100vh;
+  }
+  .w-4 {
+    width: calc(var(--spacing) * 4);
+  }
+  .w-5 {
+    width: calc(var(--spacing) * 5);
+  }
+  .w-7 {
+    width: calc(var(--spacing) * 7);
+  }
+  .w-8 {
+    width: calc(var(--spacing) * 8);
+  }
+  .w-9 {
+    width: calc(var(--spacing) * 9);
+  }
+  .w-10 {
+    width: calc(var(--spacing) * 10);
+  }
+  .w-12 {
+    width: calc(var(--spacing) * 12);
+  }
+  .w-16 {
+    width: calc(var(--spacing) * 16);
+  }
+  .w-48 {
+    width: calc(var(--spacing) * 48);
+  }
+  .w-full {
+    width: 100%;
+  }
+  .max-w-2xl {
+    max-width: var(--container-2xl);
+  }
+  .max-w-3xl {
+    max-width: var(--container-3xl);
+  }
+  .max-w-7xl {
+    max-width: var(--container-7xl);
+  }
+  .max-w-lg {
+    max-width: var(--container-lg);
+  }
+  .max-w-md {
+    max-width: var(--container-md);
+  }
+  .max-w-xl {
+    max-width: var(--container-xl);
+  }
+  .min-w-0 {
+    min-width: calc(var(--spacing) * 0);
+  }
+  .flex-1 {
+    flex: 1;
+  }
+  .flex-shrink-0 {
+    flex-shrink: 0;
+  }
+  .shrink-0 {
+    flex-shrink: 0;
+  }
+  .flex-grow {
+    flex-grow: 1;
+  }
+  .-translate-x-1\/2 {
+    --tw-translate-x: calc(calc(1/2 * 100%) * -1);
+    translate: var(--tw-translate-x) var(--tw-translate-y);
+  }
+  .cursor-not-allowed {
+    cursor: not-allowed;
+  }
+  .cursor-pointer {
+    cursor: pointer;
+  }
+  .grid-cols-1 {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+  }
+  .grid-cols-2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .flex-col {
+    flex-direction: column;
+  }
+  .flex-wrap {
+    flex-wrap: wrap;
+  }
+  .items-center {
+    align-items: center;
+  }
+  .items-start {
+    align-items: flex-start;
+  }
+  .justify-between {
+    justify-content: space-between;
+  }
+  .justify-center {
+    justify-content: center;
+  }
+  .justify-end {
+    justify-content: flex-end;
+  }
+  .gap-3 {
+    gap: calc(var(--spacing) * 3);
+  }
+  .gap-4 {
+    gap: calc(var(--spacing) * 4);
+  }
+  .gap-6 {
+    gap: calc(var(--spacing) * 6);
+  }
+  .space-y-1 {
+    :where(& > :not(:last-child)) {
+      --tw-space-y-reverse: 0;
+      margin-block-start: calc(calc(var(--spacing) * 1) * var(--tw-space-y-reverse));
+      margin-block-end: calc(calc(var(--spacing) * 1) * calc(1 - var(--tw-space-y-reverse)));
+    }
+  }
+  .space-y-2 {
+    :where(& > :not(:last-child)) {
+      --tw-space-y-reverse: 0;
+      margin-block-start: calc(calc(var(--spacing) * 2) * var(--tw-space-y-reverse));
+      margin-block-end: calc(calc(var(--spacing) * 2) * calc(1 - var(--tw-space-y-reverse)));
+    }
+  }
+  .space-y-3 {
+    :where(& > :not(:last-child)) {
+      --tw-space-y-reverse: 0;
+      margin-block-start: calc(calc(var(--spacing) * 3) * var(--tw-space-y-reverse));
+      margin-block-end: calc(calc(var(--spacing) * 3) * calc(1 - var(--tw-space-y-reverse)));
+    }
+  }
+  .space-y-4 {
+    :where(& > :not(:last-child)) {
+      --tw-space-y-reverse: 0;
+      margin-block-start: calc(calc(var(--spacing) * 4) * var(--tw-space-y-reverse));
+      margin-block-end: calc(calc(var(--spacing) * 4) * calc(1 - var(--tw-space-y-reverse)));
+    }
+  }
+  .space-y-5 {
+    :where(& > :not(:last-child)) {
+      --tw-space-y-reverse: 0;
+      margin-block-start: calc(calc(var(--spacing) * 5) * var(--tw-space-y-reverse));
+      margin-block-end: calc(calc(var(--spacing) * 5) * calc(1 - var(--tw-space-y-reverse)));
+    }
+  }
+  .space-x-1\.5 {
+    :where(& > :not(:last-child)) {
+      --tw-space-x-reverse: 0;
+      margin-inline-start: calc(calc(var(--spacing) * 1.5) * var(--tw-space-x-reverse));
+      margin-inline-end: calc(calc(var(--spacing) * 1.5) * calc(1 - var(--tw-space-x-reverse)));
+    }
+  }
+  .space-x-2 {
+    :where(& > :not(:last-child)) {
+      --tw-space-x-reverse: 0;
+      margin-inline-start: calc(calc(var(--spacing) * 2) * var(--tw-space-x-reverse));
+      margin-inline-end: calc(calc(var(--spacing) * 2) * calc(1 - var(--tw-space-x-reverse)));
+    }
+  }
+  .space-x-2\.5 {
+    :where(& > :not(:last-child)) {
+      --tw-space-x-reverse: 0;
+      margin-inline-start: calc(calc(var(--spacing) * 2.5) * var(--tw-space-x-reverse));
+      margin-inline-end: calc(calc(var(--spacing) * 2.5) * calc(1 - var(--tw-space-x-reverse)));
+    }
+  }
+  .space-x-3 {
+    :where(& > :not(:last-child)) {
+      --tw-space-x-reverse: 0;
+      margin-inline-start: calc(calc(var(--spacing) * 3) * var(--tw-space-x-reverse));
+      margin-inline-end: calc(calc(var(--spacing) * 3) * calc(1 - var(--tw-space-x-reverse)));
+    }
+  }
+  .space-x-4 {
+    :where(& > :not(:last-child)) {
+      --tw-space-x-reverse: 0;
+      margin-inline-start: calc(calc(var(--spacing) * 4) * var(--tw-space-x-reverse));
+      margin-inline-end: calc(calc(var(--spacing) * 4) * calc(1 - var(--tw-space-x-reverse)));
+    }
+  }
+  .overflow-hidden {
+    overflow: hidden;
+  }
+  .overflow-y-auto {
+    overflow-y: auto;
+  }
+  .rounded {
+    border-radius: 0.25rem;
+  }
+  .rounded-2xl {
+    border-radius: var(--radius-2xl);
+  }
+  .rounded-full {
+    border-radius: calc(infinity * 1px);
+  }
+  .rounded-lg {
+    border-radius: var(--radius-lg);
+  }
+  .rounded-xl {
+    border-radius: var(--radius-xl);
+  }
+  .border {
+    border-style: var(--tw-border-style);
+    border-width: 1px;
+  }
+  .border-2 {
+    border-style: var(--tw-border-style);
+    border-width: 2px;
+  }
+  .border-t {
+    border-top-style: var(--tw-border-style);
+    border-top-width: 1px;
+  }
+  .border-b {
+    border-bottom-style: var(--tw-border-style);
+    border-bottom-width: 1px;
+  }
+  .border-amber-500\/10 {
+    border-color: color-mix(in srgb, oklch(76.9% 0.188 70.08) 10%, transparent);
+    @supports (color: color-mix(in lab, red, red)) {
+      border-color: color-mix(in oklab, var(--color-amber-500) 10%, transparent);
+    }
+  }
+  .border-amber-500\/20 {
+    border-color: color-mix(in srgb, oklch(76.9% 0.188 70.08) 20%, transparent);
+    @supports (color: color-mix(in lab, red, red)) {
+      border-color: color-mix(in oklab, var(--color-amber-500) 20%, transparent);
+    }
+  }
+  .border-amber-500\/30 {
+    border-color: color-mix(in srgb, oklch(76.9% 0.188 70.08) 30%, transparent);
+    @supports (color: color-mix(in lab, red, red)) {
+      border-color: color-mix(in oklab, var(--color-amber-500) 30%, transparent);
+    }
+  }
+  .border-brand-gold {
+    border-color: var(--color-brand-gold);
+  }
+  .border-brand-gold\/60 {
+    border-color: color-mix(in srgb, #D4AF37 60%, transparent);
+    @supports (color: color-mix(in lab, red, red)) {
+      border-color: color-mix(in oklab, var(--color-brand-gold) 60%, transparent);
+    }
+  }
+  .border-emerald-500\/30 {
+    border-color: color-mix(in srgb, oklch(69.6% 0.17 162.48) 30%, transparent);
+    @supports (color: color-mix(in lab, red, red)) {
+      border-color: color-mix(in oklab, var(--color-emerald-500) 30%, transparent);
+    }
+  }
+  .border-emerald-600\/30 {
+    border-color: color-mix(in srgb, oklch(59.6% 0.145 163.225) 30%, transparent);
+    @supports (color: color-mix(in lab, red, red)) {
+      border-color: color-mix(in oklab, var(--color-emerald-600) 30%, transparent);
+    }
+  }
+  .border-gray-700 {
+    border-color: var(--color-gray-700);
+  }
+  .border-gray-800 {
+    border-color: var(--color-gray-800);
+  }
+  .border-rose-500\/30 {
+    border-color: color-mix(in srgb, oklch(64.5% 0.246 16.439) 30%, transparent);
+    @supports (color: color-mix(in lab, red, red)) {
+      border-color: color-mix(in oklab, var(--color-rose-500) 30%, transparent);
+    }
+  }
+  .border-rose-500\/40 {
+    border-color: color-mix(in srgb, oklch(64.5% 0.246 16.439) 40%, transparent);
+    @supports (color: color-mix(in lab, red, red)) {
+      border-color: color-mix(in oklab, var(--color-rose-500) 40%, transparent);
+    }
+  }
+  .bg-\[\#101012\] {
+    background-color: #101012;
+  }
+  .bg-amber-500\/5 {
+    background-color: color-mix(in srgb, oklch(76.9% 0.188 70.08) 5%, transparent);
+    @supports (color: color-mix(in lab, red, red)) {
+      background-color: color-mix(in oklab, var(--color-amber-500) 5%, transparent);
+    }
+  }
+  .bg-amber-500\/10 {
+    background-color: color-mix(in srgb, oklch(76.9% 0.188 70.08) 10%, transparent);
+    @supports (color: color-mix(in lab, red, red)) {
+      background-color: color-mix(in oklab, var(--color-amber-500) 10%, transparent);
+    }
+  }
+  .bg-amber-500\/20 {
+    background-color: color-mix(in srgb, oklch(76.9% 0.188 70.08) 20%, transparent);
+    @supports (color: color-mix(in lab, red, red)) {
+      background-color: color-mix(in oklab, var(--color-amber-500) 20%, transparent);
+    }
+  }
+  .bg-black\/80 {
+    background-color: color-mix(in srgb, #000 80%, transparent);
+    @supports (color: color-mix(in lab, red, red)) {
+      background-color: color-mix(in oklab, var(--color-black) 80%, transparent);
+    }
+  }
+  .bg-brand-card {
+    background-color: var(--color-brand-card);
+  }
+  .bg-brand-dark {
+    background-color: var(--color-brand-dark);
+  }
+  .bg-brand-dark\/60 {
+    background-color: color-mix(in srgb, #0B0B0E 60%, transparent);
+    @supports (color: color-mix(in lab, red, red)) {
+      background-color: color-mix(in oklab, var(--color-brand-dark) 60%, transparent);
+    }
+  }
+  .bg-brand-dark\/90 {
+    background-color: color-mix(in srgb, #0B0B0E 90%, transparent);
+    @supports (color: color-mix(in lab, red, red)) {
+      background-color: color-mix(in oklab, var(--color-brand-dark) 90%, transparent);
+    }
+  }
+  .bg-brand-gold {
+    background-color: var(--color-brand-gold);
+  }
+  .bg-emerald-500\/10 {
+    background-color: color-mix(in srgb, oklch(69.6% 0.17 162.48) 10%, transparent);
+    @supports (color: color-mix(in lab, red, red)) {
+      background-color: color-mix(in oklab, var(--color-emerald-500) 10%, transparent);
+    }
+  }
+  .bg-rose-500\/10 {
+    background-color: color-mix(in srgb, oklch(64.5% 0.246 16.439) 10%, transparent);
+    @supports (color: color-mix(in lab, red, red)) {
+      background-color: color-mix(in oklab, var(--color-rose-500) 10%, transparent);
+    }
+  }
+  .bg-gradient-to-b {
+    --tw-gradient-position: to bottom in oklab;
+    background-image: linear-gradient(var(--tw-gradient-stops));
+  }
+  .bg-gradient-to-r {
+    --tw-gradient-position: to right in oklab;
+    background-image: linear-gradient(var(--tw-gradient-stops));
+  }
+  .from-amber-600\/10 {
+    --tw-gradient-from: color-mix(in srgb, oklch(66.6% 0.179 58.318) 10%, transparent);
+    @supports (color: color-mix(in lab, red, red)) {
+      --tw-gradient-from: color-mix(in oklab, var(--color-amber-600) 10%, transparent);
+    }
+    --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));
+  }
+  .from-purple-600 {
+    --tw-gradient-from: var(--color-purple-600);
+    --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));
+  }
+  .via-amber-900\/5 {
+    --tw-gradient-via: color-mix(in srgb, oklch(41.4% 0.112 45.904) 5%, transparent);
+    @supports (color: color-mix(in lab, red, red)) {
+      --tw-gradient-via: color-mix(in oklab, var(--color-amber-900) 5%, transparent);
+    }
+    --tw-gradient-via-stops: var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-via) var(--tw-gradient-via-position), var(--tw-gradient-to) var(--tw-gradient-to-position);
+    --tw-gradient-stops: var(--tw-gradient-via-stops);
+  }
+  .to-pink-600 {
+    --tw-gradient-to: var(--color-pink-600);
+    --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));
+  }
+  .to-transparent {
+    --tw-gradient-to: transparent;
+    --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));
+  }
+  .object-contain {
+    object-fit: contain;
+  }
+  .p-3\.5 {
+    padding: calc(var(--spacing) * 3.5);
+  }
+  .p-4 {
+    padding: calc(var(--spacing) * 4);
+  }
+  .p-5 {
+    padding: calc(var(--spacing) * 5);
+  }
+  .p-6 {
+    padding: calc(var(--spacing) * 6);
+  }
+  .px-2 {
+    padding-inline: calc(var(--spacing) * 2);
+  }
+  .px-2\.5 {
+    padding-inline: calc(var(--spacing) * 2.5);
+  }
+  .px-3 {
+    padding-inline: calc(var(--spacing) * 3);
+  }
+  .px-4 {
+    padding-inline: calc(var(--spacing) * 4);
+  }
+  .px-5 {
+    padding-inline: calc(var(--spacing) * 5);
+  }
+  .px-6 {
+    padding-inline: calc(var(--spacing) * 6);
+  }
+  .px-8 {
+    padding-inline: calc(var(--spacing) * 8);
+  }
+  .py-0\.5 {
+    padding-block: calc(var(--spacing) * 0.5);
+  }
+  .py-1 {
+    padding-block: calc(var(--spacing) * 1);
+  }
+  .py-2 {
+    padding-block: calc(var(--spacing) * 2);
+  }
+  .py-2\.5 {
+    padding-block: calc(var(--spacing) * 2.5);
+  }
+  .py-3 {
+    padding-block: calc(var(--spacing) * 3);
+  }
+  .py-4 {
+    padding-block: calc(var(--spacing) * 4);
+  }
+  .py-8 {
+    padding-block: calc(var(--spacing) * 8);
+  }
+  .py-12 {
+    padding-block: calc(var(--spacing) * 12);
+  }
+  .py-20 {
+    padding-block: calc(var(--spacing) * 20);
+  }
+  .pt-2 {
+    padding-top: calc(var(--spacing) * 2);
+  }
+  .pt-4 {
+    padding-top: calc(var(--spacing) * 4);
+  }
+  .pt-5 {
+    padding-top: calc(var(--spacing) * 5);
+  }
+  .pr-1 {
+    padding-right: calc(var(--spacing) * 1);
+  }
+  .pb-1 {
+    padding-bottom: calc(var(--spacing) * 1);
+  }
+  .pb-3 {
+    padding-bottom: calc(var(--spacing) * 3);
+  }
+  .pb-5 {
+    padding-bottom: calc(var(--spacing) * 5);
+  }
+  .text-center {
+    text-align: center;
+  }
+  .font-mono {
+    font-family: var(--font-mono);
+  }
+  .font-serif {
+    font-family: var(--font-serif);
+  }
+  .text-2xl {
+    font-size: var(--text-2xl);
+    line-height: var(--tw-leading, var(--text-2xl--line-height));
+  }
+  .text-base {
+    font-size: var(--text-base);
+    line-height: var(--tw-leading, var(--text-base--line-height));
+  }
+  .text-lg {
+    font-size: var(--text-lg);
+    line-height: var(--tw-leading, var(--text-lg--line-height));
+  }
+  .text-sm {
+    font-size: var(--text-sm);
+    line-height: var(--tw-leading, var(--text-sm--line-height));
+  }
+  .text-xl {
+    font-size: var(--text-xl);
+    line-height: var(--tw-leading, var(--text-xl--line-height));
+  }
+  .text-xs {
+    font-size: var(--text-xs);
+    line-height: var(--tw-leading, var(--text-xs--line-height));
+  }
+  .text-\[10px\] {
+    font-size: 10px;
+  }
+  .text-\[11px\] {
+    font-size: 11px;
+  }
+  .leading-7 {
+    --tw-leading: calc(var(--spacing) * 7);
+    line-height: calc(var(--spacing) * 7);
+  }
+  .leading-8 {
+    --tw-leading: calc(var(--spacing) * 8);
+    line-height: calc(var(--spacing) * 8);
+  }
+  .leading-relaxed {
+    --tw-leading: var(--leading-relaxed);
+    line-height: var(--leading-relaxed);
+  }
+  .font-bold {
+    --tw-font-weight: var(--font-weight-bold);
+    font-weight: var(--font-weight-bold);
+  }
+  .font-medium {
+    --tw-font-weight: var(--font-weight-medium);
+    font-weight: var(--font-weight-medium);
+  }
+  .font-semibold {
+    --tw-font-weight: var(--font-weight-semibold);
+    font-weight: var(--font-weight-semibold);
+  }
+  .tracking-\[\.18em\] {
+    --tw-tracking: .18em;
+    letter-spacing: .18em;
+  }
+  .tracking-\[\.22em\] {
+    --tw-tracking: .22em;
+    letter-spacing: .22em;
+  }
+  .tracking-wider {
+    --tw-tracking: var(--tracking-wider);
+    letter-spacing: var(--tracking-wider);
+  }
+  .tracking-widest {
+    --tw-tracking: var(--tracking-widest);
+    letter-spacing: var(--tracking-widest);
+  }
+  .text-\[\#988975\] {
+    color: #988975;
+  }
+  .text-\[\#a59b92\] {
+    color: #a59b92;
+  }
+  .text-\[\#a78959\] {
+    color: #a78959;
+  }
+  .text-\[\#b5aa9f\] {
+    color: #b5aa9f;
+  }
+  .text-\[\#b8a17b\] {
+    color: #b8a17b;
+  }
+  .text-\[\#c9a366\] {
+    color: #c9a366;
+  }
+  .text-amber-100 {
+    color: var(--color-amber-100);
+  }
+  .text-amber-200 {
+    color: var(--color-amber-200);
+  }
+  .text-amber-200\/70 {
+    color: color-mix(in srgb, oklch(92.4% 0.12 95.746) 70%, transparent);
+    @supports (color: color-mix(in lab, red, red)) {
+      color: color-mix(in oklab, var(--color-amber-200) 70%, transparent);
+    }
+  }
+  .text-amber-200\/90 {
+    color: color-mix(in srgb, oklch(92.4% 0.12 95.746) 90%, transparent);
+    @supports (color: color-mix(in lab, red, red)) {
+      color: color-mix(in oklab, var(--color-amber-200) 90%, transparent);
+    }
+  }
+  .text-amber-400\/80 {
+    color: color-mix(in srgb, oklch(82.8% 0.189 84.429) 80%, transparent);
+    @supports (color: color-mix(in lab, red, red)) {
+      color: color-mix(in oklab, var(--color-amber-400) 80%, transparent);
+    }
+  }
+  .text-amber-500 {
+    color: var(--color-amber-500);
+  }
+  .text-brand-dark {
+    color: var(--color-brand-dark);
+  }
+  .text-brand-gold {
+    color: var(--color-brand-gold);
+  }
+  .text-emerald-200 {
+    color: var(--color-emerald-200);
+  }
+  .text-emerald-400 {
+    color: var(--color-emerald-400);
+  }
+  .text-gray-200 {
+    color: var(--color-gray-200);
+  }
+  .text-gray-300 {
+    color: var(--color-gray-300);
+  }
+  .text-gray-400 {
+    color: var(--color-gray-400);
+  }
+  .text-gray-500 {
+    color: var(--color-gray-500);
+  }
+  .text-gray-700 {
+    color: var(--color-gray-700);
+  }
+  .text-rose-100 {
+    color: var(--color-rose-100);
+  }
+  .text-rose-200 {
+    color: var(--color-rose-200);
+  }
+  .text-rose-400 {
+    color: var(--color-rose-400);
+  }
+  .text-white {
+    color: var(--color-white);
+  }
+  .italic {
+    font-style: italic;
+  }
+  .overline {
+    text-decoration-line: overline;
+  }
+  .accent-amber-500 {
+    accent-color: var(--color-amber-500);
+  }
+  .opacity-45 {
+    opacity: 45%;
+  }
+  .shadow-lg {
+    --tw-shadow: 0 10px 15px -3px var(--tw-shadow-color, rgb(0 0 0 / 0.1)), 0 4px 6px -4px var(--tw-shadow-color, rgb(0 0 0 / 0.1));
+    box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
+  }
+  .blur-2xl {
+    --tw-blur: blur(var(--blur-2xl));
+    filter: var(--tw-blur,) var(--tw-brightness,) var(--tw-contrast,) var(--tw-grayscale,) var(--tw-hue-rotate,) var(--tw-invert,) var(--tw-saturate,) var(--tw-sepia,) var(--tw-drop-shadow,);
+  }
+  .blur-3xl {
+    --tw-blur: blur(var(--blur-3xl));
+    filter: var(--tw-blur,) var(--tw-brightness,) var(--tw-contrast,) var(--tw-grayscale,) var(--tw-hue-rotate,) var(--tw-invert,) var(--tw-saturate,) var(--tw-sepia,) var(--tw-drop-shadow,);
+  }
+  .backdrop-blur-md {
+    --tw-backdrop-blur: blur(var(--blur-md));
+    -webkit-backdrop-filter: var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,);
+    backdrop-filter: var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,);
+  }
+  .transition-all {
+    transition-property: all;
+    transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
+    transition-duration: var(--tw-duration, var(--default-transition-duration));
+  }
+  .selection\:bg-brand-gold {
+    & *::selection {
+      background-color: var(--color-brand-gold);
+    }
+    &::selection {
+      background-color: var(--color-brand-gold);
+    }
+  }
+  .selection\:text-brand-dark {
+    & *::selection {
+      color: var(--color-brand-dark);
+    }
+    &::selection {
+      color: var(--color-brand-dark);
+    }
+  }
+  .hover\:border-brand-gold {
+    &:hover {
+      @media (hover: hover) {
+        border-color: var(--color-brand-gold);
+      }
+    }
+  }
+  .hover\:border-gray-500 {
+    &:hover {
+      @media (hover: hover) {
+        border-color: var(--color-gray-500);
+      }
+    }
+  }
+  .hover\:bg-rose-500\/20 {
+    &:hover {
+      @media (hover: hover) {
+        background-color: color-mix(in srgb, oklch(64.5% 0.246 16.439) 20%, transparent);
+        @supports (color: color-mix(in lab, red, red)) {
+          background-color: color-mix(in oklab, var(--color-rose-500) 20%, transparent);
+        }
+      }
+    }
+  }
+  .hover\:text-white {
+    &:hover {
+      @media (hover: hover) {
+        color: var(--color-white);
+      }
+    }
+  }
+  .hover\:opacity-90 {
+    &:hover {
+      @media (hover: hover) {
+        opacity: 90%;
+      }
+    }
+  }
+  .focus\:ring-amber-500 {
+    &:focus {
+      --tw-ring-color: var(--color-amber-500);
+    }
+  }
+  .focus\:outline-none {
+    &:focus {
+      --tw-outline-style: none;
+      outline-style: none;
+    }
+  }
+  .disabled\:cursor-not-allowed {
+    &:disabled {
+      cursor: not-allowed;
+    }
+  }
+  .disabled\:opacity-50 {
+    &:disabled {
+      opacity: 50%;
+    }
+  }
+  .has-\[\:checked\]\:border-brand-gold {
+    &:has(*:is(:checked)) {
+      border-color: var(--color-brand-gold);
+    }
+  }
+  .has-\[\:checked\]\:bg-amber-500\/10 {
+    &:has(*:is(:checked)) {
+      background-color: color-mix(in srgb, oklch(76.9% 0.188 70.08) 10%, transparent);
+      @supports (color: color-mix(in lab, red, red)) {
+        background-color: color-mix(in oklab, var(--color-amber-500) 10%, transparent);
+      }
+    }
+  }
+  .sm\:block {
+    @media (width >= 40rem) {
+      display: block;
+    }
+  }
+  .sm\:flex {
+    @media (width >= 40rem) {
+      display: flex;
+    }
+  }
+  .sm\:inline {
+    @media (width >= 40rem) {
+      display: inline;
+    }
+  }
+  .sm\:grid-cols-2 {
+    @media (width >= 40rem) {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+  .sm\:grid-cols-3 {
+    @media (width >= 40rem) {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+  .sm\:gap-7 {
+    @media (width >= 40rem) {
+      gap: calc(var(--spacing) * 7);
+    }
+  }
+  .md\:grid-cols-2 {
+    @media (width >= 48rem) {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+  .md\:p-8 {
+    @media (width >= 48rem) {
+      padding: calc(var(--spacing) * 8);
+    }
+  }
+  .md\:py-12 {
+    @media (width >= 48rem) {
+      padding-block: calc(var(--spacing) * 12);
+    }
+  }
+  .md\:py-20 {
+    @media (width >= 48rem) {
+      padding-block: calc(var(--spacing) * 20);
+    }
+  }
+  .md\:py-24 {
+    @media (width >= 48rem) {
+      padding-block: calc(var(--spacing) * 24);
+    }
+  }
+  .md\:py-28 {
+    @media (width >= 48rem) {
+      padding-block: calc(var(--spacing) * 28);
+    }
+  }
+  .md\:text-3xl {
+    @media (width >= 48rem) {
+      font-size: var(--text-3xl);
+      line-height: var(--tw-leading, var(--text-3xl--line-height));
+    }
+  }
+  .md\:text-base {
+    @media (width >= 48rem) {
+      font-size: var(--text-base);
+      line-height: var(--tw-leading, var(--text-base--line-height));
+    }
+  }
+  .md\:text-sm {
+    @media (width >= 48rem) {
+      font-size: var(--text-sm);
+      line-height: var(--tw-leading, var(--text-sm--line-height));
+    }
+  }
+  .md\:text-xl {
+    @media (width >= 48rem) {
+      font-size: var(--text-xl);
+      line-height: var(--tw-leading, var(--text-xl--line-height));
+    }
+  }
+}
+@property --tw-translate-x {
+  syntax: "*";
+  inherits: false;
+  initial-value: 0;
+}
+@property --tw-translate-y {
+  syntax: "*";
+  inherits: false;
+  initial-value: 0;
+}
+@property --tw-translate-z {
+  syntax: "*";
+  inherits: false;
+  initial-value: 0;
+}
+@property --tw-space-y-reverse {
+  syntax: "*";
+  inherits: false;
+  initial-value: 0;
+}
+@property --tw-space-x-reverse {
+  syntax: "*";
+  inherits: false;
+  initial-value: 0;
+}
+@property --tw-border-style {
+  syntax: "*";
+  inherits: false;
+  initial-value: solid;
+}
+@property --tw-gradient-position {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-gradient-from {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: #0000;
+}
+@property --tw-gradient-via {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: #0000;
+}
+@property --tw-gradient-to {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: #0000;
+}
+@property --tw-gradient-stops {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-gradient-via-stops {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-gradient-from-position {
+  syntax: "<length-percentage>";
+  inherits: false;
+  initial-value: 0%;
+}
+@property --tw-gradient-via-position {
+  syntax: "<length-percentage>";
+  inherits: false;
+  initial-value: 50%;
+}
+@property --tw-gradient-to-position {
+  syntax: "<length-percentage>";
+  inherits: false;
+  initial-value: 100%;
+}
+@property --tw-leading {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-font-weight {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-tracking {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-shadow {
+  syntax: "*";
+  inherits: false;
+  initial-value: 0 0 #0000;
+}
+@property --tw-shadow-color {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-shadow-alpha {
+  syntax: "<percentage>";
+  inherits: false;
+  initial-value: 100%;
+}
+@property --tw-inset-shadow {
+  syntax: "*";
+  inherits: false;
+  initial-value: 0 0 #0000;
+}
+@property --tw-inset-shadow-color {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-inset-shadow-alpha {
+  syntax: "<percentage>";
+  inherits: false;
+  initial-value: 100%;
+}
+@property --tw-ring-color {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-ring-shadow {
+  syntax: "*";
+  inherits: false;
+  initial-value: 0 0 #0000;
+}
+@property --tw-inset-ring-color {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-inset-ring-shadow {
+  syntax: "*";
+  inherits: false;
+  initial-value: 0 0 #0000;
+}
+@property --tw-ring-inset {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-ring-offset-width {
+  syntax: "<length>";
+  inherits: false;
+  initial-value: 0px;
+}
+@property --tw-ring-offset-color {
+  syntax: "*";
+  inherits: false;
+  initial-value: #fff;
+}
+@property --tw-ring-offset-shadow {
+  syntax: "*";
+  inherits: false;
+  initial-value: 0 0 #0000;
+}
+@property --tw-blur {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-brightness {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-contrast {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-grayscale {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-hue-rotate {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-invert {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-opacity {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-saturate {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-sepia {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-drop-shadow {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-drop-shadow-color {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-drop-shadow-alpha {
+  syntax: "<percentage>";
+  inherits: false;
+  initial-value: 100%;
+}
+@property --tw-drop-shadow-size {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-backdrop-blur {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-backdrop-brightness {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-backdrop-contrast {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-backdrop-grayscale {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-backdrop-hue-rotate {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-backdrop-invert {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-backdrop-opacity {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-backdrop-saturate {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-backdrop-sepia {
+  syntax: "*";
+  inherits: false;
+}
+@layer properties {
+  @supports ((-webkit-hyphens: none) and (not (margin-trim: inline))) or ((-moz-orient: inline) and (not (color:rgb(from red r g b)))) {
+    *, ::before, ::after, ::backdrop {
+      --tw-translate-x: 0;
+      --tw-translate-y: 0;
+      --tw-translate-z: 0;
+      --tw-space-y-reverse: 0;
+      --tw-space-x-reverse: 0;
+      --tw-border-style: solid;
+      --tw-gradient-position: initial;
+      --tw-gradient-from: #0000;
+      --tw-gradient-via: #0000;
+      --tw-gradient-to: #0000;
+      --tw-gradient-stops: initial;
+      --tw-gradient-via-stops: initial;
+      --tw-gradient-from-position: 0%;
+      --tw-gradient-via-position: 50%;
+      --tw-gradient-to-position: 100%;
+      --tw-leading: initial;
+      --tw-font-weight: initial;
+      --tw-tracking: initial;
+      --tw-shadow: 0 0 #0000;
+      --tw-shadow-color: initial;
+      --tw-shadow-alpha: 100%;
+      --tw-inset-shadow: 0 0 #0000;
+      --tw-inset-shadow-color: initial;
+      --tw-inset-shadow-alpha: 100%;
+      --tw-ring-color: initial;
+      --tw-ring-shadow: 0 0 #0000;
+      --tw-inset-ring-color: initial;
+      --tw-inset-ring-shadow: 0 0 #0000;
+      --tw-ring-inset: initial;
+      --tw-ring-offset-width: 0px;
+      --tw-ring-offset-color: #fff;
+      --tw-ring-offset-shadow: 0 0 #0000;
+      --tw-blur: initial;
+      --tw-brightness: initial;
+      --tw-contrast: initial;
+      --tw-grayscale: initial;
+      --tw-hue-rotate: initial;
+      --tw-invert: initial;
+      --tw-opacity: initial;
+      --tw-saturate: initial;
+      --tw-sepia: initial;
+      --tw-drop-shadow: initial;
+      --tw-drop-shadow-color: initial;
+      --tw-drop-shadow-alpha: 100%;
+      --tw-drop-shadow-size: initial;
+      --tw-backdrop-blur: initial;
+      --tw-backdrop-brightness: initial;
+      --tw-backdrop-contrast: initial;
+      --tw-backdrop-grayscale: initial;
+      --tw-backdrop-hue-rotate: initial;
+      --tw-backdrop-invert: initial;
+      --tw-backdrop-opacity: initial;
+      --tw-backdrop-saturate: initial;
+      --tw-backdrop-sepia: initial;
+    }
+  }
+}
+
+
+        body {
+            font-family: 'Inter', 'Noto Sans TC', sans-serif;
+            background-color: #0B0B0E;
+            color: #E2E8F0;
+        }
+        .font-serif {
+            font-family: 'Noto Serif TC', serif;
+        }
+        .gold-border {
+            border: 1px solid rgba(212, 175, 55, 0.3);
+        }
+        .gold-border-focus:focus {
+            border-color: #D4AF37;
+            box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.2);
+        }
+        .gold-glow {
+            box-shadow: 0 0 25px rgba(212, 175, 55, 0.15);
+        }
+        .gold-gradient-text {
+            background: linear-gradient(135deg, #F3E5AB 0%, #D4AF37 50%, #AA7C11 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .gold-gradient-bg {
+            background: linear-gradient(135deg, #D4AF37 0%, #AA7C11 100%);
+        }
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0B0B0E;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #2D2D38;
+            border-radius: 3px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #D4AF37;
+        }
+
+        html { scroll-behavior: smooth; }
+        section[id] { scroll-margin-top: 108px; }
+        .shell-wide { max-width: 1120px; width: 100%; margin-inline: auto; padding-inline: 24px; }
+        .nav-link { color:#c7bdab; font-size: .79rem; letter-spacing:.13em; text-decoration:none; transition:color .2s; }
+        .nav-link:hover { color:#e6c786; }
+        .landing-hero { position:relative; min-height: 570px; display:flex; align-items:center; overflow:hidden;
+          background:radial-gradient(circle at 75% 45%, rgba(167,110,46,.2), transparent 33%),
+          radial-gradient(ellipse at 35% 52%, rgba(67,54,36,.28), transparent 52%),
+          linear-gradient(115deg,#14110f 5%,#0b0b0e 72%); }
+        .landing-hero:before { content:''; position:absolute; inset:0;opacity:.20;pointer-events:none;
+           background-image: repeating-linear-gradient(90deg, transparent 0 52px, rgba(209,174,102,.19) 53px, transparent 54px),
+           repeating-linear-gradient(0deg, transparent 0 52px, rgba(209,174,102,.12) 53px, transparent 54px);mask-image:linear-gradient(90deg, transparent,black 72%); }
+        .arch-shape { position:absolute; right:8%; top:14%; width:34%; height:75%; max-width:355px;
+          border:1px solid rgba(218,170,99,.29); border-radius: 185px 185px 9px 9px;
+          box-shadow:0 0 0 16px rgba(218,170,99,.04),0 0 0 33px rgba(218,170,99,.03), inset 0 0 50px rgba(184,112,40,.08); }
+        .arch-shape:after { content:'秘'; position:absolute; inset:8%;display:flex;align-items:center;justify-content:center;
+          color:rgba(221,180,111,.18);font-size:clamp(8rem,18vw,17rem);font-family:'Noto Serif TC',serif; font-weight:700; }
+        .hero-copy { position:relative; z-index:2; max-width:700px; }
+        .overline { display:flex;align-items:center;gap:13px;color:#d6ae6b;text-transform:uppercase;
+          letter-spacing:.29em;font-size:.68rem;font-weight:600; }
+        .overline:before { content:'';display:inline-block;width:26px;height:1px;background:currentColor; }
+        .hero-heading { color:#f4eadc; font-family:'Noto Serif TC',serif; font-size:clamp(2.7rem,7vw,5.2rem);
+          font-weight:700;line-height:1.34;letter-spacing:.11em;text-shadow:0 18px 40px rgba(0,0,0,.55); }
+        .hero-italic { font-family:Georgia,serif;font-style:italic;color:#d0a65d;letter-spacing:.055em;
+          font-size:clamp(1.05rem,2.2vw,1.55rem); }
+        .action-primary { background:linear-gradient(110deg,#ebd3a0,#bd8c42); color:#1b1510;
+          padding:14px 28px;font-size:.87rem;font-weight:700;letter-spacing:.1em;text-decoration:none;
+          display:inline-flex;align-items:center;justify-content:center;gap:12px;border-radius:3px;transition:filter .2s,transform .2s; }
+        .action-primary:hover { filter:brightness(1.13);transform:translateY(-2px); }
+        .action-outline { border:1px solid rgba(211,170,108,.5);color:#e6ceb0;padding:13px 28px;
+          font-size:.87rem;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;
+          border-radius:3px;letter-spacing:.1em;transition:background .2s; }
+        .action-outline:hover { background:rgba(209,168,103,.09); }
+        .thin-rule { width:80px;height:1px;background:linear-gradient(90deg,#d2a260,transparent); }
+        .story-strip { display:grid;grid-template-columns: repeat(3,1fr);border-block:1px solid rgba(204,159,98,.16); }
+        .story-strip > div { padding:23px 20px; text-align:center; }
+        .story-strip > div+div { border-left:1px solid rgba(204,159,98,.16); }
+        .story-strip strong { display:block;color:#e5c387;font-family:'Noto Serif TC',serif;font-size:.96rem;margin-bottom:5px; }
+        .story-strip small { font-size:.73rem;color:#958e89;letter-spacing:.06em; }
+        .section-eyebrow { color:#c5a16c;letter-spacing:.26em;font-size:.69rem;text-transform:uppercase; }
+        .section-title { font-family:'Noto Serif TC',serif;color:#f2e8d8;font-size:clamp(1.9rem,4vw,2.8rem);letter-spacing:.07em; }
+        .menu-section { background:linear-gradient(180deg,#0b0b0e,#12100f 60%,#0b0b0e); }
+        .menu-filter { border:1px solid rgba(211,170,108,.21);color:#c5bbac;padding:9px 20px;border-radius:2px;
+          font-size:.8rem;letter-spacing:.07em;transition:all .22s; }
+        .menu-filter[aria-pressed="true"],.menu-filter:hover { background:#bd9657;color:#17120d;border-color:#bd9657; }
+        .dish-card { min-height:188px;position:relative;display:flex;gap:17px;border:1px solid rgba(217,164,94,.17);
+          background:linear-gradient(145deg,#1c1917,#121114);padding:24px;transition:transform .2s,border-color .2s;overflow:hidden; }
+        .dish-card:hover { border-color:rgba(217,164,94,.55);transform:translateY(-3px); }
+        .dish-art { width:75px;min-width:75px;height:75px;flex-shrink:0;border-radius:50%;overflow:hidden;
+          display:flex;align-items:center;justify-content:center;border:1px solid rgba(194,151,83,.27);
+          background:radial-gradient(circle at 35% 25%,rgba(195,150,87,.19),rgba(76,47,37,.19) 65%,transparent);color:#b99564;font-size:25px; }
+        .dish-art img{width:100%;height:100%;object-fit:cover;}
+        .menu-category{font-size:.64rem;letter-spacing:.19em;color:#bf985b;}
+        .menu-name{color:#f5eadb;font-family:'Noto Serif TC',serif;font-size:1.02rem;font-weight:600;line-height:1.7;}
+        .menu-description{color:#9e9890;font-size:.76rem;line-height:1.7;}
+        .menu-price{color:#dac18f;font-size:.84rem;white-space:nowrap;}
+        .booking-wrap{background:radial-gradient(circle at 50% 0,rgba(136,93,39,.14),transparent 36%),#0b0b0e;}
+        .booking-wrap #hero-banner{margin-bottom:24px;}
+        .visit-grid{display:grid;grid-template-columns:1fr 1fr;gap:36px;}
+        .visit-info{background:#151317;border:1px solid rgba(211,170,108,.2);padding:36px;}
+        .visit-link{color:#d7b474;text-decoration:underline;text-underline-offset:5px;}
+        .site-footer{border-top:1px solid rgba(212,175,55,.18);padding:26px 20px;text-align:center;font-size:.75rem;color:#80796f;}
+        @media (max-width:760px){.landing-hero{min-height:560px}.arch-shape{right:-10%;top:20%;width:55%;opacity:.5}
+          .hero-heading{font-size:clamp(2.4rem,9.6vw,3.7rem)}.story-strip > div{padding:18px 6px}
+          .story-strip strong{font-size:.75rem}.story-strip small{font-size:.65rem}
+          .visit-grid{grid-template-columns:1fr}.visit-info{padding:26px}.shell-wide{padding-inline:18px}
+          .dish-card{padding:18px;min-height:154px}.dish-art{width:58px;min-width:58px;height:58px;font-size:18px} }
+        @media (max-width:430px){.nav-link{font-size:.7rem;letter-spacing:0}.nav-wide{gap:12px!important}}
+    
+
+/* Self-contained icon fallback. This offline demo requires no font downloads. */
+.fa-solid,.fa-regular,.fa-brands{font-style:normal;display:inline-block;font-family:Arial,sans-serif;line-height:1;vertical-align:middle}
+.fa-solid::before,.fa-regular::before,.fa-brands::before{display:inline-block}
+.fa-circle-info::before{content:'ⓘ'} .fa-clock::before{content:'◷'} .fa-store::before{content:'▤'}
+.fa-coins::before{content:'＄'} .fa-arrow-right::before{content:'→'} .fa-arrow-left::before{content:'←'}
+.fa-triangle-exclamation::before{content:'⚠'} .fa-instagram::before{content:'◎'} .fa-phone::before{content:'☎'}
+.fa-check::before{content:'✓'} .fa-circle-check::before{content:'✓'} .fa-circle-xmark::before{content:'✕'}
+.fa-file-invoice::before{content:'▤'} .fa-utensils::before{content:'✧'} .fa-bolt::before{content:'ϟ'}
+.fa-print::before{content:'▣'} .fa-scroll::before{content:'▤'} .fa-xmark::before{content:'✕'}
+/* Offline system font fallback */
+html{font-family:Arial,'Microsoft JhengHei','PingFang TC',sans-serif;}
+
+
+      .landing-hero{position:relative;background-image:linear-gradient(90deg,rgba(8,8,10,.88) 16%, rgba(8,8,10,.58) 52%, rgba(8,8,10,.82) 100%), url('assets/hero-bg.jpg');background-size:cover;background-position:center right;background-repeat:no-repeat;overflow:hidden;}
+      .landing-hero::after{content:'';position:absolute;inset:0;background:radial-gradient(circle at 70% 35%, rgba(230,204,145,.14), transparent 28%), linear-gradient(180deg, rgba(0,0,0,.0), rgba(0,0,0,.22) 70%, rgba(0,0,0,.48));pointer-events:none;}
+      .landing-hero .shell-wide,.landing-hero .hero-copy{position:relative;z-index:1;}
+      .landing-hero .hero-copy{max-width:620px;padding:24px 0;}
+      .landing-hero .section-glass,.landing-hero .hero-panel{background:rgba(9,9,12,.38);backdrop-filter:blur(4px);}
+      @media (max-width: 900px){.landing-hero{background-position:center center;background-image:linear-gradient(180deg,rgba(8,8,10,.76) 0%, rgba(8,8,10,.58) 38%, rgba(8,8,10,.88) 100%), url('assets/hero-bg.jpg');}.landing-hero .hero-copy{max-width:100%;padding:14px 0 8px;}}
+
+    </style>
+<style>
+      .book-stage{max-width:1180px;margin:0 auto;}
+      .book-topbar{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;margin-bottom:18px;}
+      .book-chip{display:flex;align-items:center;gap:12px;padding:10px 16px;border:1px solid rgba(212,175,55,.2);background:rgba(18,18,24,.8);border-radius:999px;color:#e8d9bd;font-size:13px;}
+      .book-chip-label{color:#a69479;font-size:11px;letter-spacing:.12em;text-transform:uppercase;}
+      .book-frame{display:grid;grid-template-columns:64px minmax(0,1fr) 64px;align-items:center;gap:18px;}
+      .flipbook-shell{position:relative;perspective:2600px;}
+      .book-shadow{position:absolute;inset:22px 34px 18px;filter:blur(26px);background:rgba(0,0,0,.5);z-index:0;border-radius:30px;}
+      .book-spread{position:relative;display:grid;grid-template-columns:minmax(0,1fr) 44px minmax(0,1fr);column-gap:14px;background:linear-gradient(180deg,#f0e4cb 0%,#d5c0a0 100%);border-radius:28px;padding:18px;box-shadow:0 26px 60px rgba(0,0,0,.45), inset 0 0 0 1px rgba(255,255,255,.05);overflow:hidden;min-height:780px;}
+      .book-spread::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at center,rgba(0,0,0,.08),transparent 40%),linear-gradient(180deg,rgba(255,255,255,.18),transparent 20%,transparent 80%,rgba(0,0,0,.08));pointer-events:none;}
+      .paper-sheet{position:relative;border:none;background:#1f1a15;border-radius:18px;overflow:hidden;box-shadow:0 18px 28px rgba(0,0,0,.22);padding:0;cursor:zoom-in;transition:transform .3s ease, box-shadow .3s ease;align-self:stretch;z-index:1;}
+      .paper-sheet:hover{transform:translateY(-4px);box-shadow:0 26px 42px rgba(0,0,0,.28);} 
+      .paper-sheet.is-empty{visibility:hidden;pointer-events:none;}
+      .paper-image{width:100%;height:100%;display:block;object-fit:cover;background:#161616;}
+      .book-spine{position:relative;top:auto;bottom:auto;left:auto;width:100%;height:auto;transform:none;background:linear-gradient(180deg,rgba(255,255,255,.45) 0%, rgba(188,164,126,.9) 18%, rgba(78,57,34,.95) 50%, rgba(188,164,126,.88) 82%, rgba(255,255,255,.4) 100%);border-radius:999px;box-shadow:inset 0 0 18px rgba(0,0,0,.35), 0 0 10px rgba(255,255,255,.08);z-index:2;pointer-events:none;grid-column:2;grid-row:1;align-self:stretch;}
+      .page-number{position:absolute;bottom:14px;right:18px;z-index:2;color:#f1e7d1;background:rgba(0,0,0,.58);border-radius:999px;padding:6px 12px;font-size:12px;letter-spacing:.08em;backdrop-filter:blur(8px);}
+      .paper-left .page-number{right:auto;left:18px;}
+      .book-nav{width:56px;height:56px;border-radius:999px;border:1px solid rgba(212,175,55,.35);background:rgba(18,18,24,.9);color:#e7c067;font-size:34px;line-height:1;display:flex;align-items:center;justify-content:center;transition:.25s ease;box-shadow:0 12px 22px rgba(0,0,0,.18);z-index:5;}
+      .book-nav:hover:not(:disabled){transform:translateY(-2px);background:rgba(37,31,21,.96);}
+      .book-nav:disabled{opacity:.28;cursor:not-allowed;}
+      .book-toolbar{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin:22px 0 16px;}
+      .toolbar-btn{padding:11px 18px;border-radius:999px;border:1px solid rgba(212,175,55,.28);background:rgba(20,20,25,.85);color:#f0dfc0;font-size:13px;transition:.25s ease;}
+      .toolbar-btn:hover{background:rgba(212,175,55,.12);border-color:rgba(212,175,55,.5);} 
+      .thumb-index{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;}
+      .thumb-btn{width:34px;height:34px;border-radius:999px;border:1px solid rgba(212,175,55,.18);background:rgba(16,16,20,.76);color:#d6c3a0;font-size:12px;transition:.22s ease;}
+      .thumb-btn[aria-current='true']{background:linear-gradient(135deg,#d4af37,#9d7010);color:#120e08;border-color:transparent;font-weight:700;transform:translateY(-2px);} 
+      .thumb-btn:hover{border-color:rgba(212,175,55,.5);}
+      .page-flip{position:absolute;top:18px;bottom:18px;width:calc(50% - 40px);display:none;transform-style:preserve-3d;z-index:4;pointer-events:none;}
+      .page-flip.show{display:block;}
+      .page-flip.next{right:18px;transform-origin:left center;}
+      .page-flip.prev{left:18px;transform-origin:right center;}
+      .page-face{position:absolute;inset:0;backface-visibility:hidden;border-radius:18px;overflow:hidden;box-shadow:0 18px 38px rgba(0,0,0,.28);} 
+      .page-face.page-back{transform:rotateY(180deg);} 
+      .page-flip.animate-next{animation:flipNext .8s cubic-bezier(.58,.04,.32,.99) forwards;}
+      .page-flip.animate-prev{animation:flipPrev .8s cubic-bezier(.58,.04,.32,.99) forwards;}
+      @keyframes flipNext {0%{transform:rotateY(0deg);}100%{transform:rotateY(-180deg);}}
+      @keyframes flipPrev {0%{transform:rotateY(0deg);}100%{transform:rotateY(180deg);}}
+      .lightbox{position:fixed;inset:0;z-index:70;background:rgba(5,5,8,.82);backdrop-filter:blur(12px);display:flex;align-items:center;justify-content:center;padding:36px;}
+      .lightbox.hidden{display:none;}
+      .lightbox-close{position:absolute;top:18px;right:22px;width:44px;height:44px;border-radius:999px;background:rgba(255,255,255,.12);color:#fff;border:none;font-size:30px;line-height:1;}
+      .lightbox-inner{max-width:min(1000px,94vw);max-height:90vh;display:flex;flex-direction:column;align-items:center;gap:14px;}
+      .lightbox-inner img{max-width:100%;max-height:82vh;border-radius:18px;box-shadow:0 22px 56px rgba(0,0,0,.45);} 
+      .lightbox-caption{color:#f1dfb6;font-size:14px;letter-spacing:.05em;}
+      @media (max-width: 960px){
+        .book-frame{grid-template-columns:48px minmax(0,1fr) 48px;gap:10px;}
+        .book-spread{grid-template-columns:minmax(0,1fr) 30px minmax(0,1fr);column-gap:10px;min-height:auto;padding:14px;}
+        .book-spine{width:100%;}
+        .page-flip{width:calc(50% - 28px);}
+      }
+      @media (max-width: 760px){
+        .book-topbar{justify-content:center;}
+        .book-frame{grid-template-columns:44px minmax(0,1fr) 44px;}
+        .book-spread{grid-template-columns:minmax(0,1fr) 22px minmax(0,1fr);column-gap:8px;padding:12px;border-radius:22px;}
+        .paper-sheet{border-radius:14px;}
+        .page-flip{top:12px;bottom:12px;width:calc(50% - 20px);} 
+        .page-flip.next{right:12px;} .page-flip.prev{left:12px;}
+        .page-number{padding:5px 10px;font-size:11px;bottom:10px;}
+      }
+    </style>
+<style>
+/* v3: 無裁切、薄邊框翻書 */
+.book-stage { max-width: 1260px; }
+.book-frame { grid-template-columns: 56px minmax(0, 1fr) 56px; gap: 13px; }
+.book-shadow { display: none; }
+
+.book-spread {
+    display: grid;
+    position: relative;
+    grid-template-columns: minmax(0,1fr) minmax(0,1fr);
+    column-gap: 18px;
+    min-height: 0;
+    height: auto;
+    padding: 7px;
+    background: rgba(8,8,10,.45);
+    border: 1px solid rgba(197,155,81,.25);
+    border-radius: 9px;
+    box-shadow: 0 16px 36px rgba(0,0,0,.32);
+    overflow: visible;
+}
+.book-spread::before { display: none; }
+.paper-sheet {
+    display: block;
+    aspect-ratio: 2 / 3;
+    width: 100%;
+    min-width: 0;
+    height: auto;
+    align-self: start;
+    background: #0b0908;
+    border: 0;
+    padding: 0;
+    margin: 0;
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,.25);
+    transform: none;
+    cursor: zoom-in;
+}
+.paper-sheet:hover { transform: none; box-shadow: 0 4px 12px rgba(0,0,0,.25); }
+.paper-sheet:focus-visible { outline: 2px solid #d5b26c; outline-offset: 3px; }
+.paper-image, .page-face .paper-image {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center center;
+    background: #100e0a;
+}
+.paper-sheet.is-empty { visibility: hidden; }
+.page-number { display: none; }
+.book-spine {
+    position: absolute;
+    top: 7px;
+    bottom: 7px;
+    left: 50%;
+    width: 1px;
+    height: auto;
+    transform: translateX(-50%);
+    background: rgba(221,181,101,.35);
+    border-radius: 0;
+    box-shadow: none;
+    pointer-events: none;
+    z-index: 1;
+}
+.page-flip {
+    top: 7px;
+    bottom: 7px;
+    width: calc(50% - 16px);
+    box-shadow: none;
+}
+.page-flip.next { right: 7px; transform-origin: left center; }
+.page-flip.prev { left: 7px; transform-origin: right center; }
+.page-face { border-radius: 4px; }
+
+@media (max-width: 960px) {
+    .book-frame { grid-template-columns: 46px minmax(0,1fr) 46px; gap: 9px; }
+    .book-spread { grid-template-columns:minmax(0,1fr) minmax(0,1fr); column-gap:12px; padding:5px; }
+    .book-spine { top:5px; bottom:5px; }
+    .page-flip { top:5px; bottom:5px; width:calc(50% - 11px); }
+    .page-flip.next { right:5px; }
+    .page-flip.prev { left:5px; }
+}
+@media (max-width: 760px) {
+    .book-frame { grid-template-columns: 34px minmax(0,1fr) 34px; gap: 4px; }
+    .book-nav { width: 32px; height: 44px; font-size: 25px; }
+    .book-spread { display:block; padding:4px; border-radius:6px; }
+    .paper-sheet { aspect-ratio:2/3; width:100%; border-radius:3px; }
+    .paper-right, .book-spine, .page-flip { display:none !important; }
+    .book-topbar .book-chip:last-child { display:none; }
+    .book-toolbar { gap:7px; }
+    .toolbar-btn { padding:9px 11px; font-size:11px; }
+}
+@media (prefers-reduced-motion: reduce) {
+    .page-flip.animate-next, .page-flip.animate-prev { animation-duration: .01ms; }
+}
+</style>
+</head>
+<body class="min-h-screen bg-brand-dark flex flex-col justify-between selection:bg-brand-gold selection:text-brand-dark">
+
+    <!-- Ambient background glow elements -->
+    <div class="fixed top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-96 bg-gradient-to-b from-amber-600/10 via-amber-900/5 to-transparent pointer-events-none blur-3xl"></div>
+
+    <!-- Header / Navbar -->
+    <header class="relative z-30 border-b border-amber-500/20 bg-brand-dark/90 backdrop-blur-md sticky top-0">
+      <div class="shell-wide py-4 flex items-center justify-between gap-6">
+        <a href="#home" class="flex items-center gap-3 min-w-0" aria-label="皇城司首頁">
+          <span class="w-10 h-10 border border-brand-gold/60 rounded-full flex items-center justify-center bg-brand-card shrink-0">
+            <img id="brandLogo" src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPERETFhwXExQaFRERGCEYGh0dHx8fExciJCIeJBweHx7/2wBDAQUFBQcGBw4ICA4eFBEUHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh7/wAARCAIdAh0DASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD5EooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKLAFFFJ+FOwC0UUUWCwUUUUgCiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKK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aadqGieLLC6S7lihdHYLJC7YBJwfug9+KcY+75k82umxjeM/CXiHwm8cGqo3kO2YpI23RsemR26Yrq30bTP+FArr32RRqRvvLNx/FjOMZq98TdR07Svhvp/g463FrmpRy+Y80Z3LGueAD39Megq14CGmeLvg5P4QGr2mn6lDdeaguGADjOQRk/59KTbaVxpJPRnmvgFmbxrou5t2LuL/ANCFdT+0RLLH8UNSRJWVWji3BTgH5B1AqofD1t4R8d6DHJrun3zG4R5Wt2/dxgEcE0vx+u7S/wDiZfXNlcxXELRx7XjIKn5AOCPpV2vO/Qm9onT28svhz9nY3umHybrVLkJLKnB25xgHtwP1ry/wxq17pHiC11CxnkjmSUcqfvDIBB9a9F+G2uaDr3ge78AeJLwWAd/Nsblvuo3BAPPtVLwl4J0O08S3s2veJbFdP0qYfcYE3HGRtGefTipVkmmNu9rEv7SVpBF4vsb+JAkl9YpLKFGBu5Ga8urrPit4pXxb4um1C3QpZxIIbZDx8g747c1ydb0laKuY1Wm9AooorQyCiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKAQUmKWigLh+P4UA46cUUUW0C4DgYHQdqVWZQdrFQRjAOP5UlFJq402gooooStoFwBIPBxkY4oJyck5xwPaiiiy7BzPYO+fTvRRRTFcKTFLRQAE5xk5xRRRQlYAo7CiigLtbAM5zR0oooSXYfMxS7twzFgOxNJ/LrjtRRRZdg5mHp7UmKWihaCuHanK7qMK7KPQHFNopWT6DTtsB560EnuSaKKOVDuHX2+lH6UUU9OokwPNHfNFFCSWwNsM+poyemTRRSsgTaDjr3pQzKcqdp9RxSUU7ILikknJJzSUUUJWBsQcGlJOOTRRSsCbQUUUUxBRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQB/9k=" alt="皇城司品牌標誌" class="h-9 w-9 object-contain"/>
+            <span id="brandFallback" class="hidden font-serif text-brand-gold text-xl">司</span>
+          </span>
+          <span class="min-w-0"><span class="font-serif text-lg md:text-xl font-bold tracking-widest gold-gradient-text block">皇城司</span>
+          <span class="text-[10px] tracking-[.18em] text-amber-200/70 hidden sm:block">THE SPY BAR & BISTRO</span></span>
+        </a>
+        <nav class="nav-wide flex gap-4 sm:gap-7 items-center" aria-label="主選單">
+          <a class="nav-link" href="#menu">探索菜單</a><a class="nav-link" href="#booking">線上訂位</a><a class="nav-link hidden sm:inline" href="#visit">到訪資訊</a>
+          <button type="button" onclick="openInfoModal()" aria-label="查看訂位須知" class="text-brand-gold text-lg"><i class="fa-solid fa-circle-info"></i></button>
+        </nav>
+      </div>
+    </header>
+
+    <section id="home" class="landing-hero">
+      <div class="arch-shape" aria-hidden="true" style="opacity:.18"></div>
+      <div class="shell-wide py-20 relative">
+        <div class="hero-copy">
+          <p class="overline mb-9">The Spy Bar & Bistro · Taipei</p>
+          <h1 class="hero-heading mb-6">城中藏秘境<br>入夜赴<span class="text-brand-gold">司宴</span></h1>
+          <p class="hero-italic mb-7">An evening behind the secret door.</p>
+          <p class="text-[#b5aa9f] text-sm leading-8 max-w-lg mb-10">一道隱身城市裡的入口，一場關於味覺與微醺的探索。<br>以東方風雅為引，邀你走進夜色深處的皇城司。</p>
+          <div class="flex flex-wrap gap-3"><a class="action-primary" href="#booking">立即預約席位 <span aria-hidden="true">↗</span></a>
+          <a class="action-outline" href="#menu">探索當季菜單</a></div>
+          <div class="mt-16 flex items-center gap-4 text-[#988975] text-[11px] tracking-[.22em]"><span class="thin-rule"></span> BY RESERVATION ONLY</div>
+        </div>
+      </div>
+    </section>
+    <div class="story-strip shell-wide">
+      <div><strong>隱密入場</strong><small>A HIDDEN ENTRANCE</small></div>
+      <div><strong>東方創意料理</strong><small>MODERN ASIAN CUISINE</small></div>
+      <div><strong>風格特調</strong><small>SIGNATURE COCKTAILS</small></div>
+    </div>
+
+    <section id="menu" class="menu-section py-20 md:py-28">
+      <div class="shell-wide">
+        <div class="text-center max-w-2xl mx-auto mb-11"><p class="section-eyebrow mb-4">The Menu / 皇城司菜單</p>
+          <h2 class="section-title mb-5">2026 皇城司餐酒館，請您以左右切換翻頁方式查看。</h2>
+          <p class="text-[#a78959] text-xs mt-4">實際供應內容與售價請以店內最新公告為準。</p></div>
+
+        <div class="book-stage">
+          <div class="book-topbar">
+            <div class="book-chip"><span class="book-chip-label">目前頁次</span><strong id="spreadCounter">1–2 / 18</strong></div>
+            <div class="book-chip"><span class="book-chip-label">閱讀提示</span><strong>點擊左右箭頭翻頁</strong></div>
+          </div>
+
+          <div class="book-frame">
+            <button type="button" class="book-nav book-nav-left" id="bookPrev" aria-label="上一頁">‹</button>
+            <div class="flipbook-shell">
+              <div class="book-shadow"></div>
+              <div class="book-spread" id="bookSpread">
+                <button type="button" class="paper-sheet paper-left" id="leftPageBtn" aria-label="放大左頁菜單">
+                  <img id="leftPageImg" class="paper-image" alt="皇城司菜單左頁" loading="lazy">
+                  <span class="page-number" id="leftPageNumber"></span>
+                </button>
+                <div class="book-spine" aria-hidden="true"></div>
+                <button type="button" class="paper-sheet paper-right" id="rightPageBtn" aria-label="放大右頁菜單">
+                  <img id="rightPageImg" class="paper-image" alt="皇城司菜單右頁" loading="lazy">
+                  <span class="page-number" id="rightPageNumber"></span>
+                </button>
+                <div class="page-flip next" id="pageFlipNext" aria-hidden="true">
+                  <div class="page-face page-front"><img id="flipNextFront" class="paper-image" alt="翻頁動畫前頁"></div>
+                  <div class="page-face page-back"><img id="flipNextBack" class="paper-image" alt="翻頁動畫後頁"></div>
+                </div>
+                <div class="page-flip prev" id="pageFlipPrev" aria-hidden="true">
+                  <div class="page-face page-front"><img id="flipPrevFront" class="paper-image" alt="翻頁動畫前頁"></div>
+                  <div class="page-face page-back"><img id="flipPrevBack" class="paper-image" alt="翻頁動畫後頁"></div>
+                </div>
+              </div>
+            </div>
+            <button type="button" class="book-nav book-nav-right" id="bookNext" aria-label="下一頁">›</button>
+          </div>
+
+          <div class="book-toolbar">
+            <button type="button" class="toolbar-btn" id="jumpStart">回到封面</button>
+            <button type="button" class="toolbar-btn" id="openCurrentPages">查看目前雙頁大圖</button>
+            <button type="button" class="toolbar-btn" id="jumpEnd">跳至酒單末頁</button>
+          </div>
+
+          <div class="thumb-index" id="thumbIndex" aria-label="菜單頁次索引"></div>
+        </div>
+
+        <p class="text-center mt-11"><a href="#booking" class="action-outline">立即預約席位 <span aria-hidden="true">↗</span></a></p>
+      </div>
+    </section>
+
+    <div id="pageLightbox" class="lightbox hidden" role="dialog" aria-modal="true" aria-label="皇城司菜單大圖檢視器">
+      <button type="button" class="lightbox-close" id="closeLightbox" aria-label="關閉菜單大圖">×</button>
+      <div class="lightbox-inner">
+        <img id="lightboxImage" alt="皇城司菜單頁面大圖">
+        <div class="lightbox-caption" id="lightboxCaption">菜單頁面</div>
+      </div>
+    </div>
+
+<div id="systemBanner" class="relative z-10 max-w-3xl mx-auto w-full px-4 pt-5">
+      <div id="systemBannerText" role="status" class="text-sm rounded-xl border border-amber-500/30 bg-amber-500/10 text-amber-100 px-4 py-3">正在確認訂位系統狀態…</div>
+    </div>
+
+    <section id="booking" class="booking-wrap py-12 md:py-20">
+      <div class="shell-wide text-center mb-10"><p class="section-eyebrow mb-3">Reservations / 訂位密函</p>
+        <h2 class="section-title mb-3">預約今晚的秘密席位</h2><p class="text-gray-400 text-sm">四個步驟，完成你的皇城司訂位。</p></div>
+    <!-- Main Container -->
+    <main class="relative z-10 flex-grow max-w-3xl w-full mx-auto px-4 py-8 md:py-12">
+        
+        <!-- Intro Hero Card -->
+        <div id="hero-banner" class="bg-brand-card border border-amber-500/20 rounded-2xl p-6 md:p-8 mb-8 gold-glow relative overflow-hidden">
+            <div class="absolute -right-12 -bottom-12 w-48 h-48 bg-amber-500/5 rounded-full blur-2xl pointer-events-none"></div>
+            <div class="relative z-10">
+                <span class="inline-block px-3 py-1 rounded-full text-xs font-medium bg-amber-500/10 text-brand-gold border border-amber-500/30 mb-3">
+                    <i class="fa-regular fa-clock mr-1"></i> 線上訂位服務
+                </span>
+                <h2 class="font-serif text-2xl md:text-3xl font-bold text-white mb-3">歡迎蒞臨，共度微醺美好時光</h2>
+                <p class="text-gray-300 text-sm md:text-base leading-relaxed mb-6">
+                    為了提供更高品質的餐酒體驗，請花一分鐘完成下方訂位資訊填寫。系統將檢查可預約時段及低消規範；是否即時成立依店家設定及確認通知為準。
+                </p>
+                
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs md:text-sm text-gray-300 border-t border-amber-500/10 pt-4">
+                    <div class="flex items-start space-x-2">
+                        <i class="fa-solid fa-store text-brand-gold mt-1"></i>
+                        <div>
+                            <span class="text-white font-medium block">營業時間</span>
+                            <span class="text-gray-400">週日～週四 18:00~01:00<br>週五～週六 18:00~02:00</span>
+                        </div>
+                    </div>
+                    <div class="flex items-start space-x-2">
+                        <i class="fa-solid fa-coins text-brand-gold mt-1"></i>
+                        <div>
+                            <span class="text-white font-medium block">低消說明</span>
+                            <span class="text-gray-400">平日 $500/位 | 假日 $1,000/位</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Progress Steps Bar -->
+        <div id="step-indicators" class="mb-8 hidden sm:flex items-center justify-between max-w-xl mx-auto px-2">
+            <div class="flex flex-col items-center step-ind active" data-step="1">
+                <div class="w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold border border-brand-gold bg-brand-gold text-brand-dark mb-1 transition-all">1</div>
+                <span class="text-xs text-brand-gold font-medium">日期人數</span>
+            </div>
+            <div class="flex-1 h-0.5 bg-brand-card border-t border-amber-500/20 mx-2"></div>
+            <div class="flex flex-col items-center step-ind" data-step="2">
+                <div class="w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold border border-gray-700 bg-brand-card text-gray-400 mb-1 transition-all">2</div>
+                <span class="text-xs text-gray-400">選擇時段</span>
+            </div>
+            <div class="flex-1 h-0.5 bg-brand-card border-t border-amber-500/20 mx-2"></div>
+            <div class="flex flex-col items-center step-ind" data-step="3">
+                <div class="w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold border border-gray-700 bg-brand-card text-gray-400 mb-1 transition-all">3</div>
+                <span class="text-xs text-gray-400">資料與備註</span>
+            </div>
+            <div class="flex-1 h-0.5 bg-brand-card border-t border-amber-500/20 mx-2"></div>
+            <div class="flex flex-col items-center step-ind" data-step="4">
+                <div class="w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold border border-gray-700 bg-brand-card text-gray-400 mb-1 transition-all">4</div>
+                <span class="text-xs text-gray-400">套餐選購</span>
+            </div>
+        </div>
+
+        <!-- Booking Form Card Container -->
+        <div class="bg-brand-card border border-amber-500/20 rounded-2xl p-6 md:p-8 gold-glow relative">
+            <form id="bookingForm" onsubmit="event.preventDefault();">
+
+                <!-- STEP 1: Date & Guests -->
+                <div class="form-step" id="step-1">
+                    <h3 class="font-serif text-xl font-bold text-white mb-2 flex items-center">
+                        <span class="w-7 h-7 rounded-full bg-amber-500/20 text-brand-gold text-sm flex items-center justify-center mr-2">1</span>
+                        選擇用餐日期與人數
+                    </h3>
+                    <p class="text-gray-400 text-xs md:text-sm mb-6">請選擇您預計前往皇城司的日期及用餐貴賓人數。</p>
+
+                    <div class="space-y-5">
+                        <!-- Date Picker -->
+                        <div>
+                            <label class="block text-sm font-medium text-gray-300 mb-2">預約日期 <span class="text-amber-500">*</span></label>
+                            <input type="date" id="resDate" required onchange="handleDateChange()"
+                                class="w-full bg-brand-dark border border-gray-700 rounded-xl px-4 py-3 text-white gold-border-focus focus:outline-none transition-all">
+                        </div>
+
+                        <!-- Guests Selector -->
+                        <div>
+                            <label class="block text-sm font-medium text-gray-300 mb-2">用餐人數 <span class="text-amber-500">*</span></label>
+                            <select id="resGuests" required onchange="handleGuestsChange()"
+                                class="w-full bg-brand-dark border border-gray-700 rounded-xl px-4 py-3 text-white gold-border-focus focus:outline-none transition-all">
+                                <option value="" disabled selected>請選擇人數</option>
+                                <option value="1">1 位貴賓</option>
+                                <option value="2">2 位貴賓</option>
+                                <option value="3">3 位貴賓</option>
+                                <option value="4">4 位貴賓</option>
+                                <option value="5">5 位貴賓</option>
+                                <option value="6">6 位貴賓</option>
+                                <option value="7">7 位貴賓</option>
+                                <option value="8">8 位貴賓</option>
+                                <option value="9">9 位以上 (包場/大團)</option>
+                            </select>
+                        </div>
+
+                        <!-- Dynamic Minimum Spend Notice -->
+                        <div id="minSpendAlert" class="hidden bg-amber-500/10 border border-amber-500/30 rounded-xl p-4 text-sm text-amber-200/90 flex items-center justify-between">
+                            <div class="flex items-center space-x-3">
+                                <i class="fa-solid fa-circle-info text-brand-gold text-lg"></i>
+                                <div>
+                                    <span class="font-semibold block text-brand-gold">當日低消標準</span>
+                                    <span id="minSpendText" class="text-xs text-gray-300">計算中...</span>
+                                </div>
+                            </div>
+                            <span id="minSpendBadge" class="px-2.5 py-1 rounded-full text-xs font-bold bg-brand-gold text-brand-dark"></span>
+                        </div>
+
+                        <!-- Large Group Alert (More than 8 people) -->
+                        <div id="largeGroupWarning" class="hidden bg-rose-500/10 border border-rose-500/40 rounded-xl p-5 text-rose-200">
+                            <div class="flex items-start space-x-3">
+                                <i class="fa-solid fa-triangle-exclamation text-rose-400 text-xl mt-0.5"></i>
+                                <div>
+                                    <h4 class="font-bold text-white text-base mb-1">大宗訂位人數提醒</h4>
+                                    <p class="text-xs md:text-sm text-gray-300 mb-4 leading-relaxed">
+                                        本館空間有限，9 人以上的聚餐或包場需求，請直接透過 Instagram 官方帳號或撥打專線聯繫專人為您安排，線上系統暫不開放 9 人以上預約。
+                                    </p>
+                                    <div class="flex flex-wrap gap-3">
+                                        <a id="igContact" href="#" target="_blank" rel="noopener noreferrer" class="hidden px-4 py-2 bg-gradient-to-r from-purple-600 to-pink-600 hover:opacity-90 text-white rounded-lg text-xs font-medium transition-all flex items-center space-x-1.5">
+                                            <i class="fa-brands fa-instagram"></i>
+                                            <span>私訊 IG 官方帳號</span>
+                                        </a>
+                                        <a id="phoneContact" href="tel:0981879129" class="px-4 py-2 bg-brand-card border border-rose-500/40 hover:bg-rose-500/20 text-white rounded-lg text-xs font-medium transition-all flex items-center space-x-1.5">
+                                            <i class="fa-solid fa-phone"></i>
+                                            <span>撥打專線 0981-879-129</span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 1 Navigation -->
+                    <div class="mt-8 flex justify-end">
+                        <button type="button" onclick="goToStep(2)" id="btnStep1Next"
+                            class="gold-gradient-bg text-brand-dark font-semibold px-6 py-3 rounded-xl text-sm transition-all hover:opacity-90 flex items-center space-x-2 disabled:opacity-50 disabled:cursor-not-allowed">
+                            <span>下一步：選擇時段</span>
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- STEP 2: Time Slots -->
+                <div class="form-step hidden" id="step-2">
+                    <h3 class="font-serif text-xl font-bold text-white mb-2 flex items-center">
+                        <span class="w-7 h-7 rounded-full bg-amber-500/20 text-brand-gold text-sm flex items-center justify-center mr-2">2</span>
+                        選擇用餐時段
+                    </h3>
+                    <p class="text-gray-400 text-xs md:text-sm mb-6">用餐時限為 120 分鐘。如遇特殊客滿時段將提供建議。</p>
+
+                    <p class="mb-5 text-xs md:text-sm text-gray-400 leading-relaxed">可預約時段會依當日座位使用情況更新。若時段已滿，請選擇其他時間或直接聯繫店家。</p>
+                    <div id="slotsLoading" class="hidden rounded-xl bg-brand-dark border border-amber-500/20 p-4 mb-4 text-amber-200 text-sm">正在讀取可預約時段…</div>
+                    <div id="slotsError" role="alert" class="hidden rounded-xl bg-rose-500/10 border border-rose-500/30 p-4 mb-4 text-rose-200 text-sm"></div>
+
+                    <!-- Slot grid container -->
+                    <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 mb-6" id="timeSlotsContainer">
+                        <!-- Dynamically generated time slots -->
+                    </div>
+
+                    <!-- Step 2 Navigation -->
+                    <div class="mt-8 flex justify-between">
+                        <button type="button" onclick="goToStep(1)"
+                            class="bg-brand-dark border border-gray-700 hover:border-gray-500 text-gray-300 px-5 py-3 rounded-xl text-sm transition-all flex items-center space-x-2">
+                            <i class="fa-solid fa-arrow-left"></i>
+                            <span>上一步</span>
+                        </button>
+                        <button type="button" onclick="goToStep(3)" id="btnStep2Next" disabled
+                            class="gold-gradient-bg text-brand-dark font-semibold px-6 py-3 rounded-xl text-sm transition-all hover:opacity-90 flex items-center space-x-2 disabled:opacity-50 disabled:cursor-not-allowed">
+                            <span>下一步：填寫聯絡資料</span>
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- STEP 3: Contact Info & Preferences -->
+                <div class="form-step hidden" id="step-3">
+                    <h3 class="font-serif text-xl font-bold text-white mb-2 flex items-center">
+                        <span class="w-7 h-7 rounded-full bg-amber-500/20 text-brand-gold text-sm flex items-center justify-center mr-2">3</span>
+                        貴賓聯絡資料與飲食偏好
+                    </h3>
+                    <p class="text-gray-400 text-xs md:text-sm mb-6">請填寫正確聯絡方式供店家確認與後續聯繫；電子郵件通知依店家系統設定。</p>
+
+                    <div class="space-y-4">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-300 mb-1.5">貴賓姓名 <span class="text-amber-500">*</span></label>
+                                <input type="text" id="custName" required placeholder="例如：王小明 / Ms. Wang"
+                                    class="w-full bg-brand-dark border border-gray-700 rounded-xl px-4 py-3 text-white gold-border-focus focus:outline-none transition-all text-sm">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-300 mb-1.5">聯絡電話 <span class="text-amber-500">*</span></label>
+                                <input type="tel" id="custPhone" required placeholder="例如：0912345678"
+                                    class="w-full bg-brand-dark border border-gray-700 rounded-xl px-4 py-3 text-white gold-border-focus focus:outline-none transition-all text-sm">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-medium text-gray-300 mb-1.5">電子信箱 (Email) <span class="text-amber-500">*</span></label>
+                            <input type="email" id="custEmail" required placeholder="example@gmail.com"
+                                class="w-full bg-brand-dark border border-gray-700 rounded-xl px-4 py-3 text-white gold-border-focus focus:outline-none transition-all text-sm">
+                        </div>
+
+                        <!-- Member Status -->
+                        <div>
+                            <label class="block text-sm font-medium text-gray-300 mb-2">請問您是否持有皇城司會員卡？ <span class="text-amber-500">*</span></label>
+                            <div class="grid grid-cols-2 gap-3">
+                                <label class="cursor-pointer border border-gray-700 hover:border-brand-gold bg-brand-dark rounded-xl p-3.5 flex items-center space-x-3 transition-all has-[:checked]:border-brand-gold has-[:checked]:bg-amber-500/10">
+                                    <input type="radio" name="isMember" value="yes" class="text-brand-gold focus:ring-amber-500 bg-brand-dark border-gray-700">
+                                    <span class="text-sm font-medium text-white">是，我是會員</span>
+                                </label>
+                                <label class="cursor-pointer border border-gray-700 hover:border-brand-gold bg-brand-dark rounded-xl p-3.5 flex items-center space-x-3 transition-all has-[:checked]:border-brand-gold has-[:checked]:bg-amber-500/10">
+                                    <input type="radio" name="isMember" value="no" checked class="text-brand-gold focus:ring-amber-500 bg-brand-dark border-gray-700">
+                                    <span class="text-sm font-medium text-white">否，目前還不是</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Dietary Restrictions / Notes -->
+                        <div>
+                            <label class="block text-sm font-medium text-gray-300 mb-1.5">特殊飲食禁忌或備註需求</label>
+                            <textarea id="custNotes" rows="3" placeholder="例如：海鮮過敏、慶生需求、坐沙發區等..."
+                                class="w-full bg-brand-dark border border-gray-700 rounded-xl px-4 py-3 text-white gold-border-focus focus:outline-none transition-all text-sm"></textarea>
+                        </div>
+                    </div>
+
+                    <!-- Step 3 Navigation -->
+                    <div class="mt-8 flex justify-between">
+                        <button type="button" onclick="goToStep(2)"
+                            class="bg-brand-dark border border-gray-700 hover:border-gray-500 text-gray-300 px-5 py-3 rounded-xl text-sm transition-all flex items-center space-x-2">
+                            <i class="fa-solid fa-arrow-left"></i>
+                            <span>上一步</span>
+                        </button>
+                        <button type="button" onclick="validateStep3AndNext()"
+                            class="gold-gradient-bg text-brand-dark font-semibold px-6 py-3 rounded-xl text-sm transition-all hover:opacity-90 flex items-center space-x-2">
+                            <span>下一步：套餐選購</span>
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- STEP 4: Set Menu Add-on & Validation -->
+                <div class="form-step hidden" id="step-4">
+                    <h3 class="font-serif text-xl font-bold text-white mb-2 flex items-center">
+                        <span class="w-7 h-7 rounded-full bg-amber-500/20 text-brand-gold text-sm flex items-center justify-center mr-2">4</span>
+                        精選套餐預訂（選購）
+                    </h3>
+                    <p class="text-gray-400 text-xs md:text-sm mb-6">皇城司招牌限定「司宴」套餐，需提前 3 日預訂（週五週六不供應）。</p>
+
+                    <!-- Set Menu Card -->
+                    <div class="bg-brand-dark border border-amber-500/30 rounded-xl p-5 mb-6 relative overflow-hidden">
+                        <div class="flex items-start justify-between">
+                            <div class="flex items-start space-x-4">
+                                <div class="w-12 h-12 rounded-xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center flex-shrink-0 text-brand-gold text-lg">
+                                    <i class="fa-solid fa-utensils"></i>
+                                </div>
+                                <div>
+                                    <div class="flex items-center space-x-2">
+                                        <h4 class="font-serif font-bold text-white text-base">「司宴」限定套餐</h4>
+                                        <span class="px-2 py-0.5 rounded text-[10px] font-semibold bg-brand-gold text-brand-dark">限定人氣</span>
+                                    </div>
+                                    <p class="text-xs text-gray-300 mt-1 leading-relaxed">
+                                        此為預先提出套餐需求；實際供應內容與價格請以店家確認為準。
+                                    </p>
+                                    <span class="text-[11px] text-amber-400/80 mt-2 block">
+                                        <i class="fa-solid fa-triangle-exclamation mr-1"></i> 注意：依規定須於<strong>用餐日前 3 天</strong>完成預訂
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mt-4 pt-4 border-t border-gray-800 flex items-center justify-between">
+                            <label class="cursor-pointer flex items-center space-x-3">
+                                <input type="checkbox" id="addSetMenu" onchange="handleSetMenuToggle()" class="w-5 h-5 rounded text-brand-gold focus:ring-amber-500 bg-brand-dark border-gray-700">
+                                <span class="text-sm font-medium text-white">加購「司宴」套餐（將自動檢核 3 天前限制）</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Rule check warning banner for set menu -->
+                    <div id="setMenuRuleAlert" class="hidden mb-6 bg-rose-500/10 border border-rose-500/40 rounded-xl p-4 text-xs md:text-sm text-rose-200">
+                        <div class="flex items-center space-x-2.5">
+                            <i class="fa-solid fa-circle-xmark text-rose-400 text-base"></i>
+                            <span id="setMenuRuleMsg">很抱歉，「司宴」套餐需提前 3 日預訂。您選擇的日期未達 3 天限制，請取消勾選或電洽客服。</span>
+                        </div>
+                    </div>
+
+                    <!-- Summary overview before final submission -->
+                    <div class="bg-brand-dark/60 border border-gray-800 rounded-xl p-4 mb-6 text-xs md:text-sm space-y-2">
+                        <div class="text-brand-gold font-semibold mb-2 pb-1 border-b border-gray-800">
+                            <i class="fa-solid fa-file-invoice mr-1.5"></i> 預約明細摘要
+                        </div>
+                        <div class="flex justify-between text-gray-300">
+                            <span>預約日期：</span>
+                            <span id="sumDate" class="text-white font-medium">-</span>
+                        </div>
+                        <div class="flex justify-between text-gray-300">
+                            <span>用餐時段：</span>
+                            <span id="sumTime" class="text-white font-medium">-</span>
+                        </div>
+                        <div class="flex justify-between text-gray-300">
+                            <span>用餐人數：</span>
+                            <span id="sumGuests" class="text-white font-medium">-</span>
+                        </div>
+                        <div class="flex justify-between text-gray-300">
+                            <span>預估低消：</span>
+                            <span id="sumMinSpend" class="text-brand-gold font-bold">-</span>
+                        </div>
+                    </div>
+
+                    <div class="mt-4 mb-5 p-4 rounded-xl border border-amber-500/20 bg-brand-dark text-xs text-gray-300 leading-relaxed">
+                       <label class="flex items-start gap-3 cursor-pointer">
+                          <input type="checkbox" id="acceptTerms" class="mt-0.5 h-4 w-4 accent-amber-500" />
+                          <span>我已閱讀訂位與取消規則，並同意提供姓名、電話、Email、訂位資訊及必要備註供店家處理本次訂位與聯繫。正式上線前，店家應補上個資蒐集告知（蒐集目的、類別、利用期間／地區／對象／方式、當事人權利與聯絡管道等），並確認實際作業與政策一致。</span>
+                       </label>
+                    </div>
+                    <div id="submitError" role="alert" class="hidden mb-4 bg-rose-500/10 border border-rose-500/30 rounded-xl px-4 py-3 text-rose-200 text-sm"></div>
+                    <!-- Honeypot for simple spam reduction -->
+                    <div aria-hidden="true" style="position:absolute;left:-10000px;opacity:0;" tabindex="-1"><label>請勿填寫<input id="companyWebsite" type="text" autocomplete="off" tabindex="-1" /></label></div>
+
+                    <!-- Step 4 Navigation -->
+                    <div class="mt-8 flex justify-between">
+                        <button type="button" onclick="goToStep(3)"
+                            class="bg-brand-dark border border-gray-700 hover:border-gray-500 text-gray-300 px-5 py-3 rounded-xl text-sm transition-all flex items-center space-x-2">
+                            <i class="fa-solid fa-arrow-left"></i>
+                            <span>上一步</span>
+                        </button>
+                        <button type="button" onclick="submitBooking()" id="btnSubmit"
+                            class="gold-gradient-bg text-brand-dark font-bold px-8 py-3 rounded-xl text-sm transition-all hover:opacity-90 flex items-center space-x-2 shadow-lg">
+                            <i class="fa-solid fa-circle-check"></i>
+                            <span>確認送出預約</span>
+                        </button>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+    </main>
+    </section>
+
+    <section id="visit" class="py-20 md:py-24 bg-[#101012]">
+      <div class="shell-wide visit-grid">
+        <div><p class="section-eyebrow mb-4">Find Us / 尋訪密境</p><h2 class="section-title mb-5">藏在城市裡的<br>另一個夜晚</h2>
+          <p class="text-gray-400 text-sm leading-8 mb-8">位於台北市中山區的新生北路，等待有緣人推開那扇神祕的門。建議事先線上訂位，並保留足夠時間尋找入口。</p>
+          <a class="action-outline" href="https://www.google.com/maps/search/?api=1&query=%E7%9A%87%E5%9F%8E%E5%8F%B8+The+SPY+Bar+Bistro" target="_blank" rel="noopener noreferrer">開啟 Google 地圖 ↗</a></div>
+        <div class="visit-info"><div class="overline mb-7">Contact & Opening Hours</div>
+          <div class="border-b border-amber-500/20 pb-5 mb-5"><p class="text-xs text-gray-500 tracking-widest mb-2">地址 LOCATION</p>
+            <p class="text-white font-serif leading-7">台北市中山區新生北路二段 75 號 1 樓</p></div>
+          <div class="border-b border-amber-500/20 pb-5 mb-5"><p class="text-xs text-gray-500 tracking-widest mb-2">營業 HOURS</p>
+            <p class="text-gray-200 text-sm leading-7">週日－週四 18:00–01:00<br>週五－週六 18:00–02:00<br><span class="text-[#b8a17b] text-xs">國定假日／臨時營業調整以店家公告為準</span></p></div>
+          <div><p class="text-xs text-gray-500 tracking-widest mb-2">訂位專線 TELEPHONE</p>
+            <a class="visit-link" href="tel:0981879129">0981-879-129</a>
+            <span class="mx-2 text-gray-700">/</span><a class="visit-link" href="https://www.instagram.com/thespybar_taipei/" target="_blank" rel="noopener noreferrer">官方 Instagram ↗</a></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SUCCESS CONFIRMATION MODAL / VIEW -->
+    <div id="successModal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md hidden flex items-center justify-center p-4 overflow-y-auto">
+        <div class="bg-brand-card border border-brand-gold rounded-2xl max-w-lg w-full p-6 md:p-8 gold-glow relative animate-scale-up">
+            <div class="text-center mb-6">
+                <div class="w-16 h-16 bg-amber-500/20 border-2 border-brand-gold rounded-full flex items-center justify-center mx-auto mb-4 gold-glow">
+                    <i class="fa-solid fa-check text-brand-gold text-2xl"></i>
+                </div>
+                <span class="inline-block px-3 py-1 rounded-full text-xs font-medium bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 mb-2">
+                    <i class="fa-solid fa-bolt mr-1"></i> <span id="ticketStatus">訂位狀態</span>
+                </span>
+                <h3 class="font-serif text-2xl font-bold text-white">預約確認通知卡片</h3>
+                <p id="ticketSubtext" class="text-xs text-gray-400 mt-1">訂位狀態請依店家確認通知為準。</p>
+            </div>
+
+            <!-- Ticket details card -->
+            <div class="bg-brand-dark border border-amber-500/20 rounded-xl p-5 space-y-3 mb-6 text-xs md:text-sm">
+                <div class="flex justify-between items-center pb-3 border-b border-gray-800">
+                    <span class="text-gray-400">訂位編號</span>
+                    <span id="ticketId" class="text-brand-gold font-mono font-bold tracking-wider text-sm">-</span>
+                </div>
+                <div class="flex justify-between items-center">
+                    <span class="text-gray-400">貴賓姓名</span>
+                    <span id="ticketName" class="text-white font-medium">-</span>
+                </div>
+                <div class="flex justify-between items-center">
+                    <span class="text-gray-400">聯絡電話</span>
+                    <span id="ticketPhone" class="text-white font-medium">-</span>
+                </div>
+                <div class="flex justify-between items-center">
+                    <span class="text-gray-400">用餐日期</span>
+                    <span id="ticketDate" class="text-white font-medium">-</span>
+                </div>
+                <div class="flex justify-between items-center">
+                    <span class="text-gray-400">預約時段</span>
+                    <span id="ticketTime" class="text-white font-medium">-</span>
+                </div>
+                <div class="flex justify-between items-center">
+                    <span class="text-gray-400">用餐人數</span>
+                    <span id="ticketGuests" class="text-white font-medium">-</span>
+                </div>
+                <div class="flex justify-between items-center">
+                    <span class="text-gray-400">低消標準</span>
+                    <span id="ticketMinSpend" class="text-brand-gold font-bold">-</span>
+                </div>
+                <div class="flex justify-between items-center">
+                    <span class="text-gray-400">會員狀態</span>
+                    <span id="ticketMember" class="text-white font-medium">-</span>
+                </div>
+                <div class="flex justify-between items-center">
+                    <span class="text-gray-400">套餐加購</span>
+                    <span id="ticketSetMenu" class="text-white font-medium">-</span>
+                </div>
+                <div id="ticketNotesRow" class="pt-2 border-t border-gray-800 flex flex-col space-y-1">
+                    <span class="text-gray-400">備註與飲食禁忌</span>
+                    <span id="ticketNotes" class="text-gray-200 italic">-</span>
+                </div>
+            </div>
+
+            <!-- Reminder Notes -->
+            <div class="bg-amber-500/10 border border-amber-500/30 rounded-xl p-3.5 mb-6 text-xs text-amber-200/90 leading-relaxed">
+                <i class="fa-solid fa-circle-info mr-1 text-brand-gold"></i>
+                提醒您：座位將為您保留 10 分鐘，逾時將釋放給現場候位客人。用餐時限為 120 分鐘。
+            </div>
+
+            <div class="flex space-x-3">
+                <button onclick="resetSystem()" class="flex-1 bg-brand-dark border border-gray-700 hover:border-gray-500 text-gray-300 py-3 rounded-xl text-sm font-medium transition-all">
+                    返回首頁 / 重新預約
+                </button>
+                <button onclick="window.print()" class="flex-1 gold-gradient-bg text-brand-dark py-3 rounded-xl text-sm font-bold transition-all hover:opacity-90 flex items-center justify-center space-x-1.5">
+                    <i class="fa-solid fa-print"></i>
+                    <span>儲存或列印憑證</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- INFO MODAL -->
+    <div id="infoModal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md hidden flex items-center justify-center p-4 overflow-y-auto">
+        <div class="bg-brand-card border border-amber-500/30 rounded-2xl max-w-md w-full p-6 md:p-8 gold-glow relative">
+            <div class="flex items-center justify-between mb-4 pb-3 border-b border-amber-500/20">
+                <h3 class="font-serif text-lg font-bold text-white flex items-center space-x-2">
+                    <i class="fa-solid fa-scroll text-brand-gold"></i>
+                    <span>皇城司訂位與消費守則</span>
+                </h3>
+                <button onclick="closeInfoModal()" class="text-gray-400 hover:text-white">
+                    <i class="fa-solid fa-xmark text-lg"></i>
+                </button>
+            </div>
+            
+            <div class="space-y-3 text-xs md:text-sm text-gray-300 max-h-96 overflow-y-auto pr-1">
+                <p>• <strong>營業時間：</strong>週日～週四 18:00~01:00、週五～週六 18:00~02:00。</p>
+                <p>• <strong>用餐時段：</strong>限時 120 分鐘。</p>
+                <p>• <strong>座位保留：</strong>將為您保留座位 10 分鐘，逾時將釋放給現場候位客人。</p>
+                <p>• <strong>低消規範：</strong>平日最低消費為 $500/位，假日最低消費為 $1,000/位。</p>
+                <p>• <strong>取消政策：</strong>若需取消或更改人數，請最晚於用餐前一日告知。</p>
+                <p>• <strong>大組人數：</strong>9 人以上的聚餐請直接私訊 IG 官方帳號或撥打專線 <span id="ruleContactPhone">0981-879-129</span>。</p>
+                <p>• <strong>特殊套餐：</strong>「司宴」套餐需提前 3 日預訂（週五週六不供應）。</p>
+            </div>
+
+            <div class="mt-6 pt-4 border-t border-gray-800 text-center">
+                <button onclick="closeInfoModal()" class="w-full gold-gradient-bg text-brand-dark font-semibold py-2.5 rounded-xl text-sm">
+                    我知道了
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="site-footer"><p class="font-serif text-[#c9a366] text-base mb-1">皇城司 <span class="text-xs tracking-widest">THE SPY BAR & BISTRO</span></p>
+      <p>© 2026 皇城司 The SPY Bar & Bistro · 本站為網站設計提案展示，尚未獲店家確認或正式啟用。</p></footer>
+
+    <!-- Script Logic: Google Apps Script HTML Service (production) / local demo -->
+    <script>
+      const IS_LIVE = typeof google !== 'undefined' && !!google.script && !!google.script.run;
+      const TZ_NAME = 'Asia/Taipei';
+      const state = { step:1, date:'', guests:0, time:'', slots:[], config:null, minSpend:500, loading:false,
+                      requestId:null, formStartedAt: Date.now(), availabilitySeq:0 };
+      const el = id => document.getElementById(id);
+      const simpleDate = () => new Intl.DateTimeFormat('en-CA',{timeZone:TZ_NAME,year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date());
+      const localDate = () => {
+        const p = new Intl.DateTimeFormat('en-US',{timeZone:TZ_NAME,year:'numeric',month:'2-digit',day:'2-digit'}).formatToParts(new Date());
+        const o = Object.fromEntries(p.map(x=>[x.type,x.value]));
+        return `${o.year}-${o.month}-${o.day}`;
+      };
+      const dayIndex = str => new Date(`${str}T12:00:00+08:00`).getUTCDay();
+      const holiday = date => (state.config?.holidays || []).includes(date);
+      const weekend = date => [5,6].includes(dayIndex(date)) || holiday(date);
+      const minsToHHMM = v => `${String(Math.floor(v/60)%24).padStart(2,'0')}:${String(v%60).padStart(2,'0')}`;
+      const money = v => `NT$${Number(v).toLocaleString('zh-TW')}`;
+      function banner(msg, kind='warn') {
+        const e = el('systemBannerText');
+        e.textContent = msg;
+        e.className = kind==='ok' ? 'text-sm rounded-xl border border-emerald-600/30 bg-emerald-500/10 text-emerald-200 px-4 py-3' :
+          kind==='error' ? 'text-sm rounded-xl border border-rose-500/30 bg-rose-500/10 text-rose-100 px-4 py-3' :
+          'text-sm rounded-xl border border-amber-500/30 bg-amber-500/10 text-amber-100 px-4 py-3';
+      }
+      function asyncServer(fn, arg) {
+        return new Promise((resolve,reject)=>{
+          const s = google.script.run.withSuccessHandler(resolve).withFailureHandler(reject);
+          if (fn==='getPublicConfig') s.getPublicConfig();
+          if (fn==='getMenu') s.getMenu();
+          if (fn==='getAvailability') s.getAvailability(arg.date,arg.guests);
+          if (fn==='registerBooking') s.registerBooking(arg);
+        });
+      }
+      function demoConfig(){return { enabled:false, totalSeats:0, maxParty:8, advanceDays:30,
+        cutoff:'17:30', bookingMode:'REQUEST', minWeekday:500,minWeekend:1000, holidays:[],
+        phone:'0981-879-129', igUrl:'https://www.instagram.com/thespybar_taipei/', logoUrl:'', heroImageUrl:'' }; }
+      const MENU_PAGE_IMAGES = Array.from({length:18}, (_,i)=>({
+        src:`assets/menu/page-${String(i+1).padStart(2,'0')}.jpg`,
+        label:`第 ${i+1} 頁`
+      }));
+      const MENU_PAGE_TITLES = [
+        '封面｜皇城司密卷','入局須知｜遵守館規','御膳卷','酒餚卷','酥餚卷','艷芳卷','諜影卷','神明卷','謀局卷',
+        '密訊卷','懸詭卷','往生卷','燃液火體','烈醇燒酎','異邦烈液','劍釀藏酒','一口酒','禁飲異錄'
+      ];
+      const bookState = { spread:0, page:0, animating:false };
+      const isMobileBook = () => window.matchMedia('(max-width: 760px)').matches;
+      const spreadCount = Math.ceil(MENU_PAGE_IMAGES.length / 2);
+      function currentPair(index = bookState.spread) {
+        return isMobileBook() ? [bookState.page] : [index*2, index*2 + 1].filter(i => i < MENU_PAGE_IMAGES.length);
+      }
+      function updateBookNav() {
+        const at = isMobileBook() ? bookState.page : bookState.spread;
+        const max = isMobileBook() ? MENU_PAGE_IMAGES.length - 1 : spreadCount - 1;
+        el('bookPrev').disabled = at === 0 || bookState.animating;
+        el('bookNext').disabled = at >= max || bookState.animating;
+      }
+      function updateSpreadCounter() {
+        const [leftIdx, rightIdx] = currentPair();
+        const leftPage = leftIdx + 1;
+        const rightPage = rightIdx !== undefined ? rightIdx + 1 : leftPage;
+        el('spreadCounter').textContent = isMobileBook() ? `${leftPage} / ${MENU_PAGE_IMAGES.length}` : `${leftPage}–${rightPage} / ${MENU_PAGE_IMAGES.length}`;
+      }
+      function setPageButton(btnId, imgId, numId, pageIdx) {
+        const btn = el(btnId), img = el(imgId), num = el(numId);
+        if (pageIdx === undefined || !MENU_PAGE_IMAGES[pageIdx]) {
+          btn.classList.add('is-empty'); btn.disabled = true; img.removeAttribute('src'); img.alt = '空白頁'; num.textContent='';
+          return;
+        }
+        btn.classList.remove('is-empty'); btn.disabled = false;
+        img.src = MENU_PAGE_IMAGES[pageIdx].src;
+        img.alt = `皇城司菜單第 ${pageIdx+1} 頁`;
+        num.textContent = `${pageIdx+1}`;
+        btn.dataset.page = pageIdx;
+      }
+      function renderSpread() {
+        const [leftIdx, rightIdx] = currentPair();
+        setPageButton('leftPageBtn','leftPageImg','leftPageNumber', leftIdx);
+        setPageButton('rightPageBtn','rightPageImg','rightPageNumber', rightIdx);
+        updateSpreadCounter();
+        updateBookNav();
+        document.querySelectorAll('.thumb-btn').forEach((btn,idx)=>{
+          const selected = isMobileBook() ? idx === bookState.page : Math.floor(idx/2) === bookState.spread;
+          btn.setAttribute('aria-current', selected ? 'true' : 'false');
+        });
+      }
+      function flipTo(direction) {
+        if (bookState.animating) return;
+        if (isMobileBook()) {
+          const targetPage = bookState.page + (direction === 'next' ? 1 : -1);
+          if (targetPage < 0 || targetPage >= MENU_PAGE_IMAGES.length) return;
+          bookState.page = targetPage;
+          bookState.spread = Math.floor(targetPage/2);
+          renderSpread();
+          return;
+        }
+        const targetSpread = direction === 'next' ? bookState.spread + 1 : bookState.spread - 1;
+        if (targetSpread < 0 || targetSpread >= spreadCount) return;
+        bookState.animating = true; updateBookNav();
+        if (direction === 'next') {
+          const curRight = bookState.spread*2 + 1;
+          const nextLeft = targetSpread*2;
+          el('flipNextFront').src = MENU_PAGE_IMAGES[curRight]?.src || MENU_PAGE_IMAGES[curRight-1]?.src;
+          el('flipNextBack').src = MENU_PAGE_IMAGES[nextLeft]?.src || MENU_PAGE_IMAGES[curRight]?.src;
+          const overlay = el('pageFlipNext');
+          overlay.classList.remove('animate-next');
+          void overlay.offsetWidth;
+          overlay.classList.add('show','animate-next');
+          setTimeout(()=>{
+            overlay.classList.remove('show','animate-next');
+            bookState.spread = targetSpread; renderSpread();
+            bookState.animating = false; updateBookNav();
+          }, 820);
+        } else {
+          const curLeft = bookState.spread*2;
+          const prevRight = targetSpread*2 + 1;
+          el('flipPrevFront').src = MENU_PAGE_IMAGES[curLeft]?.src || MENU_PAGE_IMAGES[curLeft+1]?.src;
+          el('flipPrevBack').src = MENU_PAGE_IMAGES[prevRight]?.src || MENU_PAGE_IMAGES[curLeft]?.src;
+          const overlay = el('pageFlipPrev');
+          overlay.classList.remove('animate-prev');
+          void overlay.offsetWidth;
+          overlay.classList.add('show','animate-prev');
+          setTimeout(()=>{
+            overlay.classList.remove('show','animate-prev');
+            bookState.spread = targetSpread; renderSpread();
+            bookState.animating = false; updateBookNav();
+          }, 820);
+        }
+      }
+      function buildThumbs() {
+        const wrap = el('thumbIndex'); wrap.innerHTML='';
+        MENU_PAGE_IMAGES.forEach((page, idx)=>{
+          const btn = document.createElement('button');
+          btn.type='button'; btn.className='thumb-btn'; btn.textContent = idx+1;
+          btn.title = `${MENU_PAGE_TITLES[idx] || '菜單'}｜第 ${idx+1} 頁`;
+          btn.addEventListener('click', ()=>{ bookState.page=idx; bookState.spread=Math.floor(idx/2); renderSpread(); });
+          wrap.appendChild(btn);
+        });
+      }
+      function openLightbox(pageIdx) {
+        if (pageIdx === undefined || !MENU_PAGE_IMAGES[pageIdx]) return;
+        el('lightboxImage').src = MENU_PAGE_IMAGES[pageIdx].src;
+        el('lightboxCaption').textContent = `${MENU_PAGE_TITLES[pageIdx] || '皇城司菜單'} · 第 ${pageIdx+1} 頁`;
+        el('pageLightbox').classList.remove('hidden');
+        document.body.classList.add('overflow-hidden');
+      }
+      function closeLightbox() {
+        el('pageLightbox').classList.add('hidden');
+        document.body.classList.remove('overflow-hidden');
+      }
+      function initFlipbook() {
+        buildThumbs(); renderSpread();
+        el('bookPrev').addEventListener('click', ()=>flipTo('prev'));
+        el('bookNext').addEventListener('click', ()=>flipTo('next'));
+        el('jumpStart').addEventListener('click', ()=>{ bookState.page=0; bookState.spread=0; renderSpread(); });
+        el('jumpEnd').addEventListener('click', ()=>{ bookState.page=MENU_PAGE_IMAGES.length-1; bookState.spread=spreadCount-1; renderSpread(); });
+        el('leftPageBtn').addEventListener('click', ()=> openLightbox(Number(el('leftPageBtn').dataset.page)));
+        el('rightPageBtn').addEventListener('click', ()=> openLightbox(Number(el('rightPageBtn').dataset.page)));
+        el('openCurrentPages').addEventListener('click', ()=> openLightbox(currentPair()[0]));
+        el('closeLightbox').addEventListener('click', closeLightbox);
+        el('pageLightbox').addEventListener('click', (e)=>{ if (e.target === el('pageLightbox')) closeLightbox(); });
+        let touchX=null;
+        el('bookSpread').addEventListener('touchstart', e => { if(e.touches.length===1) touchX=e.touches[0].clientX; }, {passive:true});
+        el('bookSpread').addEventListener('touchend', e => {
+          if(touchX===null || !e.changedTouches.length) return;
+          const delta=e.changedTouches[0].clientX-touchX; touchX=null;
+          if(Math.abs(delta)>55 && isMobileBook()) flipTo(delta<0?'next':'prev');
+        }, {passive:true});
+        let lastMobile = isMobileBook();
+        window.addEventListener('resize', () => {
+          const mobile=isMobileBook(); if(mobile===lastMobile) return;
+          if(mobile) bookState.page=bookState.spread*2;
+          else bookState.spread=Math.floor(bookState.page/2);
+          lastMobile=mobile; renderSpread();
+        });
+        document.addEventListener('keydown', e => {
+          if (e.key === 'Escape' && !el('pageLightbox').classList.contains('hidden')) closeLightbox();
+          if (e.key === 'ArrowRight') flipTo('next');
+          if (e.key === 'ArrowLeft') flipTo('prev');
+        });
+      }
+function applyConfig() {
+        const c=state.config;
+        if(c.logoUrl && /^https:\/\//i.test(c.logoUrl)) {
+          const image=el('brandLogo'); image.onload=()=>{image.classList.remove('hidden');el('brandFallback').classList.add('hidden');};
+          image.onerror=()=>{image.classList.add('hidden');el('brandFallback').classList.remove('hidden');};
+          image.src=c.logoUrl;
+        }
+        if(c.igUrl && /^https:\/\//i.test(c.igUrl)) {el('igContact').href=c.igUrl;el('igContact').classList.remove('hidden');}
+        if(c.heroImageUrl && /^https:\/\//i.test(c.heroImageUrl)) {
+          const hero=document.querySelector('.landing-hero'); hero.style.backgroundImage=`linear-gradient(90deg,rgba(11,11,14,.92) 20%,rgba(11,11,14,.55) 100%),url(\"${c.heroImageUrl.replace(/\"/g,'')}\")`;hero.style.backgroundSize='cover';hero.style.backgroundPosition='center';
+        }
+        if(c.phone){el('phoneContact').href='tel:'+c.phone.replace(/[^+\d]/g,'');el('ruleContactPhone').textContent=c.phone;}
+        document.querySelectorAll('.form-step').forEach((node,i)=>node.classList.toggle('hidden',i!==0));
+        state.step=1;
+        handleDateChange();
+        if(!IS_LIVE) el('systemBanner').classList.add('hidden');
+        else if(!c.enabled) banner('店家尚未開放線上訂位。網頁可瀏覽，但目前無法送出預約。請聯絡店家。');
+        else banner(c.bookingMode==='AUTO'?'系統已連線：送出後即時核對並確認席位；首次入會及特殊需求仍依店家通知辦理。':'系統已連線：可提交訂位申請，收到店家確認後才算預約成功。','ok');
+      }
+      window.addEventListener('DOMContentLoaded', async()=>{
+        const date=el('resDate'); date.min=localDate();date.value=localDate();
+        if(IS_LIVE){
+          try{state.config=await asyncServer('getPublicConfig');}
+          catch(e){state.config=demoConfig();banner('連線失敗，暫時停止接受預約。請稍後重試。','error');}
+        } else state.config=demoConfig();
+        applyConfig();
+        initFlipbook();
+      });
+      function handleDateChange(){
+        state.date=el('resDate').value;
+        state.time='';state.slots=[];
+        updateMinSpendDisplay();checkStep1Valid();
+        if(state.step===2) loadSlots();
+      }
+      function handleGuestsChange(){
+        state.guests=Number(el('resGuests').value)||0;
+        state.time='';state.slots=[];
+        const isLarge=state.guests>8;
+        el('largeGroupWarning').classList.toggle('hidden',!isLarge);
+        updateMinSpendDisplay();checkStep1Valid();
+        if(state.step===2) loadSlots();
+      }
+      function updateMinSpendDisplay(){
+        if(!state.config) return;
+        state.minSpend=weekend(state.date)?Number(state.config.minWeekend):Number(state.config.minWeekday);
+        if(!state.date||!state.guests||state.guests>8){el('minSpendAlert').classList.add('hidden');return;}
+        el('minSpendAlert').classList.remove('hidden');
+        el('minSpendText').textContent=`${weekend(state.date)?'週五、週六或指定假日':'週日至週四'}低消 ${money(state.minSpend)}/位，合計預估 ${money(state.minSpend*state.guests)}`;
+        el('minSpendBadge').textContent=`低消 $${state.minSpend}/位`;
+      }
+      function checkStep1Valid(){
+        const c=state.config||demoConfig();
+        const date=state.date;
+        const ts=Date.parse(`${date}T12:00:00+08:00`), start=Date.parse(`${localDate()}T12:00:00+08:00`);
+        const valid=!!date && Number.isFinite(ts) && ts>=start && ts<=start+c.advanceDays*86400000 && state.guests>=1 && state.guests<=c.maxParty;
+        el('btnStep1Next').disabled=!valid;
+      }
+      async function goToStep(n){
+        if(n===2){checkStep1Valid();if(el('btnStep1Next').disabled){alert('請確認日期及人數。');return;}}
+        if(n===3&&!state.time){alert('請先選擇用餐時段。');return;}
+        if(n===4&&!validateContact()) return;
+        document.querySelectorAll('.form-step').forEach(node=>node.classList.add('hidden'));
+        el(`step-${n}`).classList.remove('hidden');state.step=n;
+        updateStepIndicators(n);window.scrollTo({top:0,behavior:'smooth'});
+        if(n===2)await loadSlots();
+        if(n===4)populateSummary();
+      }
+      function updateStepIndicators(active){
+        document.querySelectorAll('.step-ind').forEach(ind=>{
+          const n=Number(ind.dataset.step), circle=ind.querySelector('div'),label=ind.querySelector('span');
+          const passed=n<=active;
+          circle.className=`w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold border mb-1 transition-all ${passed?'border-brand-gold bg-brand-gold text-brand-dark':'border-gray-700 bg-brand-card text-gray-400'}`;
+          circle.textContent=n<active?'✓':n;
+          label.className=`text-xs ${passed?'text-brand-gold font-medium':'text-gray-400'}`;
+        });
+      }
+      function previewSlots(date){
+        const last=weekend(date)?24*60:23*60;const arr=[];
+        for(let t=18*60;t<=last;t+=30) arr.push({time:minsToHHMM(t),available:true,status:'DEMO'});
+        return arr;
+      }
+      async function loadSlots(){
+        const seq=++state.availabilitySeq;
+        state.time='';el('btnStep2Next').disabled=true;el('timeSlotsContainer').innerHTML='';
+        el('slotsError').classList.add('hidden');el('slotsLoading').classList.remove('hidden');
+        try{
+          const result=IS_LIVE?await asyncServer('getAvailability',{date:state.date,guests:state.guests}):
+            {ok:true,slots:previewSlots(state.date),demo:true};
+          if(seq!==state.availabilitySeq)return;
+          if(!result.ok)throw new Error(result.message||'目前無法取得時段');
+          state.slots=result.slots||[];
+          const wrap=el('timeSlotsContainer');wrap.replaceChildren();
+          for(const slot of state.slots){
+            const b=document.createElement('button');b.type='button';b.disabled=!slot.available;
+            b.className=slot.available?'time-slot-btn bg-brand-dark border border-gray-700 hover:border-brand-gold rounded-xl p-3 text-left transition-all':'bg-brand-dark border border-gray-800 rounded-xl p-3 text-left opacity-45 cursor-not-allowed';
+            const time=document.createElement('div');time.className='text-xs font-bold text-white';time.textContent=slot.time;
+            const status=document.createElement('div');status.className=slot.available?'text-[10px] text-emerald-400 mt-1':'text-[10px] text-rose-400 mt-1';
+            status.textContent=slot.available?(IS_LIVE?'可預約':'示範時段'):(slot.status==='CLOSED'?'暫停預約':'已滿或不可預約');
+            b.append(time,status);
+            if(slot.available)b.addEventListener('click',()=>{
+              wrap.querySelectorAll('.time-slot-btn').forEach(x=>{x.classList.remove('border-brand-gold','bg-amber-500/10');x.classList.add('border-gray-700');});
+              b.classList.add('border-brand-gold','bg-amber-500/10');b.classList.remove('border-gray-700');
+              state.time=slot.time;el('btnStep2Next').disabled=false;
+            });
+            wrap.append(b);
+          }
+          if(!state.slots.length){el('slotsError').classList.remove('hidden');el('slotsError').textContent='此日期暫無可提供的時段。';}
+        } catch(e){if(seq===state.availabilitySeq){el('slotsError').classList.remove('hidden');el('slotsError').textContent='讀取時段失敗：'+(e.message||e);}}
+        finally{if(seq===state.availabilitySeq)el('slotsLoading').classList.add('hidden');}
+      }
+      function validateContact(){
+        const name=el('custName').value.trim(),phone=el('custPhone').value.trim(),email=el('custEmail').value.trim();
+        if(name.length<2||name.length>60){alert('請輸入 2–60 字的訂位姓名。');return false;}
+        if(!/^(09\d{8}|\+8869\d{8})$/.test(phone)){alert('請輸入有效台灣手機（09 開頭 10 碼，或 +8869 開頭）。');return false;}
+        if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)||email.length>120){alert('請輸入有效的 Email。');return false;}
+        if(el('custNotes').value.length>500){alert('備註不可超過 500 字。');return false;}
+        return true;
+      }
+      function validateStep3AndNext(){goToStep(4);}
+      function setMenuEligible(){
+        const d=Date.parse(state.date+'T12:00:00+08:00'),n=Date.parse(localDate()+'T12:00:00+08:00');
+        return ![5,6].includes(dayIndex(state.date)) && (d-n)>=3*86400000;
+      }
+      function handleSetMenuToggle(){
+        const a=el('setMenuRuleAlert'),m=el('setMenuRuleMsg');a.classList.add('hidden');
+        if(!el('addSetMenu').checked)return;
+        if(!setMenuEligible()){
+          el('addSetMenu').checked=false;
+          m.textContent=[5,6].includes(dayIndex(state.date))?'司宴套餐週五與週六不供應，請選擇其他日期。':'司宴套餐需提前至少 3 日預訂，請取消勾選或改選日期。';
+          a.classList.remove('hidden');
+        }
+      }
+      function populateSummary(){
+        el('sumDate').textContent=state.date;el('sumTime').textContent=state.time;
+        el('sumGuests').textContent=state.guests+' 位';el('sumMinSpend').textContent=`${money(state.minSpend*state.guests)}（${money(state.minSpend)}/位）`;
+        handleSetMenuToggle();
+      }
+      function newId(){return (window.crypto&&crypto.randomUUID)?crypto.randomUUID():Date.now().toString(36)+'-'+Math.random().toString(36).slice(2);}
+      async function submitBooking(){
+        const error=el('submitError');error.classList.add('hidden');
+        if(!validateContact()||!state.time){error.textContent='請確認基本資料及用餐時段。';error.classList.remove('hidden');return;}
+        if(!el('acceptTerms').checked){error.textContent='請先閱讀並勾選同意訂位規則與個資告知。';error.classList.remove('hidden');return;}
+        if(!IS_LIVE){error.textContent='目前是離線展示版，不會建立真正訂位。請依說明部署 Google Apps Script 正式版本。';error.classList.remove('hidden');return;}
+        if(!state.config?.enabled){error.textContent='店家尚未開放線上訂位。';error.classList.remove('hidden');return;}
+        if(state.loading)return;
+        state.loading=true;const btn=el('btnSubmit');btn.disabled=true;const old=btn.innerHTML;btn.textContent='正在確認剩餘席位並儲存…';
+        if(!state.requestId)state.requestId=newId();
+        const payload={requestId:state.requestId,date:state.date,time:state.time,guests:state.guests,
+          name:el('custName').value.trim(),phone:el('custPhone').value.trim(),email:el('custEmail').value.trim(),
+          member:document.querySelector('input[name="isMember"]:checked').value==='yes',
+          notes:el('custNotes').value.trim(),setMenu:el('addSetMenu').checked,
+          consent:true,website:el('companyWebsite').value,formStartedAt:state.formStartedAt};
+        try{
+          const result=await asyncServer('registerBooking',payload);
+          if(!result||!result.ok)throw new Error((result&&result.message)||'訂位未完成，請稍後重試');
+          showSuccess(result);state.requestId=null;
+        }catch(e){error.textContent=(e&&e.message)?e.message:'系統連線失敗。無法確認是否建檔，請聯絡店家查詢，避免重複送出。';error.classList.remove('hidden');}
+        finally{state.loading=false;btn.disabled=false;btn.innerHTML=old;}
+      }
+      function showSuccess(r){
+        const confirmed=r.status==='CONFIRMED';
+        el('ticketStatus').textContent=confirmed?'訂位已確認':'已收到訂位申請（待確認）';
+        el('ticketSubtext').textContent=confirmed?'系統已確認席位；首次入會、訂金與特殊需求請依店家後續通知辦理。':'此為訂位申請收件編號，收到店家正式確認通知後才算預約成功。';
+        const values={ticketId:r.bookingId,ticketName:el('custName').value.trim(),ticketPhone:el('custPhone').value.trim(),
+          ticketDate:r.date,ticketTime:r.time+' – '+r.endTime,ticketGuests:r.guests+' 位',
+          ticketMinSpend:`${money(r.totalMinSpend)}（${money(r.minSpendPerPerson)}/位）`,
+          ticketMember:r.member?'會員':'非會員',ticketSetMenu:r.setMenu?'已提出司宴套餐需求':'未加購'};
+        for(const [k,v] of Object.entries(values))el(k).textContent=v;
+        const notes=el('custNotes').value.trim();el('ticketNotesRow').classList.toggle('hidden',!notes);el('ticketNotes').textContent=notes;
+        el('successModal').classList.remove('hidden');
+      }
+      function resetSystem(){
+        el('successModal').classList.add('hidden');el('bookingForm').reset();el('resDate').min=localDate();el('resDate').value=localDate();
+        state.guests=0;state.time='';state.formStartedAt=Date.now();state.requestId=null;
+        handleDateChange();goToStep(1);
+      }
+      function openInfoModal(){el('infoModal').classList.remove('hidden');}
+      function closeInfoModal(){el('infoModal').classList.add('hidden');}
+    </script>
+</body>
+</html>
