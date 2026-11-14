@@ -2115,7 +2115,7 @@ html{font-family:Arial,'Microsoft JhengHei','PingFang TC',sans-serif;}
                             </div>
                             <div>
                                 <label class="block text-sm font-medium text-gray-300 mb-1.5">聯絡電話 <span class="text-amber-500">*</span></label>
-                                <input type="tel" id="custPhone" required placeholder="例如：0912345678"
+                                <input type="tel" id="custPhone" required placeholder="09XXXXXXXX 或 +國碼電話"
                                     class="w-full bg-brand-dark border border-gray-700 rounded-xl px-4 py-3 text-white gold-border-focus focus:outline-none transition-all text-sm">
                             </div>
                         </div>
@@ -2745,7 +2745,7 @@ function applyConfig() {
       function validateContact(){
         const name=el('custName').value.trim(),phone=el('custPhone').value.trim(),email=el('custEmail').value.trim();
         if(name.length<2||name.length>60){alert('請輸入 2–60 字的訂位姓名。');return false;}
-        if(!/^(09\d{8}|\+8869\d{8})$/.test(phone)){alert('請輸入有效台灣手機（09 開頭 10 碼，或 +8869 開頭）。');return false;}
+        if(!/^(09\d{8}|\+[1-9]\d{7,14})$/.test(phone.replace(/[\s-]/g,''))){alert('請輸入有效手機號碼，海外電話請加國碼。');return false;}
         if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)||email.length>120){alert('請輸入有效的 Email。');return false;}
         if(el('custNotes').value.length>500){alert('備註不可超過 500 字。');return false;}
         if(!['yes','no'].includes(el('withChildUnder12').value)){alert('請確認是否攜帶 12 歲以下孩童。');return false;}
