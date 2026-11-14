@@ -1976,7 +1976,7 @@ html{font-family:Arial,'Microsoft JhengHei','PingFang TC',sans-serif;}
             <div class="flex-1 h-0.5 bg-brand-card border-t border-amber-500/20 mx-2"></div>
             <div class="flex flex-col items-center step-ind" data-step="4">
                 <div class="w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold border border-gray-700 bg-brand-card text-gray-400 mb-1 transition-all">4</div>
-                <span class="text-xs text-gray-400">套餐選購</span>
+                <span class="text-xs text-gray-400">套餐需求</span>
             </div>
         </div>
 
@@ -2203,7 +2203,7 @@ html{font-family:Arial,'Microsoft JhengHei','PingFang TC',sans-serif;}
                         </button>
                         <button type="button" onclick="validateStep3AndNext()"
                             class="gold-gradient-bg text-brand-dark font-semibold px-6 py-3 rounded-xl text-sm transition-all hover:opacity-90 flex items-center space-x-2">
-                            <span>下一步：套餐選購</span>
+                            <span>下一步：套餐需求</span>
                             <i class="fa-solid fa-arrow-right"></i>
                         </button>
                     </div>
@@ -2303,7 +2303,7 @@ html{font-family:Arial,'Microsoft JhengHei','PingFang TC',sans-serif;}
                         <button type="button" onclick="submitBooking()" id="btnSubmit"
                             class="gold-gradient-bg text-brand-dark font-bold px-8 py-3 rounded-xl text-sm transition-all hover:opacity-90 flex items-center space-x-2 shadow-lg">
                             <i class="fa-solid fa-circle-check"></i>
-                            <span>確認送出預約</span>
+                            <span>查看訂位資料摘要</span>
                         </button>
                     </div>
                 </div>
@@ -2639,8 +2639,8 @@ function applyConfig() {
         state.step=1;
         handleDateChange();
         if(!IS_LIVE) el('systemBanner').classList.add('hidden');
-        else if(!c.enabled) banner('店家尚未開放線上訂位。網頁可瀏覽，但目前無法送出預約。請聯絡店家。');
-        else banner(c.bookingMode==='AUTO'?'系統已連線：送出後即時核對並確認席位；首次入會及特殊需求仍依店家通知辦理。':'系統已連線：可提交訂位申請，收到店家確認後才算預約成功。','ok');
+        else if(!c.enabled) banner('目前暫停受理線上訂位，歡迎透過電話或 Instagram 與我們聯繫。');
+        else banner(c.bookingMode==='AUTO'?'線上訂位已開放。完成申請後，我們會協助確認會員資料與特殊需求。':'歡迎提出訂位申請。收到正式確認通知後，席位才會保留。','ok');
       }
       function populateDateOptions(){
         const select=el('resDate');
@@ -2790,7 +2790,7 @@ function applyConfig() {
         if(!el('addSetMenu').checked)return;
         if(!setMenuEligible()){
           el('addSetMenu').checked=false;
-          m.textContent=[5,6].includes(dayIndex(state.date))?'司宴套餐週五與週六不供應，請選擇其他日期。':'司宴套餐需提前至少 3 日預訂，請取消勾選或改選日期。';
+          m.textContent=[5,6].includes(dayIndex(state.date))?'「司宴」套餐於週五、週六暫不供應，歡迎選擇其他用餐日期。':'「司宴」套餐需至少提前 3 天預訂，歡迎調整用餐日期或先與我們聯繫。';
           a.classList.remove('hidden');
         }
       }
@@ -2803,13 +2803,13 @@ function applyConfig() {
       async function submitBooking(){
         const error=el('submitError');error.classList.add('hidden');
         if(!validateContact()||!state.time){error.textContent='請確認基本資料及用餐時段。';error.classList.remove('hidden');return;}
-        if(!el('acceptTerms').checked){error.textContent='請先閱讀並勾選同意訂位規則與個資告知。';error.classList.remove('hidden');return;}
+        if(!el('acceptTerms').checked){error.textContent='請先閱讀並勾選訂位須知與流程體驗說明。';error.classList.remove('hidden');return;}
         if(!IS_LIVE){
           const startMinutes=Number(state.time.slice(0,2))*60+Number(state.time.slice(3,5));
           showSuccess({demo:true,status:'DEMO',bookingId:'DEMO-'+state.date.replace(/-/g,'')+'-'+String(Math.floor(Math.random()*100000)).padStart(5,'0'),date:state.date,time:state.time,endTime:minsToHHMM(startMinutes+120),guests:state.guests,member:document.querySelector('input[name="isMember"]:checked').value==='yes',setMenu:el('addSetMenu').checked,minSpendPerPerson:state.minSpend,totalMinSpend:state.minSpend*state.guests});
           return;
         }
-        if(!state.config?.enabled){error.textContent='店家尚未開放線上訂位。';error.classList.remove('hidden');return;}
+        if(!state.config?.enabled){error.textContent='目前尚未開放線上訂位，歡迎透過電話或 Instagram 洽詢。';error.classList.remove('hidden');return;}
         if(state.loading)return;
         state.loading=true;const btn=el('btnSubmit');btn.disabled=true;const old=btn.innerHTML;btn.textContent='正在確認剩餘席位並儲存…';
         if(!state.requestId)state.requestId=newId();
@@ -2825,17 +2825,17 @@ function applyConfig() {
           const result=await asyncServer('registerBooking',payload);
           if(!result||!result.ok)throw new Error((result&&result.message)||'訂位未完成，請稍後重試');
           showSuccess(result);state.requestId=null;
-        }catch(e){error.textContent=(e&&e.message)?e.message:'系統連線失敗。無法確認是否建檔，請聯絡店家查詢，避免重複送出。';error.classList.remove('hidden');}
+        }catch(e){error.textContent=(e&&e.message)?e.message:'目前無法確認訂位申請是否送出，請先透過電話與我們查詢，避免重複提交。';error.classList.remove('hidden');}
         finally{state.loading=false;btn.disabled=false;btn.innerHTML=old;}
       }
       function showSuccess(r){
         const confirmed=r.status==='CONFIRMED';
         el('ticketStatus').textContent=r.demo?'網站體驗完成（未建立訂位）':(confirmed?'訂位已確認':'已收到訂位申請（待確認）');
-        el('ticketSubtext').textContent=r.demo?'這是網站流程展示，沒有傳送、儲存或建立真實訂位，請勿將 DEMO 編號視為訂位證明。':(confirmed?'系統已確認席位；首次入會、訂金與特殊需求請依店家後續通知辦理。':'此為訂位申請收件編號，收到店家正式確認通知後才算預約成功。');
+        el('ticketSubtext').textContent=r.demo?'這是網站流程展示，沒有傳送、儲存或建立真實訂位，請勿將 DEMO 編號視為訂位證明。':(confirmed?'您的席位已確認。如有會員、訂金或特殊需求安排，我們將另外與您聯繫。':'已收到您的訂位申請，請留意後續 Email 確認通知。');
         const values={ticketId:r.bookingId,ticketName:el('custName').value.trim(),ticketPhone:el('custPhone').value.trim(),
           ticketDate:r.date,ticketTime:r.time+' – '+r.endTime,ticketGuests:r.guests+' 位',
           ticketMinSpend:`${money(r.totalMinSpend)}（${money(r.minSpendPerPerson)}/位）`,
-          ticketMember:r.member?'會員':'非會員',ticketSetMenu:r.setMenu?'已提出司宴套餐需求':'未加購'};
+          ticketMember:r.member?'會員':'非會員',ticketSetMenu:r.setMenu?'已提出司宴套餐需求':'未加選'};
         for(const [k,v] of Object.entries(values))el(k).textContent=v;
         const notes=el('custNotes').value.trim();el('ticketNotesRow').classList.toggle('hidden',!notes);el('ticketNotes').textContent=notes;
         el('successModal').classList.remove('hidden');
