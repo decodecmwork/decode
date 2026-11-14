@@ -1906,7 +1906,7 @@ html{font-family:Arial,'Microsoft JhengHei','PingFang TC',sans-serif;}
       <div class="shell-wide">
         <div class="text-center max-w-2xl mx-auto mb-11"><p class="section-eyebrow mb-4">The Menu / 皇城司菜單</p>
           <h2 class="section-title mb-5">請您以左右切換翻頁方式查看</h2>
-          <p class="text-[#a78959] text-xs mt-4">想了解最新供應品項與價格，歡迎透過訂位專線或官方 Instagram 洽詢。</p></div>
+          <p class="text-[#a78959] text-xs mt-4">對餐點有任何問題，都歡迎來電或透過官方 Instagram 私訊洽詢。</p></div>
 
         <div class="book-stage">
           <div class="book-topbar">
@@ -2022,7 +2022,7 @@ html{font-family:Arial,'Microsoft JhengHei','PingFang TC',sans-serif;}
             <div class="flex-1 h-0.5 bg-brand-card border-t border-amber-500/20 mx-2"></div>
             <div class="flex flex-col items-center step-ind" data-step="4">
                 <div class="w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold border border-gray-700 bg-brand-card text-gray-400 mb-1 transition-all">4</div>
-                <span class="text-xs text-gray-400">套餐需求</span>
+                <span class="text-xs text-gray-400">確認資料</span>
             </div>
         </div>
 
@@ -2203,10 +2203,28 @@ html{font-family:Arial,'Microsoft JhengHei','PingFang TC',sans-serif;}
                                 <input type="text" id="remittanceLast5" maxlength="5" inputmode="numeric" autocomplete="off" pattern="[0-9]{5}" placeholder="例如：01234" class="w-full bg-brand-dark border border-gray-700 rounded-xl px-4 py-3 text-white gold-border-focus focus:outline-none text-sm">
                             </div>
                         </div>
-                        <div id="nonMemberExtraFields">
-                            <label class="block text-sm font-medium text-gray-300 mb-1.5">您的 Instagram 使用者名稱（非會員選填）</label>
-                            <input type="text" id="custInstagram" maxlength="80" placeholder="例如 @yourname（不需要貼完整網址）" class="w-full bg-brand-dark border border-gray-700 rounded-xl px-4 py-3 text-white gold-border-focus focus:outline-none text-sm">
-                            <p class="text-xs text-gray-400 mt-2">請填寫 Instagram 使用者名稱（例如 @yourname），方便我們在需要時與您聯繫。</p>
+                        <div id="nonMemberExtraFields" class="rounded-xl border border-amber-500/25 bg-brand-dark p-4 space-y-4">
+                            <p class="text-amber-200 text-sm font-semibold">首次入會資訊</p>
+                            <p class="text-gray-300 text-xs leading-relaxed">皇城司原訂位表單說明：首次入會預付 NT$1,000 訂金，可於首次入會當日折抵消費；會員卡製作約需 7 個工作日。</p>
+                            <div class="rounded-lg border border-amber-500/20 bg-amber-500/5 px-3 py-3 text-xs text-gray-300 leading-relaxed">
+                                <p class="font-semibold text-brand-gold mb-1">入會匯款資料</p>
+                                <p>銀行：台新銀行（812）</p>
+                                <p>正式匯款帳號請透過皇城司官方 Instagram 確認；本頁僅為提案展示，不接受入會付款，請勿依本頁匯款。</p>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-300 mb-1.5" for="newMemberNickname">會員卡暱稱 <span class="text-amber-500">*</span></label>
+                                <input type="text" id="newMemberNickname" maxlength="60" placeholder="希望印在會員卡上的暱稱" class="w-full bg-brand-dark border border-gray-700 rounded-xl px-4 py-3 text-white gold-border-focus focus:outline-none text-sm">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-300 mb-1.5" for="newMemberRemittanceLast5">匯款帳號後五碼 <span class="text-amber-500">*</span></label>
+                                <input type="text" id="newMemberRemittanceLast5" maxlength="5" inputmode="numeric" autocomplete="off" pattern="[0-9]{5}" placeholder="例如 12345（展示請使用測試數字）" class="w-full bg-brand-dark border border-gray-700 rounded-xl px-4 py-3 text-white gold-border-focus focus:outline-none text-sm">
+                                <p class="text-xs text-gray-400 mt-2">正式入會可用於核對匯款資訊；展示版請勿輸入真實金融資料。</p>
+                            </div>
+                        </div>
+                        <div id="instagramCommonField">
+                            <label class="block text-sm font-medium text-gray-300 mb-1.5" for="custInstagram">您的 IG 帳號 <span class="text-amber-500">*</span></label>
+                            <input type="text" id="custInstagram" required maxlength="80" placeholder="例如 @yourname（不需要貼完整網址）" class="w-full bg-brand-dark border border-gray-700 rounded-xl px-4 py-3 text-white gold-border-focus focus:outline-none text-sm">
+                            <p class="text-xs text-gray-400 mt-2">以利有任何訂位上的問題，將及時私訊告知。</p>
                         </div>
                         <div>
                             <label class="block text-sm font-medium text-gray-300 mb-1.5">是否攜帶 12 歲以下孩童用餐？ <span class="text-amber-500">*</span></label>
@@ -2249,62 +2267,26 @@ html{font-family:Arial,'Microsoft JhengHei','PingFang TC',sans-serif;}
                         </button>
                         <button type="button" onclick="validateStep3AndNext()"
                             class="gold-gradient-bg text-brand-dark font-semibold px-6 py-3 rounded-xl text-sm transition-all hover:opacity-90 flex items-center space-x-2">
-                            <span>下一步：套餐需求</span>
+                            <span>下一步：確認資料</span>
                             <i class="fa-solid fa-arrow-right"></i>
                         </button>
                     </div>
                 </div>
 
-                <!-- STEP 4: Set Menu Add-on & Validation -->
+                <!-- STEP 4: Review only; no unverified menu product upsell -->
                 <div class="form-step hidden" id="step-4">
                     <h3 class="font-serif text-xl font-bold text-white mb-2 flex items-center">
-                        <span class="w-7 h-7 rounded-full bg-amber-500/20 text-brand-gold text-sm flex items-center justify-center mr-2">4</span>
-                        精選套餐預訂（選填）
+                        <span class="w-7 h-7 rounded-full bg-amber-500/20 text-brand-gold text-sm flex items-center justify-center mr-2">4</span>確認訂位資料
                     </h3>
-                    <p class="text-gray-400 text-xs md:text-sm mb-6">皇城司招牌限定「司宴」套餐，需提前 3 日預訂（週五週六不供應）。</p>
-
-                    <!-- Set Menu Card -->
-                    <div class="bg-brand-dark border border-amber-500/30 rounded-xl p-5 mb-6 relative overflow-hidden">
-                        <div class="flex items-start justify-between">
-                            <div class="flex items-start space-x-4">
-                                <div class="w-12 h-12 rounded-xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center flex-shrink-0 text-brand-gold text-lg">
-                                    <i class="fa-solid fa-utensils"></i>
-                                </div>
-                                <div>
-                                    <div class="flex items-center space-x-2">
-                                        <h4 class="font-serif font-bold text-white text-base">「司宴」限定套餐</h4>
-                                        <span class="px-2 py-0.5 rounded text-[10px] font-semibold bg-brand-gold text-brand-dark">預約限定</span>
-                                    </div>
-                                    <p class="text-xs text-gray-300 mt-1 leading-relaxed">
-                                        想品嚐「司宴」限定套餐？歡迎於訂位時一併提出需求，我們將與您確認餐點內容與價格。
-                                    </p>
-                                    <span class="text-[11px] text-amber-400/80 mt-2 block">
-                                        <i class="fa-solid fa-triangle-exclamation mr-1"></i> 請於<strong>用餐日至少 3 天前</strong>提出套餐預訂需求
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="mt-4 pt-4 border-t border-gray-800 flex items-center justify-between">
-                            <label class="cursor-pointer flex items-center space-x-3">
-                                <input type="checkbox" id="addSetMenu" onchange="handleSetMenuToggle()" class="w-5 h-5 rounded text-brand-gold focus:ring-amber-500 bg-brand-dark border-gray-700">
-                                <span class="text-sm font-medium text-white">我想預訂「司宴」限定套餐</span>
-                            </label>
-                        </div>
+                    <p class="text-gray-400 text-xs md:text-sm mb-6">請確認用餐日期、人數與聯絡資訊正確，再查看訂位資料摘要。</p>
+                    <div class="rounded-xl border border-amber-500/25 bg-brand-dark p-4 mb-5 text-xs md:text-sm leading-relaxed text-gray-300">
+                        <p class="text-brand-gold font-semibold mb-2">特殊套餐提醒</p>
+                        <p>原訂位須知提及「司宴」套餐，若需預訂，請於前一步「備註需求」說明。需至少提前 3 天預約，週五與週六不供應。</p>
                     </div>
-
-                    <!-- Rule check warning banner for set menu -->
-                    <div id="setMenuRuleAlert" class="hidden mb-6 bg-rose-500/10 border border-rose-500/40 rounded-xl p-4 text-xs md:text-sm text-rose-200">
-                        <div class="flex items-center space-x-2.5">
-                            <i class="fa-solid fa-circle-xmark text-rose-400 text-base"></i>
-                            <span id="setMenuRuleMsg">「司宴」套餐需至少提前 3 天預訂，歡迎調整用餐日期或先與我們聯繫。</span>
-                        </div>
-                    </div>
-
                     <div class="rounded-xl border border-amber-500/25 bg-brand-dark p-4 mb-5 text-xs md:text-sm leading-relaxed text-gray-300">
                        <p class="text-brand-gold font-semibold mb-2">訂位與會員須知</p>
                        <p>用餐時間為 120 分鐘，席位保留 10 分鐘，逾時可能開放現場候位。當日 17:30 後請直接來電訂位。正式申請送出後，預計於 24 小時內透過 Email 回覆；收到確認通知後，才代表訂位成立。</p>
-                       <p class="mt-2">會員卡與匯款帳號資訊用於核對會員資料，不代表付款完成。若需更改或取消訂位、了解會員權益與套餐安排，歡迎透過電話或官方 Instagram 與我們聯繫。</p>
+                       <p class="mt-2">會員卡與匯款帳號資訊用於核對會員資料，不代表付款完成。若需更改或取消訂位、了解會員權益，歡迎透過電話或官方 Instagram 與我們聯繫。</p>
                     </div>
                     <!-- Summary overview before final submission -->
                     <div class="bg-brand-dark/60 border border-gray-800 rounded-xl p-4 mb-6 text-xs md:text-sm space-y-2">
@@ -2804,6 +2786,7 @@ function applyConfig() {
         const member=document.querySelector('input[name="isMember"]:checked')?.value==='yes';
         el('memberExtraFields').classList.toggle('hidden',!member);
         el('nonMemberExtraFields').classList.toggle('hidden',member);
+        el('custInstagram').required=true;
       }
       function selectedDiscoveryChannels(){
         return Array.from(document.querySelectorAll('input[name="discoveryChannel"]:checked'),x=>x.value);
@@ -2820,30 +2803,20 @@ function applyConfig() {
         if(!['yes','no'].includes(el('withChildUnder12').value)){alert('請確認是否攜帶 12 歲以下孩童。');return false;}
         const member=document.querySelector('input[name="isMember"]:checked')?.value==='yes';
         if(member&&!el('memberNickname').value.trim()){alert('會員請填寫會員卡暱稱。');return false;}
-        if(member&&!/^\d{5}$/.test(el('remittanceLast5').value.trim())){alert('會員請填寫匯款帳號後五碼。');return false;}
+        if(member&&!/^\d{5}$/.test(el('remittanceLast5').value.trim())){alert('請填寫匯款帳號後五碼（5 位數字）。');return false;}
+        if(!member&&!el('newMemberNickname').value.trim()){alert('首次入會請填寫會員卡暱稱。');return false;}
+        if(!member&&!/^\d{5}$/.test(el('newMemberRemittanceLast5').value.trim())){alert('首次入會請填寫匯款帳號後五碼（可使用測試數字）。');return false;}
+        const ig=el('custInstagram').value.trim().replace(/^@/,'');
+        if(!/^[A-Za-z0-9._]{1,30}$/.test(ig)){alert('請填寫您的 IG 帳號，例如 @yourname。');return false;}
         const channels=selectedDiscoveryChannels();
         if(!channels.length){alert('請選擇至少一項得知本店的管道。');return false;}
         if(channels.includes('其他')&&!el('discoveryOther').value.trim()){alert('請填寫其他得知管道說明。');return false;}
         return true;
       }
       function validateStep3AndNext(){goToStep(4);}
-      function setMenuEligible(){
-        const d=Date.parse(state.date+'T12:00:00+08:00'),n=Date.parse(localDate()+'T12:00:00+08:00');
-        return ![5,6].includes(dayIndex(state.date)) && (d-n)>=3*86400000;
-      }
-      function handleSetMenuToggle(){
-        const a=el('setMenuRuleAlert'),m=el('setMenuRuleMsg');a.classList.add('hidden');
-        if(!el('addSetMenu').checked)return;
-        if(!setMenuEligible()){
-          el('addSetMenu').checked=false;
-          m.textContent=[5,6].includes(dayIndex(state.date))?'「司宴」套餐於週五、週六暫不供應，歡迎選擇其他用餐日期。':'「司宴」套餐需至少提前 3 天預訂，歡迎調整用餐日期或先與我們聯繫。';
-          a.classList.remove('hidden');
-        }
-      }
       function populateSummary(){
         el('sumDate').textContent=state.date;el('sumTime').textContent=state.time;
         el('sumGuests').textContent=state.guests+' 位';el('sumMinSpend').textContent=`${money(state.minSpend*state.guests)}（${money(state.minSpend)}/位）`;
-        handleSetMenuToggle();
       }
       function newId(){return (window.crypto&&crypto.randomUUID)?crypto.randomUUID():Date.now().toString(36)+'-'+Math.random().toString(36).slice(2);}
       async function submitBooking(){
@@ -2852,7 +2825,7 @@ function applyConfig() {
         if(!el('acceptTerms').checked){error.textContent='請先閱讀並勾選訂位須知與流程體驗說明。';error.classList.remove('hidden');return;}
         if(!IS_LIVE){
           const startMinutes=Number(state.time.slice(0,2))*60+Number(state.time.slice(3,5));
-          showSuccess({demo:true,status:'DEMO',bookingId:'DEMO-'+state.date.replace(/-/g,'')+'-'+String(Math.floor(Math.random()*100000)).padStart(5,'0'),date:state.date,time:state.time,endTime:minsToHHMM(startMinutes+120),guests:state.guests,member:document.querySelector('input[name="isMember"]:checked').value==='yes',setMenu:el('addSetMenu').checked,minSpendPerPerson:state.minSpend,totalMinSpend:state.minSpend*state.guests});
+          showSuccess({demo:true,status:'DEMO',bookingId:'DEMO-'+state.date.replace(/-/g,'')+'-'+String(Math.floor(Math.random()*100000)).padStart(5,'0'),date:state.date,time:state.time,endTime:minsToHHMM(startMinutes+120),guests:state.guests,member:document.querySelector('input[name="isMember"]:checked').value==='yes',setMenu:false,minSpendPerPerson:state.minSpend,totalMinSpend:state.minSpend*state.guests});
           return;
         }
         if(!state.config?.enabled){error.textContent='目前尚未開放線上訂位，歡迎透過電話或 Instagram 洽詢。';error.classList.remove('hidden');return;}
@@ -2865,7 +2838,7 @@ function applyConfig() {
           memberNickname:el('memberNickname').value.trim(),remittanceLast5:el('remittanceLast5').value.trim(),
           instagram:el('custInstagram').value.trim(),under12:el('withChildUnder12').value,
           discoveryChannels:selectedDiscoveryChannels(),discoveryOther:el('discoveryOther').value.trim(),
-          notes:el('custNotes').value.trim(),setMenu:el('addSetMenu').checked,
+          notes:el('custNotes').value.trim(),setMenu:false,
           consent:true,website:el('companyWebsite').value,formStartedAt:state.formStartedAt};
         try{
           const result=await asyncServer('registerBooking',payload);
@@ -2881,7 +2854,7 @@ function applyConfig() {
         const values={ticketId:r.bookingId,ticketName:el('custName').value.trim(),ticketPhone:el('custPhone').value.trim(),
           ticketDate:r.date,ticketTime:r.time+' – '+r.endTime,ticketGuests:r.guests+' 位',
           ticketMinSpend:`${money(r.totalMinSpend)}（${money(r.minSpendPerPerson)}/位）`,
-          ticketMember:r.member?'會員':'非會員',ticketSetMenu:r.setMenu?'已提出司宴套餐需求':'未加選'};
+          ticketMember:r.member?'會員':'非會員',ticketSetMenu:'如有需要，請查看備註'};
         for(const [k,v] of Object.entries(values))el(k).textContent=v;
         const notes=el('custNotes').value.trim();el('ticketNotesRow').classList.toggle('hidden',!notes);el('ticketNotes').textContent=notes;
         el('successModal').classList.remove('hidden');
