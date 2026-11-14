@@ -1634,6 +1634,52 @@
           .visit-grid{grid-template-columns:1fr}.visit-info{padding:26px}.shell-wide{padding-inline:18px}
           .dish-card{padding:18px;min-height:154px}.dish-art{width:58px;min-width:58px;height:58px;font-size:18px} }
         @media (max-width:430px){.nav-link{font-size:.7rem;letter-spacing:0}.nav-wide{gap:12px!important}}
+        /* Mobile navigation: brand on top and all three destinations visible below. */
+        @media (max-width:639px){
+          header .shell-wide{
+            position:relative;
+            flex-direction:column;
+            align-items:stretch;
+            gap:9px;
+            padding-top:10px;
+            padding-bottom:0;
+          }
+          header .shell-wide > a[aria-label="皇城司首頁"]{
+            width:calc(100% - 48px);
+            min-height:42px;
+          }
+          header .nav-wide{
+            display:flex;
+            align-items:center;
+            width:100%;
+            justify-content:space-between;
+            gap:0!important;
+            border-top:1px solid rgba(212,175,55,.16);
+            padding:4px 0 6px;
+          }
+          header .nav-wide .nav-link{
+            display:block;
+            flex:1 1 0;
+            min-width:0;
+            padding:9px 0;
+            white-space:nowrap;
+            text-align:center;
+            font-size:13px;
+            letter-spacing:.03em;
+          }
+          header .nav-wide button{
+            position:absolute;
+            right:16px;
+            top:14px;
+            padding:6px;
+            min-width:35px;
+            min-height:35px;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+          }
+          section[id]{scroll-margin-top:120px;}
+        }
     
 
 /* Self-contained icon fallback. This offline demo requires no font downloads. */
@@ -1830,7 +1876,7 @@ html{font-family:Arial,'Microsoft JhengHei','PingFang TC',sans-serif;}
           <span class="text-[10px] tracking-[.18em] text-amber-200/70 hidden sm:block">THE SPY BAR & BISTRO</span></span>
         </a>
         <nav class="nav-wide flex gap-4 sm:gap-7 items-center" aria-label="主選單">
-          <a class="nav-link" href="#menu">探索菜單</a><a class="nav-link" href="#booking">線上訂位</a><a class="nav-link hidden sm:inline" href="#visit">到訪資訊</a>
+          <a class="nav-link" href="#menu">探索菜單</a><a class="nav-link" href="#booking">線上訂位</a><a class="nav-link" href="#visit">位置資訊</a>
           <button type="button" onclick="openInfoModal()" aria-label="查看訂位須知" class="text-brand-gold text-lg"><i class="fa-solid fa-circle-info"></i></button>
         </nav>
       </div>
