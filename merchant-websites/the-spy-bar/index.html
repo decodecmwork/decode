@@ -2030,6 +2030,8 @@ html{font-family:Arial,'Microsoft JhengHei','PingFang TC',sans-serif;}
                             <span id="minSpendBadge" class="px-2.5 py-1 rounded-full text-xs font-bold bg-brand-gold text-brand-dark"></span>
                         </div>
 
+                        <div id="sameDayCutoffNotice" class="hidden bg-rose-500/10 border border-rose-500/40 rounded-xl p-4 text-sm text-rose-200">依店家訂位規則，當日 17:30 後請直接電話聯繫訂位；未來日期仍可線上申請。</div>
+
                         <!-- Large Group Alert (More than 8 people) -->
                         <div id="largeGroupWarning" class="hidden bg-rose-500/10 border border-rose-500/40 rounded-xl p-5 text-rose-200">
                             <div class="flex items-start space-x-3">
@@ -2129,15 +2131,56 @@ html{font-family:Arial,'Microsoft JhengHei','PingFang TC',sans-serif;}
                             <label class="block text-sm font-medium text-gray-300 mb-2">請問您是否持有皇城司會員卡？ <span class="text-amber-500">*</span></label>
                             <div class="grid grid-cols-2 gap-3">
                                 <label class="cursor-pointer border border-gray-700 hover:border-brand-gold bg-brand-dark rounded-xl p-3.5 flex items-center space-x-3 transition-all has-[:checked]:border-brand-gold has-[:checked]:bg-amber-500/10">
-                                    <input type="radio" name="isMember" value="yes" class="text-brand-gold focus:ring-amber-500 bg-brand-dark border-gray-700">
+                                    <input type="radio" name="isMember" value="yes" onchange="updateMemberFields()" class="text-brand-gold focus:ring-amber-500 bg-brand-dark border-gray-700">
                                     <span class="text-sm font-medium text-white">是，我是會員</span>
                                 </label>
                                 <label class="cursor-pointer border border-gray-700 hover:border-brand-gold bg-brand-dark rounded-xl p-3.5 flex items-center space-x-3 transition-all has-[:checked]:border-brand-gold has-[:checked]:bg-amber-500/10">
-                                    <input type="radio" name="isMember" value="no" checked class="text-brand-gold focus:ring-amber-500 bg-brand-dark border-gray-700">
+                                    <input type="radio" name="isMember" value="no" checked onchange="updateMemberFields()" class="text-brand-gold focus:ring-amber-500 bg-brand-dark border-gray-700">
                                     <span class="text-sm font-medium text-white">否，目前還不是</span>
                                 </label>
                             </div>
                         </div>
+
+                        <!-- Member-only details / follow existing merchant Google Form -->
+                        <div id="memberExtraFields" class="hidden rounded-xl border border-amber-500/25 bg-brand-dark p-4 space-y-4">
+                            <p class="text-amber-200 text-sm font-semibold">會員專屬資料核對</p>
+                            <p class="text-gray-400 text-xs leading-relaxed">會員卡暱稱及匯款帳號後五碼僅供店家核對；填寫不代表已付款或已完成訂位。</p>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-300 mb-1.5">會員卡暱稱 <span class="text-amber-500">*</span></label>
+                                <input type="text" id="memberNickname" maxlength="60" placeholder="請填寫會員卡上顯示的暱稱" class="w-full bg-brand-dark border border-gray-700 rounded-xl px-4 py-3 text-white gold-border-focus focus:outline-none text-sm">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-300 mb-1.5">匯款帳號後五碼 <span class="text-amber-500">*</span></label>
+                                <input type="text" id="remittanceLast5" maxlength="5" inputmode="numeric" autocomplete="off" pattern="[0-9]{5}" placeholder="例如：01234" class="w-full bg-brand-dark border border-gray-700 rounded-xl px-4 py-3 text-white gold-border-focus focus:outline-none text-sm">
+                            </div>
+                        </div>
+                        <div id="nonMemberExtraFields">
+                            <label class="block text-sm font-medium text-gray-300 mb-1.5">您的 IG 帳號（非會員選填）</label>
+                            <input type="text" id="custInstagram" maxlength="80" placeholder="@youraccount，方便店家聯繫" class="w-full bg-brand-dark border border-gray-700 rounded-xl px-4 py-3 text-white gold-border-focus focus:outline-none text-sm">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-300 mb-1.5">是否攜帶 12 歲以下孩童用餐？ <span class="text-amber-500">*</span></label>
+                            <select id="withChildUnder12" required class="w-full bg-brand-dark border border-gray-700 rounded-xl px-4 py-3 text-white gold-border-focus focus:outline-none text-sm">
+                                <option value="">請選擇</option><option value="yes">是</option><option value="no">否</option>
+                            </select>
+                        </div>
+                        <fieldset class="rounded-xl border border-gray-700 p-4">
+                            <legend class="text-sm text-gray-300 font-medium px-1">如何得知本店？（可複選） <span class="text-amber-500">*</span></legend>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm text-gray-200 mt-2">
+                                <label class="flex items-center gap-2"><input type="checkbox" name="discoveryChannel" value="FB/IG廣告">FB／IG 廣告</label>
+                                <label class="flex items-center gap-2"><input type="checkbox" name="discoveryChannel" value="官方Reels">官方 Reels</label>
+                                <label class="flex items-center gap-2"><input type="checkbox" name="discoveryChannel" value="美食網紅推薦">美食網紅推薦</label>
+                                <label class="flex items-center gap-2"><input type="checkbox" name="discoveryChannel" value="Google map">Google map</label>
+                                <label class="flex items-center gap-2"><input type="checkbox" name="discoveryChannel" value="Google搜尋">Google 搜尋</label>
+                                <label class="flex items-center gap-2"><input type="checkbox" name="discoveryChannel" value="朋友介紹">朋友介紹</label>
+                                <label class="flex items-center gap-2"><input type="checkbox" name="discoveryChannel" value="皇城司店內夥伴">皇城司店內夥伴</label>
+                                <label class="flex items-center gap-2"><input type="checkbox" name="discoveryChannel" value="其他" onchange="toggleOtherSource()">其他</label>
+                            </div>
+                            <div id="discoveryOtherWrap" class="hidden mt-4">
+                                <label class="block text-sm font-medium text-gray-300 mb-1.5">其他來源說明 <span class="text-amber-500">*</span></label>
+                                <input type="text" id="discoveryOther" maxlength="100" placeholder="請填寫其他得知管道" class="w-full bg-brand-dark border border-gray-700 rounded-xl px-4 py-3 text-white gold-border-focus focus:outline-none text-sm">
+                            </div>
+                        </fieldset>
 
                         <!-- Dietary Restrictions / Notes -->
                         <div>
@@ -2208,6 +2251,11 @@ html{font-family:Arial,'Microsoft JhengHei','PingFang TC',sans-serif;}
                         </div>
                     </div>
 
+                    <div class="rounded-xl border border-amber-500/25 bg-brand-dark p-4 mb-5 text-xs md:text-sm leading-relaxed text-gray-300">
+                       <p class="text-brand-gold font-semibold mb-2">訂位與會員須知</p>
+                       <p>用餐時間 120 分鐘；訂位保留 10 分鐘，遲到逾時席位可能提供現場候位。當日 17:30 之後請電話聯繫。送出申請後依店家現有表單說明，預計於 24 小時內以 Email 回覆確認；未收到正式確認前，訂位尚未成立。</p>
+                       <p class="mt-2">會員卡與匯款資訊僅供人工核對，不等同付款或訂位成功。取消、修改、會員權益與套餐供應依店家最新規則。</p>
+                    </div>
                     <!-- Summary overview before final submission -->
                     <div class="bg-brand-dark/60 border border-gray-800 rounded-xl p-4 mb-6 text-xs md:text-sm space-y-2">
                         <div class="text-brand-gold font-semibold mb-2 pb-1 border-b border-gray-800">
@@ -2624,11 +2672,14 @@ function applyConfig() {
         const c=state.config||demoConfig();
         const date=state.date;
         const ts=Date.parse(`${date}T12:00:00+08:00`), start=Date.parse(`${localDate()}T12:00:00+08:00`);
-        const valid=!!date && Number.isFinite(ts) && ts>=start && ts<=start+c.advanceDays*86400000 && state.guests>=1 && state.guests<=c.maxParty;
+        const nowTaipei=new Intl.DateTimeFormat('en-GB',{timeZone:TZ_NAME,hour:'2-digit',minute:'2-digit',hour12:false}).format(new Date());
+        const sameDayBlocked=date===localDate() && nowTaipei>=String(c.sameDayPhoneCutoff||'17:30');
+        el('sameDayCutoffNotice').classList.toggle('hidden',!sameDayBlocked);
+        const valid=!!date && Number.isFinite(ts) && ts>=start && ts<=start+c.advanceDays*86400000 && state.guests>=1 && state.guests<=c.maxParty && !sameDayBlocked;
         el('btnStep1Next').disabled=!valid;
       }
       async function goToStep(n){
-        if(n===2){checkStep1Valid();if(el('btnStep1Next').disabled){alert('請確認日期及人數。');return;}}
+        if(n===2){checkStep1Valid();if(el('btnStep1Next').disabled){alert('請確認日期、人數及當日訂位截止時間（17:30 後改電話聯繫）。');return;}}
         if(n===3&&!state.time){alert('請先選擇用餐時段。');return;}
         if(n===4&&!validateContact()) return;
         document.querySelectorAll('.form-step').forEach(node=>node.classList.add('hidden'));
@@ -2680,12 +2731,30 @@ function applyConfig() {
         } catch(e){if(seq===state.availabilitySeq){el('slotsError').classList.remove('hidden');el('slotsError').textContent='讀取時段失敗：'+(e.message||e);}}
         finally{if(seq===state.availabilitySeq)el('slotsLoading').classList.add('hidden');}
       }
+      function updateMemberFields(){
+        const member=document.querySelector('input[name="isMember"]:checked')?.value==='yes';
+        el('memberExtraFields').classList.toggle('hidden',!member);
+        el('nonMemberExtraFields').classList.toggle('hidden',member);
+      }
+      function selectedDiscoveryChannels(){
+        return Array.from(document.querySelectorAll('input[name="discoveryChannel"]:checked'),x=>x.value);
+      }
+      function toggleOtherSource(){
+        el('discoveryOtherWrap').classList.toggle('hidden',!selectedDiscoveryChannels().includes('其他'));
+      }
       function validateContact(){
         const name=el('custName').value.trim(),phone=el('custPhone').value.trim(),email=el('custEmail').value.trim();
         if(name.length<2||name.length>60){alert('請輸入 2–60 字的訂位姓名。');return false;}
         if(!/^(09\d{8}|\+8869\d{8})$/.test(phone)){alert('請輸入有效台灣手機（09 開頭 10 碼，或 +8869 開頭）。');return false;}
         if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)||email.length>120){alert('請輸入有效的 Email。');return false;}
         if(el('custNotes').value.length>500){alert('備註不可超過 500 字。');return false;}
+        if(!['yes','no'].includes(el('withChildUnder12').value)){alert('請確認是否攜帶 12 歲以下孩童。');return false;}
+        const member=document.querySelector('input[name="isMember"]:checked')?.value==='yes';
+        if(member&&!el('memberNickname').value.trim()){alert('會員請填寫會員卡暱稱。');return false;}
+        if(member&&!/^\d{5}$/.test(el('remittanceLast5').value.trim())){alert('會員請填寫匯款帳號後五碼。');return false;}
+        const channels=selectedDiscoveryChannels();
+        if(!channels.length){alert('請選擇至少一項得知本店的管道。');return false;}
+        if(channels.includes('其他')&&!el('discoveryOther').value.trim()){alert('請填寫其他得知管道說明。');return false;}
         return true;
       }
       function validateStep3AndNext(){goToStep(4);}
@@ -2720,6 +2789,9 @@ function applyConfig() {
         const payload={requestId:state.requestId,date:state.date,time:state.time,guests:state.guests,
           name:el('custName').value.trim(),phone:el('custPhone').value.trim(),email:el('custEmail').value.trim(),
           member:document.querySelector('input[name="isMember"]:checked').value==='yes',
+          memberNickname:el('memberNickname').value.trim(),remittanceLast5:el('remittanceLast5').value.trim(),
+          instagram:el('custInstagram').value.trim(),under12:el('withChildUnder12').value,
+          discoveryChannels:selectedDiscoveryChannels(),discoveryOther:el('discoveryOther').value.trim(),
           notes:el('custNotes').value.trim(),setMenu:el('addSetMenu').checked,
           consent:true,website:el('companyWebsite').value,formStartedAt:state.formStartedAt};
         try{
@@ -2744,7 +2816,7 @@ function applyConfig() {
       function resetSystem(){
         el('successModal').classList.add('hidden');el('bookingForm').reset();el('resDate').min=localDate();el('resDate').value=localDate();
         state.guests=0;state.time='';state.formStartedAt=Date.now();state.requestId=null;
-        handleDateChange();goToStep(1);
+        updateMemberFields();toggleOtherSource();handleDateChange();goToStep(1);
       }
       function openInfoModal(){el('infoModal').classList.remove('hidden');}
       function closeInfoModal(){el('infoModal').classList.add('hidden');}
