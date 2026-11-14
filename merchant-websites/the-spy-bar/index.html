@@ -2030,7 +2030,7 @@ html{font-family:Arial,'Microsoft JhengHei','PingFang TC',sans-serif;}
                             <span id="minSpendBadge" class="px-2.5 py-1 rounded-full text-xs font-bold bg-brand-gold text-brand-dark"></span>
                         </div>
 
-                        <div id="sameDayCutoffNotice" class="hidden bg-rose-500/10 border border-rose-500/40 rounded-xl p-4 text-sm text-rose-200">依店家訂位規則，當日 17:30 後請直接電話聯繫訂位；未來日期仍可線上申請。</div>
+                        <p id="sameDayCutoffNotice" class="mt-3 text-sm text-[#bda986]">當日 17:30 後請直接電話聯繫訂位</p>
 
                         <!-- Large Group Alert (More than 8 people) -->
                         <div id="largeGroupWarning" class="hidden bg-rose-500/10 border border-rose-500/40 rounded-xl p-5 text-rose-200">
@@ -2634,7 +2634,7 @@ function applyConfig() {
         document.querySelectorAll('.form-step').forEach((node,i)=>node.classList.toggle('hidden',i!==0));
         state.step=1;
         handleDateChange();
-        if(!IS_LIVE) el('systemBanner').classList.add('hidden');
+        if(!IS_LIVE) banner('網站展示模式｜可體驗完整四步驟，但不會建立訂位或儲存資料。請使用測試聯絡資訊。');
         else if(!c.enabled) banner('店家尚未開放線上訂位。網頁可瀏覽，但目前無法送出預約。請聯絡店家。');
         else banner(c.bookingMode==='AUTO'?'系統已連線：送出後即時核對並確認席位；首次入會及特殊需求仍依店家通知辦理。':'系統已連線：可提交訂位申請，收到店家確認後才算預約成功。','ok');
       }
@@ -2675,7 +2675,6 @@ function applyConfig() {
         const ts=Date.parse(`${date}T12:00:00+08:00`), start=Date.parse(`${localDate()}T12:00:00+08:00`);
         const nowTaipei=new Intl.DateTimeFormat('en-GB',{timeZone:TZ_NAME,hour:'2-digit',minute:'2-digit',hour12:false}).format(new Date());
         const sameDayBlocked=date===localDate() && nowTaipei>=String(c.sameDayPhoneCutoff||'17:30');
-        el('sameDayCutoffNotice').classList.toggle('hidden',!sameDayBlocked);
         const valid=!!date && Number.isFinite(ts) && ts>=start && ts<=start+c.advanceDays*86400000 && state.guests>=1 && state.guests<=c.maxParty && !sameDayBlocked;
         el('btnStep1Next').disabled=!valid;
       }
@@ -2782,7 +2781,11 @@ function applyConfig() {
         const error=el('submitError');error.classList.add('hidden');
         if(!validateContact()||!state.time){error.textContent='請確認基本資料及用餐時段。';error.classList.remove('hidden');return;}
         if(!el('acceptTerms').checked){error.textContent='請先閱讀並勾選同意訂位規則與個資告知。';error.classList.remove('hidden');return;}
-        if(!IS_LIVE){error.textContent='目前是離線展示版，不會建立真正訂位。請依說明部署 Google Apps Script 正式版本。';error.classList.remove('hidden');return;}
+        if(!IS_LIVE){
+          const startMinutes=Number(state.time.slice(0,2))*60+Number(state.time.slice(3,5));
+          showSuccess({demo:true,status:'DEMO',bookingId:'DEMO-'+state.date.replace(/-/g,'')+'-'+String(Math.floor(Math.random()*100000)).padStart(5,'0'),date:state.date,time:state.time,endTime:minsToHHMM(startMinutes+120),guests:state.guests,member:document.querySelector('input[name="isMember"]:checked').value==='yes',setMenu:el('addSetMenu').checked,minSpendPerPerson:state.minSpend,totalMinSpend:state.minSpend*state.guests});
+          return;
+        }
         if(!state.config?.enabled){error.textContent='店家尚未開放線上訂位。';error.classList.remove('hidden');return;}
         if(state.loading)return;
         state.loading=true;const btn=el('btnSubmit');btn.disabled=true;const old=btn.innerHTML;btn.textContent='正在確認剩餘席位並儲存…';
@@ -2804,8 +2807,8 @@ function applyConfig() {
       }
       function showSuccess(r){
         const confirmed=r.status==='CONFIRMED';
-        el('ticketStatus').textContent=confirmed?'訂位已確認':'已收到訂位申請（待確認）';
-        el('ticketSubtext').textContent=confirmed?'系統已確認席位；首次入會、訂金與特殊需求請依店家後續通知辦理。':'此為訂位申請收件編號，收到店家正式確認通知後才算預約成功。';
+        el('ticketStatus').textContent=r.demo?'網站體驗完成（未建立訂位）':(confirmed?'訂位已確認':'已收到訂位申請（待確認）');
+        el('ticketSubtext').textContent=r.demo?'這是網站流程展示，沒有傳送、儲存或建立真實訂位，請勿將 DEMO 編號視為訂位證明。':(confirmed?'系統已確認席位；首次入會、訂金與特殊需求請依店家後續通知辦理。':'此為訂位申請收件編號，收到店家正式確認通知後才算預約成功。');
         const values={ticketId:r.bookingId,ticketName:el('custName').value.trim(),ticketPhone:el('custPhone').value.trim(),
           ticketDate:r.date,ticketTime:r.time+' – '+r.endTime,ticketGuests:r.guests+' 位',
           ticketMinSpend:`${money(r.totalMinSpend)}（${money(r.minSpendPerPerson)}/位）`,
