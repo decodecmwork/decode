@@ -1996,8 +1996,11 @@ html{font-family:Arial,'Microsoft JhengHei','PingFang TC',sans-serif;}
                         <!-- Date Picker -->
                         <div>
                             <label class="block text-sm font-medium text-gray-300 mb-2">預約日期 <span class="text-amber-500">*</span></label>
-                            <input type="date" id="resDate" required onchange="handleDateChange()"
-                                class="w-full bg-brand-dark border border-gray-700 rounded-xl px-4 py-3 text-white gold-border-focus focus:outline-none transition-all">
+                            <select id="resDate" required aria-label="選擇預約日期" onchange="handleDateChange()"
+                                class="w-full bg-brand-dark border border-gray-700 rounded-xl px-4 py-3 text-white gold-border-focus focus:outline-none transition-all cursor-pointer">
+                                <option value="">請選擇預約日期</option>
+                            </select>
+                            <p class="text-xs text-gray-400 mt-2">點擊展開日期清單，可選擇未來 30 天內的用餐日期。</p>
                         </div>
 
                         <!-- Guests Selector -->
@@ -2638,12 +2641,31 @@ function applyConfig() {
         else if(!c.enabled) banner('店家尚未開放線上訂位。網頁可瀏覽，但目前無法送出預約。請聯絡店家。');
         else banner(c.bookingMode==='AUTO'?'系統已連線：送出後即時核對並確認席位；首次入會及特殊需求仍依店家通知辦理。':'系統已連線：可提交訂位申請，收到店家確認後才算預約成功。','ok');
       }
+      function populateDateOptions(){
+        const select=el('resDate');
+        const previous=select.value;
+        const start=new Date(localDate()+'T00:00:00Z');
+        const days=['日','一','二','三','四','五','六'];
+        const maxDays=Math.min(365,Math.max(1,Number(state.config?.advanceDays)||30));
+        const taipeiClock=new Intl.DateTimeFormat('en-GB',{timeZone:TZ_NAME,hour:'2-digit',minute:'2-digit',hour12:false}).format(new Date());
+        const sameDayClosed=taipeiClock>=String(state.config?.sameDayPhoneCutoff||'17:30');
+        select.replaceChildren(new Option('請選擇預約日期',''));
+        for(let i=0;i<=maxDays;i++){
+          const date=new Date(start.getTime()+i*86400000);
+          const value=date.toISOString().slice(0,10);
+          const label=value.replace(/-/g,'/')+'（週'+days[date.getUTCDay()]+'）'+(i===0?'・今天':'');
+          const option=new Option(label+(i===0&&sameDayClosed?'・當日已截止，請電話聯繫':''),value);
+          if(i===0&&sameDayClosed) option.disabled=true;
+          select.add(option);
+        }
+        select.value=Array.from(select.options).some(x=>x.value===previous&&!x.disabled)?previous:'';
+      }
       window.addEventListener('DOMContentLoaded', async()=>{
-        const date=el('resDate'); date.min=localDate();date.value=localDate();
         if(IS_LIVE){
           try{state.config=await asyncServer('getPublicConfig');}
           catch(e){state.config=demoConfig();banner('連線失敗，暫時停止接受預約。請稍後重試。','error');}
         } else state.config=demoConfig();
+        populateDateOptions();
         applyConfig();
         initFlipbook();
       });
@@ -2818,7 +2840,7 @@ function applyConfig() {
         el('successModal').classList.remove('hidden');
       }
       function resetSystem(){
-        el('successModal').classList.add('hidden');el('bookingForm').reset();el('resDate').min=localDate();el('resDate').value=localDate();
+        el('successModal').classList.add('hidden');el('bookingForm').reset();populateDateOptions();
         state.guests=0;state.time='';state.formStartedAt=Date.now();state.requestId=null;
         updateMemberFields();toggleOtherSource();handleDateChange();goToStep(1);
       }
