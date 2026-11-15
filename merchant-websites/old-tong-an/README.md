@@ -1,58 +1,42 @@
-# 老同安小酒館｜DECODE 提案展示版
+# 老同安小酒館｜DECODE 網站提案展示版
 
-- 專案路徑：merchant-websites/old-tong-an/
-- 網址（待 gh-pages 成功部署）：https://decode.com.tw/merchant-websites/old-tong-an/
-- 版本：非官方商家提案展示／未經業主授權
-- 發佈來源：decodecmwork/decode 的 gh-pages（與 main 分支不同）
+日期：2026-11-15  
+站點（GitHub Pages）：https://decode.com.tw/merchant-websites/old-tong-an/  
+實際部署：`gh-pages`，非 `main`
 
-## 已製作
-1. 首頁照片襯底、Logo 檔位、雙 CTA、RWD 導覽
-2. 餐單四分類互動：經典料理／分享小食／精釀啤酒／調酒飲品
-3. 空間照片展示
-4. 訂位互動展示（姓名、電話、用餐日期、時間、人數、IG 選填、備註）
-5. 原 Google 表單連結：https://forms.gle/7pKk9TFPiC8AStS18
-6. 表單不傳送資料、不寫入真實訂位，完成時明示未建立訂位
+## 目前完成範圍
+- 品牌首頁、商家資訊、菜單互動分頁、訂位展示、Instagram、電話及 Google Maps 連結。
+- 已依使用者提供的四頁原始菜單截圖修正分類、品項、價格和注意事項。
+- 已依原 Google 訂位表單截圖修正為六題必填：姓名、日期、時間、人數、手機、週五／週六駐唱選擇（兩選一）；移除截圖不存在的 IG／備註欄位。
+- Demo 不送出或儲存個資；成功對話框明確寫「未建立訂位」。
+- 使用者原本 Google Form 網址：https://forms.gle/7pKk9TFPiC8AStS18
+- 另已製作完整的本機網站 ZIP 套件，內含 2 張原圖、4 張菜單截圖、原表單對照圖，以及可使用的本機網頁與圖片素材。
 
-## P0：尚未完成，不可對外宣稱已正式交付
+## 待完成：GitHub 影像上傳（P0）
+目前 GitHub 連接工具能讀寫 UTF-8 文字檔，但本次未能將聊天 ZIP 中二進位圖片直接寫入 `gh-pages`。
+因此線上版仍缺下列圖檔，**請勿宣稱線上版已完整使用原始圖片**：
 
-### 使用者提供的 Logo 與照片尚未匯入
-聊天內嵌照片無法直接取得可寫入 GitHub 的原始圖片檔。待用可下載的獨立檔或 ZIP 匯入，指定如下：
+`assets/logo.png`，`assets/hero.jpg`，`assets/scene-01.jpg` ～ `scene-04.jpg`，`assets/menu-page-01.jpg` ～ `menu-page-04.jpg`。
 
-- assets/logo.png：原店家 Logo
-- assets/hero.jpg：首屏背景實景照
-- assets/scene-01.jpg：關於段落照片
-- assets/scene-02.jpg：實景圖集照片 1
-- assets/scene-03.jpg：實景圖集照片 2
-- assets/scene-04.jpg：實景圖集照片 3
-- assets/menu-classic.jpg：經典料理照片／菜單
-- assets/menu-bites.jpg：分享小食照片／菜單
-- assets/menu-beer.jpg：精釀啤酒照片／酒單
-- assets/menu-cocktail.jpg：調酒照片／酒單
+以上圖片均已生成於交付 ZIP 中。將本機 ZIP 裡 `old-tong-an/index.html` 與 `old-tong-an/assets/` 放入 GitHub 對應子資料夾才能完整同步，避免採用外部未授權影像作正式版。
 
-首頁圖在沒有 assets/hero.jpg 時，暫以公開 Gomaji 老同安照片為遠端 Demo 備援，並非取得正式圖片使用授權。正式版須替換成店家授權圖片。其他圖片缺少時會顯示漸層排版，非已上傳原圖。
+## 圖片資料核對
+- Logo：使用者提供的黑底白色直式老同安商標，交付 ZIP 含保留紅印的去黑底 PNG。
+- 店景：使用者提供的夜間門面原照；其他 scene 圖是同一店面照片的裁切，不代表室內實景。
+- 菜單：四頁依序為用餐須知／熱炒飯麵／湯品披薩炸物／開胃小菜飲品。
+- 未獲完整的精釀啤酒／酒精調酒酒單，**不得自行編造品項或價格**。
 
-### Google Form 尚未完成原表單核對
-目前僅確認公開訂位短網址；未取得原 Google Form 所有題目、必填、選項、分支及說明文字，因此此頁面為一般預約 UX 的展示示意。必須取得完整表單截圖，建立 Form Parity Matrix，逐題比對後才能將示意欄位做為真實前後端系統。
+## 店家營運規則／來源
+- 訂位保留 10 分鐘，逾時現場候位。
+- 訂位已滿時來電通知。
+- 週日～週四 18:00–00:30；週五六 18:00–02:30（最後仍以店家最新公告為準）。
+- 用餐須知：每人最低消費一杯飲品；10% 服務費；自帶酒開瓶費 NT$1,000/瓶；環境汙損清潔費 NT$3,000；未滿18歲禁酒。
+- 店家地址：臺北市中正區同安街 24 號；電話：0928-914-341
+- Instagram：https://www.instagram.com/oldt.a.beerbar/
+- 本案為未授權之非官方提案 Demo；正式公開商用須取得圖片、商標與菜單授權及客戶內容核准。
 
-### 待店家確認
-Logo／照片／菜單授權、時段、座位容量、低消、取消規定、個資告知、對外正式發布同意。
-
-## 已核實商家資料（2026-11-15）
-| 項目 | 內容 | 驗證狀態 |
-| --- | --- | --- |
-| 名稱 | 老同安小酒館 | Google 商家／FunNow |
-| 地址 | 台北市中正區同安街24號 | Google 商家／FunNow |
-| 電話 | 0928-914-341 | Google 商家／公開報導 |
-| Instagram | https://www.instagram.com/oldt.a.beerbar/ | 使用者直接提供 |
-| Facebook | https://www.facebook.com/OldT.A.BeerBar/ | 公開報導 |
-| 訂位 Google Form | https://forms.gle/7pKk9TFPiC8AStS18 | 公開 FB 搜尋結果，題目待核對 |
-| 營業時間 | 週日至週四 18:00–00:30、週五六 18:00–02:30 | 公開資料，以店家實際公告為準 |
-| 主要品項 | 牛肉麵、東坡肉飯、炸物、披薩、精釀與調酒 | 公開資料，非正式完整菜單 |
-
-資料來源：
-- https://www.myfunnow.com/zh-tw/branches/3050882431428
-- https://www.gomaji.com/store/145574/pid/241420
-- https://www.juksy.com/article/96317
-
-## 驗收注意
-GitHub commit 不等於網站成功上線。確認 GitHub Actions 頁面部署成功，實際網址可開啟，檢查手機導覽、菜單切換、連結正確與 Demo 不收單。正式成交後須建立新的客戶資產和獨立的正式訂位管理系統。
+## 測試和發佈
+- HTML 資料欄位、導覽、表單展示禁用真實資料傳送與文字版價目已進行程式檢查。
+- 本機網站完整包圖片路徑、HTML 元素數量、JavaScript 語法已通過靜態測試。
+- 受本環境瀏覽器限制，**尚未完成桌機及手機實際畫面操作驗收**；並未能從外部網頁抓取驗證公開頁內容。
+- GitHub Pages 工作流程必須以 `success` 為準；`commit` 不等於正式客戶網站交付。
