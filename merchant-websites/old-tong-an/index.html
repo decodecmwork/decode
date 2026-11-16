@@ -217,6 +217,61 @@ footer{background:#191815;color:#d0c8b9;padding:38px 0}.footer-row{display:flex;
  .menu-flavor-list span{padding:6px 9px;font-size:11px}
 }
 
+
+/* Constant alcohol warning for public-facing bar information.
+   Always visible while scrolling, high-contrast and dedicated to warnings only.
+   Statutory measurements require final device review before formal launch. */
+:root{--alcohol-warning-height:max(112px,12.5svh)}
+body{padding-bottom:calc(var(--alcohol-warning-height) + env(safe-area-inset-bottom, 0px))}
+.alcohol-warning{
+ position:fixed;z-index:10000;bottom:0;left:0;right:0;
+ display:flex;align-items:center;justify-content:center;
+ min-height:var(--alcohol-warning-height);
+ box-sizing:border-box;
+ padding:10px 16px calc(10px + env(safe-area-inset-bottom, 0px));
+ border-top:3px solid #fff;
+ background:#181818;
+ color:#fff;
+ text-align:center;
+ pointer-events:none;
+}
+.alcohol-warning-message{
+ display:flex;align-items:center;justify-content:center;flex-wrap:wrap;
+ gap:4px clamp(12px,2vw,32px);
+ width:100%;
+ font-family:var(--font);
+ font-size:clamp(23px,3.5vw,64px);
+ font-weight:900;
+ line-height:1.15;
+ letter-spacing:.018em;
+}
+.alcohol-warning-message span{
+ display:inline-block;
+ color:#fff;
+ white-space:nowrap;
+ font-size:inherit;
+ font-weight:inherit;
+}
+@media(max-width:760px){
+ :root{--alcohol-warning-height:max(118px,15svh)}
+ .alcohol-warning{padding:8px 10px calc(8px + env(safe-area-inset-bottom, 0px))}
+ .alcohol-warning-message{
+  flex-direction:column;
+  flex-wrap:nowrap;
+  gap:2px;
+  font-size:clamp(22px,5.8vw,30px);
+  line-height:1.18;
+ }
+}
+@media(max-width:360px){
+ .alcohol-warning-message{font-size:21px}
+}
+@media print{
+ body{padding-bottom:0}
+ .alcohol-warning{position:static;min-height:0;padding:20px 12px;break-inside:avoid}
+ .alcohol-warning-message{font-size:30px}
+}
+
 </style>
 </head>
 <body>
@@ -230,15 +285,15 @@ footer{background:#191815;color:#d0c8b9;padding:38px 0}.footer-row{display:flex;
 <section class="hero" id="top">
 <img class="hero-photo" src="assets/hero.jpg" alt="老同安小酒館實景背景" onerror="this.onerror=null;this.src='https://picdn.gomaji.com/uploads/stores/574/145574/241420/IMG_0911.jpg'">
 <div class="hero-content wrap"><p class="hero-kicker kicker"><span class="line"></span>GUTING · TAIPEI · EST. ON TONG'AN STREET</p>
-<h1>一碗好麵，<br>一杯好酒。</h1><p class="hero-en">AN EVENING WELL SPENT.</p>
-<p class="hero-desc">城市的節奏慢下來，就在同安街的轉角。<br>從熱騰騰的台式料理，到手裡那杯喜歡的精釀啤酒，<br>讓朋友相聚的夜晚，多一點自在。</p>
+<h1>同安街的巷弄，<br>熟悉的好味道。</h1><p class="hero-en">AN EVENING WELL SPENT.</p>
+<p class="hero-desc">城市的節奏慢下來，就在同安街的轉角。<br>從熟悉的台式料理到各式飲品，<br>在這裡感受同安街的日常與自在。</p>
 <div class="buttons"><a class="btn btn-gold" href="#menu">探索餐單</a><a class="btn btn-outline" href="#booking">預約席位</a></div>
 </div><div class="hero-bottom wrap"><span>100 TAIPEI CITY · TONG'AN STREET 24</span><a href="#story">SCROLL TO EXPLORE ↓</a></div>
 </section>
 <section class="intro" id="story"><div class="wrap intro-grid"><div>
 <div class="kicker"><span class="line"></span>OUR STORY / 老同安</div>
 <h2>藏在巷弄裡的<br>日常小酒館。</h2>
-<p>不需要隆重的理由。想喝一杯、想吃碗好麵，或只是想和朋友在夜裡好好聊天，都可以從這裡開始。</p>
+<p>不需要隆重的理由。想吃些熟悉的料理，或只是想和朋友在夜裡好好聊天，都可以從這裡開始。</p>
 <p>老同安小酒館位於古亭站附近，同安街的老屋氛圍裡，結合熟悉的台式料理、精釀啤酒與輕鬆自在的聚會時光。</p>
 <div class="intro-features"><div><b>01.</b><span>台式經典料理</span></div><div><b>02.</b><span>多款精釀啤酒</span></div><div><b>03.</b><span>巷弄酒館氛圍</span></div></div>
 </div><figure class="intro-visual"><div class="intro-photo-frame"><img src="assets/scene-01.jpg" alt="老同安小酒館的夜間店面外觀完整照片" loading="lazy"></div><figcaption>OLD T.A. / 台北同安街 · 店面實景</figcaption></figure></div></section>
@@ -270,10 +325,18 @@ footer{background:#191815;color:#d0c8b9;padding:38px 0}.footer-row{display:flex;
 <div class="field full"><label>本店（五）（六）有駐唱表演 *</label><div class="booking-options"><label class="booking-option"><input type="radio" name="singer" value="想聽駐唱" required><span>想聽駐唱</span></label><label class="booking-option"><input type="radio" name="singer" value="以店家安排為主" required><span>以店家安排為主</span></label></div></div>
 </div><div class="booking-actions"><button class="btn btn-gold" type="submit">確認送出</button></div><p class="privacy-hint">目前尚未開放線上訂位，點選「確認送出」不會傳送資料或成立訂位。如需預約，請先聯絡店家。</p></form>
 </div></div></section>
-<section class="contact-band"><div class="wrap inner"><div><div class="kicker" style="color:#c5a777">SEE YOU AT OLD T.A.</div><h2>好久不見，來喝一杯。</h2><p>下班之後，留點時間給自己，和想見的人。</p></div><a class="btn btn-gold" href="tel:+886928914341">電話洽詢</a></div></section>
+<section class="contact-band"><div class="wrap inner"><div><div class="kicker" style="color:#c5a777">SEE YOU AT OLD T.A.</div><h2>好久不見，一起吃頓飯。</h2><p>下班之後，留點時間給自己，和想見的人。</p></div><a class="btn btn-gold" href="tel:+886928914341">電話洽詢</a></div></section>
 </main>
 <footer><div class="wrap"><div class="footer-row"><div><div class="footer-name">老同安小酒館</div><div class="footer-meta">OLD T.A. BEER BAR · GUTING, TAIPEI</div></div><div class="footer-links"><a href="https://www.instagram.com/oldt.a.beerbar/" target="_blank" rel="noopener noreferrer">Instagram</a><a href="https://www.facebook.com/OldT.A.BeerBar/" target="_blank" rel="noopener noreferrer">Facebook</a><a href="tel:+886928914341">聯絡電話</a><a href="#top">回到頂端 ↑</a></div></div>
 <div class="legal">本頁為網站設計預覽，並非店家正式營運網站；菜單、價格、營業時間與訂位規則以店家公告為準。未滿十八歲禁止飲酒；酒後請勿開車。</div></div></footer>
+<!-- 酒類安全警語：單獨區域、固定底部、不隨頁面捲動消失。 -->
+<div class="alcohol-warning" role="note" aria-label="酒類安全警語">
+ <div class="alcohol-warning-message">
+  <span>禁止酒駕</span>
+  <span>飲酒過量，有害健康</span>
+  <span>未滿十八歲禁止飲酒</span>
+ </div>
+</div>
 <div class="dialog-backdrop" id="demoDialog" role="presentation"><div class="dialog-box" role="dialog" aria-modal="true" aria-labelledby="dialogTitle"><div class="kicker" style="color:#a48153">RESERVATION NOTICE</div><h2 id="dialogTitle">線上訂位尚未開放</h2><p>目前填寫的資訊沒有送出，也不會為您保留座位。如需訂位，歡迎電話聯繫或私訊 Instagram。</p><div class="actions"><a class="btn btn-gold" href="tel:+886928914341">電話洽詢</a><button type="button" class="btn btn-outline" id="closeDialog">關閉視窗</button></div></div></div>
 <script>
 (function(){
