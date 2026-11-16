@@ -219,6 +219,29 @@ footer{background:#191815;color:#d0c8b9;padding:38px 0}.footer-row{display:flex;
 
 
 
+
+/* Highlight the original restaurant menu safety notice as a reversed color block. */
+.menu-items.is-rules .menu-group-items>li.menu-item.is-alcohol-note{
+ display:flex;align-items:center;justify-content:center;
+ width:100%;padding:18px 22px;margin-top:12px;
+ background:#24211c;border:1px solid #24211c;border-radius:3px;
+ color:#fff;line-height:1.7;box-sizing:border-box;
+}
+.menu-items.is-rules .menu-group-items>li.menu-item.is-alcohol-note .menu-item-main{
+ flex:1;text-align:center;
+}
+.menu-items.is-rules .menu-group-items>li.menu-item.is-alcohol-note .menu-item-name-line{
+ display:flex;justify-content:center;
+}
+.menu-items.is-rules .menu-group-items>li.menu-item.is-alcohol-note .dish-name{
+ color:#fff;font-weight:700;font-size:clamp(14px,1.45vw,18px);
+ letter-spacing:.045em;line-height:1.6;
+}
+@media(max-width:760px){
+ .menu-items.is-rules .menu-group-items>li.menu-item.is-alcohol-note{padding:16px 13px}
+ .menu-items.is-rules .menu-group-items>li.menu-item.is-alcohol-note .dish-name{font-size:14px}
+}
+
 </style>
 </head>
 <body>
@@ -235,7 +258,7 @@ footer{background:#191815;color:#d0c8b9;padding:38px 0}.footer-row{display:flex;
 <h1>同安街的巷弄，<br>熟悉的好味道。</h1><p class="hero-en">AN EVENING WELL SPENT.</p>
 <p class="hero-desc">城市的節奏慢下來，就在同安街的轉角。<br>從熟悉的台式料理到各式飲品，<br>在這裡感受同安街的日常與自在。</p>
 <div class="buttons"><a class="btn btn-gold" href="#menu">探索餐單</a><a class="btn btn-outline" href="#booking">預約席位</a></div>
-</div><div class="hero-bottom wrap"><span>100 TAIPEI CITY · TONG'AN STREET 24</span><a href="#story">SCROLL TO EXPLORE ↓</a></div>
+</div>
 </section>
 <section class="intro" id="story"><div class="wrap intro-grid"><div>
 <div class="kicker"><span class="line"></span>OUR STORY / 老同安</div>
@@ -253,7 +276,7 @@ footer{background:#191815;color:#d0c8b9;padding:38px 0}.footer-row{display:flex;
 <button type="button" class="menu-tab" role="tab" aria-selected="false" data-menu="cocktail"><span class="en">04 / HOUSE RULES</span><strong>用餐須知</strong></button>
 </div>
 <div class="menu-content" id="menuPanel" role="tabpanel" aria-live="polite"><div class="menu-copy"><div class="kicker" id="menuKicker">01 / 熱炒・飯麵</div><h3 id="menuHeading">台式熱炒，<br>一口就有故事。</h3><p id="menuDesc">從熟悉的家常滋味到熱騰騰的飯麵主食，今晚就好好吃一頓。</p><ul class="menu-items" id="menuItems"></ul></div></div></div>
-<div class="menu-foot"><span class="note" style="color:#b8aa95">餐點與飲品供應及價格可能調整，請以店家最新公告為準。</span><a href="https://www.instagram.com/oldt.a.beerbar/" target="_blank" rel="noopener noreferrer">Instagram・洽詢最新飲品</a></div>
+<div class="menu-foot"><span class="note" style="color:#b8aa95">餐點與飲品供應及價格可能調整，請以店家最新公告為準。</span><a href="https://www.instagram.com/oldt.a.beerbar/" target="_blank" rel="noopener noreferrer">Instagram・洽詢餐點資訊</a></div>
 </div></section>
 <section class="booking" id="booking"><div class="wrap booking-grid"><div class="booking-left" id="visit"><div class="kicker"><span class="line"></span>RESERVATION / CONTACT</div><h2 class="section-title">今晚，<br>一起來坐坐。</h2><p>想和朋友一起聚聚嗎？歡迎先確認營業時間及座位狀況，或透過電話、Instagram 與我們聯繫。</p>
 <div class="booking-info"><div class="info-line"><b>ADDRESS / 地址</b><a href="https://www.google.com/maps/search/?api=1&amp;query=%E8%80%81%E5%90%8C%E5%AE%89%E5%B0%8F%E9%85%92%E9%A4%A8" target="_blank" rel="noopener noreferrer">台北市中正區同安街 24 號</a></div>
@@ -275,7 +298,7 @@ footer{background:#191815;color:#d0c8b9;padding:38px 0}.footer-row{display:flex;
 <section class="contact-band"><div class="wrap inner"><div><div class="kicker" style="color:#c5a777">SEE YOU AT OLD T.A.</div><h2>好久不見，一起吃頓飯。</h2><p>下班之後，留點時間給自己，和想見的人。</p></div><a class="btn btn-gold" href="tel:+886928914341">電話洽詢</a></div></section>
 </main>
 <footer><div class="wrap"><div class="footer-row"><div><div class="footer-name">老同安小餐館</div><div class="footer-meta">OLD T.A. · GUTING, TAIPEI</div></div><div class="footer-links"><a href="https://www.instagram.com/oldt.a.beerbar/" target="_blank" rel="noopener noreferrer">Instagram</a><a href="https://www.facebook.com/OldT.A.BeerBar/" target="_blank" rel="noopener noreferrer">Facebook</a><a href="tel:+886928914341">聯絡電話</a><a href="#top">回到頂端 ↑</a></div></div>
-<div class="legal">本頁為網站設計預覽，並非店家正式營運網站；菜單、價格、營業時間與訂位規則以店家公告為準。</div></div></footer>
+</div></footer>
 <div class="dialog-backdrop" id="demoDialog" role="presentation"><div class="dialog-box" role="dialog" aria-modal="true" aria-labelledby="dialogTitle"><div class="kicker" style="color:#a48153">RESERVATION NOTICE</div><h2 id="dialogTitle">線上訂位尚未開放</h2><p>目前填寫的資訊沒有送出，也不會為您保留座位。如需訂位，歡迎電話聯繫或私訊 Instagram。</p><div class="actions"><a class="btn btn-gold" href="tel:+886928914341">電話洽詢</a><button type="button" class="btn btn-outline" id="closeDialog">關閉視窗</button></div></div></div>
 <script>
 (function(){
@@ -662,6 +685,7 @@ function renderMenu(key){
   const rows=document.createElement("ul");rows.className="menu-group-items";
   group.items.forEach(function(product){
    const row=document.createElement("li");row.className="menu-item"+(typeof product.price!=="number"?" is-rule":"");
+   if(product.name.includes("未滿十八歲禁止飲酒"))row.classList.add("is-alcohol-note");
    const info=document.createElement("div");info.className="menu-item-main";
    const nameLine=document.createElement("div");nameLine.className="menu-item-name-line";
    const name=document.createElement("span");name.className="dish-name";name.textContent=product.name;nameLine.append(name);
