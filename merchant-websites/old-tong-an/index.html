@@ -255,6 +255,58 @@ footer{background:#191815;color:#d0c8b9;padding:38px 0}.footer-row{display:flex;
 .booking-box .field select:focus-visible{border-color:#c4a477;outline:2px solid #c4a477;outline-offset:2px}
 .booking-box .field select:disabled{opacity:.7;cursor:not-allowed}
 
+
+/* iOS Safari date input: keep the native picker inside the mobile form width */
+.booking-grid > *,
+.booking-box,
+#demoBookingForm,
+.form-grid,
+.form-grid > .field {
+ min-width:0;
+ max-width:100%;
+}
+.form-grid > .field input:not([type="radio"]),
+.form-grid > .field select {
+ display:block;
+ box-sizing:border-box;
+ min-width:0;
+ max-width:100%;
+ width:100%;
+}
+#visitDate {
+ display:block;
+ box-sizing:border-box;
+ min-width:0;
+ max-width:100%;
+ width:100%;
+ font-size:16px;
+ text-align:left;
+}
+#visitDate::-webkit-date-and-time-value {
+ min-width:0;
+ text-align:left;
+}
+#visitDate::-webkit-datetime-edit {
+ min-width:0;
+ text-align:left;
+}
+@media(max-width:760px) {
+ .booking-grid {
+  grid-template-columns:minmax(0,1fr);
+ }
+ .booking-box {
+  width:100%;
+  max-width:100%;
+  box-sizing:border-box;
+ }
+ .form-grid {
+  grid-template-columns:minmax(0,1fr);
+ }
+ .form-grid > .field.full {
+  grid-column:1;
+ }
+}
+
 </style>
 </head>
 <body>
