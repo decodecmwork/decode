@@ -242,6 +242,19 @@ footer{background:#191815;color:#d0c8b9;padding:38px 0}.footer-row{display:flex;
  .menu-items.is-rules .menu-group-items>li.menu-item.is-alcohol-note .dish-name{font-size:14px}
 }
 
+
+/* Reservation time: date-aware dropdown with native keyboard and mobile support */
+.booking-box .field select{
+ display:block;width:100%;min-height:50px;padding:12px 42px 12px 15px;
+ background:#f7f3eb;color:#29251e;border:1px solid #7d7162;border-radius:2px;
+ font:inherit;font-size:14px;line-height:1.5;cursor:pointer;
+ appearance:none;-webkit-appearance:none;
+ background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%236e5739' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+ background-repeat:no-repeat;background-size:19px;background-position:right 14px center;
+}
+.booking-box .field select:focus-visible{border-color:#c4a477;outline:2px solid #c4a477;outline-offset:2px}
+.booking-box .field select:disabled{opacity:.7;cursor:not-allowed}
+
 </style>
 </head>
 <body>
@@ -289,7 +302,7 @@ footer{background:#191815;color:#d0c8b9;padding:38px 0}.footer-row{display:flex;
 <form id="demoBookingForm" autocomplete="off"><div class="form-grid">
 <div class="field full"><label for="guestName">訂位者姓名 *</label><input id="guestName" name="guestName" autocomplete="name" placeholder="請輸入姓名" required maxlength="60"></div>
 <div class="field"><label for="visitDate">欲訂位日期 *</label><input id="visitDate" name="visitDate" type="date" required></div>
-<div class="field"><label for="visitTime">欲訂位時段 *</label><input id="visitTime" name="visitTime" type="time" required><p class="privacy-hint">週日至週四 18:00–00:30；週五及週六 18:00–02:30</p></div>
+<div class="field"><label for="visitTime">欲訂位時段 *</label><select id="visitTime" name="visitTime" aria-describedby="visitTimeHelp" required disabled><option value="">請先選擇訂位日期</option></select><p class="privacy-hint" id="visitTimeHelp">每 30 分鐘一個時段；標示「翌日」代表所選日期的隔天凌晨。週日至週四營業至 00:30，週五、週六至 02:30。</p></div>
 <div class="field"><label for="guestCount">欲訂位人數 *</label><input id="guestCount" name="guestCount" type="number" min="1" step="1" inputmode="numeric" placeholder="請輸入人數" required></div>
 <div class="field"><label for="guestPhone">訂位者手機號碼 *</label><input id="guestPhone" name="guestPhone" type="tel" autocomplete="tel" placeholder="0912-345-678" required maxlength="30"><p class="privacy-hint">若訂位已滿將會來電通知</p></div>
 <div class="field full"><label>本店（五）（六）有駐唱表演 *</label><div class="booking-options"><label class="booking-option"><input type="radio" name="singer" value="想聽駐唱" required><span>想聽駐唱</span></label><label class="booking-option"><input type="radio" name="singer" value="以店家安排為主" required><span>以店家安排為主</span></label></div></div>
@@ -709,7 +722,36 @@ function renderMenu(key){
 }
 tabs.forEach(function(tab){tab.addEventListener("click",function(){renderMenu(tab.dataset.menu);});});
 renderMenu("classic");
-const date=document.getElementById("visitDate");try{date.min=new Intl.DateTimeFormat("sv-SE",{timeZone:"Asia/Taipei",year:"numeric",month:"2-digit",day:"2-digit"}).format(new Date())}catch(e){}
+const date=document.getElementById("visitDate");
+const visitTime=document.getElementById("visitTime");
+try{date.min=new Intl.DateTimeFormat("sv-SE",{timeZone:"Asia/Taipei",year:"numeric",month:"2-digit",day:"2-digit"}).format(new Date())}catch(e){}
+function updateVisitTimes(){
+ const previous=visitTime.value;
+ const placeholder=document.createElement("option");
+ placeholder.value="";
+ placeholder.textContent=date.value?"請選擇訂位時段":"請先選擇訂位日期";
+ visitTime.replaceChildren(placeholder);
+ if(!date.value){visitTime.disabled=true;return;}
+ const parts=date.value.split("-").map(Number);
+ if(parts.length!==3 || parts.some(function(v){return !Number.isInteger(v);})){visitTime.disabled=true;return;}
+ const weekday=new Date(Date.UTC(parts[0],parts[1]-1,parts[2])).getUTCDay();
+ const closingMinute=(weekday===5 || weekday===6)?(26*60+30):(24*60+30);
+ for(let total=18*60;total<closingMinute;total+=30){
+  const isNextDay=total>=24*60;
+  const h=String(Math.floor(total/60)%24).padStart(2,"0");
+  const m=String(total%60).padStart(2,"0");
+  const hhmm=h+":"+m;
+  const option=document.createElement("option");
+  option.value=(isNextDay?"nextday-":"")+hhmm;
+  option.textContent=(isNextDay?"翌日 ":"")+hhmm;
+  visitTime.append(option);
+ }
+ visitTime.disabled=false;
+ visitTime.value=Array.from(visitTime.options).some(function(o){return o.value===previous;})?previous:"";
+}
+date.addEventListener("change",updateVisitTimes);
+date.addEventListener("input",updateVisitTimes);
+updateVisitTimes();
 const form=document.getElementById("demoBookingForm"),dialog=document.getElementById("demoDialog"),close=document.getElementById("closeDialog");
 form.addEventListener("submit",function(ev){ev.preventDefault();if(!form.reportValidity())return;dialog.classList.add("open");close.focus();});
 function closeDialog(){dialog.classList.remove("open");}
