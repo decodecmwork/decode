@@ -174,6 +174,49 @@ footer{background:#191815;color:#d0c8b9;padding:38px 0}.footer-row{display:flex;
  .btn::after,.nav-links .nav-cta::after{display:none}
 }
 
+
+/* Menu price list audit: sectioned original-menu layout, Nov 2026 */
+.menu-content{min-height:0}
+.menu-items{display:block;margin:30px 0 0;padding:0}
+.menu-items>li.menu-group{display:block;border:0;padding:0;margin:0 0 33px;color:inherit}
+.menu-items>li.menu-group:last-child{margin-bottom:0}
+.menu-items>li.menu-group::before{display:none}
+.menu-group-header{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;
+ padding:0 0 13px;border-bottom:2px solid #302a23}
+.menu-group-title{font-family:var(--serif);font-weight:650;font-size:22px;letter-spacing:.11em;margin:0;color:#332a21}
+.menu-group-en{font:500 11px/1.5 Georgia,serif;letter-spacing:.16em;color:#887861}
+.menu-group-note{margin-left:auto;font-size:11px;color:#916746;letter-spacing:.06em}
+.menu-group-items{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));
+ column-gap:44px;row-gap:0;list-style:none;margin:0;padding:0}
+.menu-items .menu-group-items>li.menu-item{display:flex;align-items:flex-start;justify-content:space-between;
+ padding:15px 0;gap:15px;min-width:0;border-bottom:1px solid #cfc4b3;color:#392f25}
+.menu-items .menu-item::before{display:none}
+.menu-item-main{min-width:0;flex:1}
+.menu-item-name-line{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.menu-items .dish-name{line-height:1.6;font-size:14px;color:#352c24}
+.menu-items .dish-price{flex:none;font-size:14px;font-weight:700;color:#775934;white-space:nowrap;
+ letter-spacing:0;line-height:1.75;font-variant-numeric:tabular-nums}
+.menu-item-tag{display:inline-block;font-size:10px;padding:1px 6px;border:1px solid #b88b6b;color:#a05d46;line-height:1.45}
+.menu-item-detail{display:block;margin-top:4px;color:#776b5d;font-size:12px;line-height:1.6}
+.menu-group-items .menu-item.has-flavors{grid-column:1/-1}
+.menu-flavors{margin-top:14px}
+.menu-flavors-label{display:block;margin-bottom:8px;color:#8b6845;font-size:11px;letter-spacing:.1em}
+.menu-flavor-list{display:flex;flex-wrap:wrap;gap:8px}
+.menu-flavor-list span{display:inline-block;padding:6px 11px;border:1px solid #d4c5ad;border-radius:3px;
+ background:#f5f0e7;font-size:12px;color:#5a4c3a;line-height:1.4}
+.menu-items.is-rules .menu-group-items{grid-template-columns:1fr}
+.menu-items.is-rules .menu-group-items>li.menu-item{padding:11px 0}
+.menu-items.is-rules .menu-group-items>li .dish-name{line-height:1.75}
+@media(max-width:760px){
+ .menu-group-header{gap:8px}
+ .menu-group-title{font-size:19px}
+ .menu-group-note{width:100%;margin-left:0}
+ .menu-group-items{grid-template-columns:1fr}
+ .menu-items .menu-group-items>li.menu-item{padding:13px 0}
+ .menu-flavor-list{gap:6px}
+ .menu-flavor-list span{padding:6px 9px;font-size:11px}
+}
+
 </style>
 </head>
 <body>
@@ -238,30 +281,404 @@ const navToggle=document.getElementById("navToggle"),navLinks=document.getElemen
 navToggle.addEventListener("click",function(){let isOpen=navLinks.classList.toggle("show");navToggle.setAttribute("aria-expanded",isOpen?"true":"false");navToggle.textContent=isOpen?"✕":"☰";});
 navLinks.querySelectorAll("a").forEach(function(link){link.addEventListener("click",function(){navLinks.classList.remove("show");navToggle.setAttribute("aria-expanded","false");navToggle.textContent="☰";});});
 const menus={
-classic:{kicker:"01 / 熱炒・飯麵",title:"台式熱炒，<br>一口就有故事。",desc:"從熟悉的家常滋味到熱騰騰的飯麵主食，今晚就好好吃一頓。",items:["檸檬菲力雞排　NT$160","辣香宮保雞丁　NT$180","酒香花雕雞　NT$180","雲南椒麻雞　NT$200","醬炒蔥爆牛　NT$180","紅糟炸豬排　NT$160","老同安香菇肉燥飯　NT$60","老同安東坡肉飯　NT$220","日式咖哩豬排飯　NT$220","川香牛肉麵　NT$220","麻辣牛肉麵　NT$220","雲朵水餃　NT$150"],img:"assets/menu-page-02.jpg",alt:"熱炒、飯及麵食原始菜單截圖",art:"Stir Fries · Rice · Noodles"},
-bites:{kicker:"02 / SOUP & FRIED",title:"分享熱食，<br>今晚聊到盡興。",desc:"湯品、11 吋披薩及各式下酒炸物。",items:["剝皮辣椒雞湯　NT$180","香菇薑片雞湯　NT$180","風味披薩（11 吋）　NT$380","楓葉脆薯條　NT$150","酥炸雞米花　NT$150","酥炸起司條　NT$150","洋蔥圈　NT$150","黃金炸雞翅　NT$180","酥炸鮮魚塊　NT$180","炸物雙拼　NT$250","炸物拼盤　NT$380"],img:"assets/menu-page-03.jpg",alt:"湯、披薩、炸物原始菜單截圖",art:"Soup · Pizza · Fried"},
-beer:{kicker:"03 / SIDES & DRINKS",title:"小菜與飲品，<br>就從這裡點起。",desc:"開胃小菜、氣泡飲、茶飲與咖啡，多一種選擇，多一點好心情。",items:["毛豆　NT$80","椒麻辣花生　NT$100","滷豆干　NT$100","台式香腸　NT$100","豆皮　NT$100","滷味拼盤（小）　NT$250","滷味拼盤（大）　NT$380","BOYLAN 無酒精啤酒　NT$180","蘇打水果氣泡水　NT$180","凍檸茶　NT$120","鮮柳橙汁　NT$120","熱可可　NT$160"],img:"assets/menu-page-04.jpg",alt:"開胃小菜與無酒精飲品原始菜單截圖",art:"Appetizer · Drinks"},
-cocktail:{kicker:"04 / HOUSE RULES",title:"享用餐點前，<br>幾件貼心提醒。",desc:"來店前的小提醒，讓每一次聚會都更加自在。",items:["每人低消：一杯飲品","酌收 10% 服務費","接受現金支付或轉帳","禁止攜帶外食","自帶酒類開瓶費：每瓶 NT$1,000","造成店內環境汙損，清理費 NT$3,000","酒杯碗盤如有損壞，須照價賠償","未滿十八歲禁止飲酒，酒後請勿開車"],img:"assets/menu-page-01.jpg",alt:"原始菜單用餐須知",art:"House Rules"}
+  "classic": {
+    "kicker": "01 / 熱炒・飯麵",
+    "title": "台式熱炒，<br>一口就有故事。",
+    "desc": "從家常熱炒到飯麵主食，每一道都有熟悉的好滋味。",
+    "groups": [
+      {
+        "title": "老同安熱炒",
+        "en": "STIR FRIES",
+        "note": "肉品選用台灣豬肉",
+        "items": [
+          {
+            "name": "檸檬菲力雞排",
+            "price": 160
+          },
+          {
+            "name": "辣香宮保雞丁",
+            "price": 180
+          },
+          {
+            "name": "酒香花雕雞",
+            "price": 180
+          },
+          {
+            "name": "雲南椒麻雞",
+            "price": 200
+          },
+          {
+            "name": "醬炒蔥爆牛",
+            "price": 180
+          },
+          {
+            "name": "黑椒牛肉燒",
+            "price": 180
+          },
+          {
+            "name": "紅糟炸豬排",
+            "price": 160
+          },
+          {
+            "name": "麻油酒香赤燒豬",
+            "price": 180
+          },
+          {
+            "name": "蒜泥白肉",
+            "price": 180
+          },
+          {
+            "name": "清醬香蒸鱸魚",
+            "price": 160
+          },
+          {
+            "name": "椒鹽中卷",
+            "price": 200
+          }
+        ]
+      },
+      {
+        "title": "吃飽飯",
+        "en": "RICE",
+        "note": "肉品選用台灣豬肉",
+        "items": [
+          {
+            "name": "老同安香菇肉燥飯",
+            "price": 60,
+            "tag": "限量"
+          },
+          {
+            "name": "老同安東坡肉飯",
+            "price": 220,
+            "tag": "限量"
+          },
+          {
+            "name": "日式咖哩豬排飯",
+            "price": 220
+          },
+          {
+            "name": "馬祖酒糟肉飯",
+            "price": 220
+          }
+        ]
+      },
+      {
+        "title": "吃麵麵",
+        "en": "NOODLES",
+        "note": "肉品選用台灣豬肉",
+        "items": [
+          {
+            "name": "川香牛肉麵",
+            "price": 220
+          },
+          {
+            "name": "麻辣牛肉麵",
+            "price": 220
+          },
+          {
+            "name": "雲朵水餃",
+            "price": 150
+          },
+          {
+            "name": "剝皮辣椒雞湯麵",
+            "price": 200
+          },
+          {
+            "name": "香菇薑片雞湯麵",
+            "price": 200
+          }
+        ]
+      }
+    ]
+  },
+  "bites": {
+    "kicker": "02 / SOUP & FRIED",
+    "title": "分享熱食，<br>今晚聊到盡興。",
+    "desc": "湯品、11 吋披薩和酥脆炸物，大家一起吃更過癮。",
+    "groups": [
+      {
+        "title": "湯品",
+        "en": "SOUP",
+        "items": [
+          {
+            "name": "剝皮辣椒雞湯",
+            "price": 180
+          },
+          {
+            "name": "香菇薑片雞湯",
+            "price": 180
+          }
+        ]
+      },
+      {
+        "title": "烤披薩（11 吋）",
+        "en": "PIZZA",
+        "items": [
+          {
+            "name": "風味披薩",
+            "price": 380,
+            "variants": [
+              "奶油蒜香白醬雞",
+              "蘋果超派（奶素）",
+              "夏威夷",
+              "義式臘腸",
+              "BBQ雞",
+              "墨西哥雞",
+              "墨西哥辣椒雞",
+              "雙份起司（蛋奶素）"
+            ]
+          }
+        ]
+      },
+      {
+        "title": "炸物",
+        "en": "FRIED",
+        "items": [
+          {
+            "name": "楓葉脆薯條",
+            "price": 150
+          },
+          {
+            "name": "酥炸雞米花",
+            "price": 150
+          },
+          {
+            "name": "酥炸起司條",
+            "price": 150
+          },
+          {
+            "name": "洋蔥圈",
+            "price": 150
+          },
+          {
+            "name": "黃金炸雞塊",
+            "price": 150
+          },
+          {
+            "name": "黃金炸雞翅",
+            "price": 180
+          },
+          {
+            "name": "酥炸鮮魚塊",
+            "price": 180
+          },
+          {
+            "name": "炸物雙拼",
+            "price": 250,
+            "detail": "薯條、雞塊"
+          },
+          {
+            "name": "炸物拼盤",
+            "price": 380,
+            "detail": "薯條、雞塊、洋蔥圈、雞米花"
+          }
+        ]
+      }
+    ]
+  },
+  "beer": {
+    "kicker": "03 / SIDES & DRINKS",
+    "title": "小菜與飲品，<br>就從這裡點起。",
+    "desc": "開胃小菜與無酒精飲品，簡單搭配就很滿足。",
+    "groups": [
+      {
+        "title": "開胃小菜",
+        "en": "APPETIZER",
+        "items": [
+          {
+            "name": "毛豆",
+            "price": 80
+          },
+          {
+            "name": "椒麻辣花生",
+            "price": 100
+          },
+          {
+            "name": "滷豆干",
+            "price": 100
+          },
+          {
+            "name": "台式香腸",
+            "price": 100
+          },
+          {
+            "name": "豆皮",
+            "price": 100
+          },
+          {
+            "name": "米血",
+            "price": 100
+          },
+          {
+            "name": "甜不辣",
+            "price": 100
+          },
+          {
+            "name": "百葉豆腐",
+            "price": 100
+          },
+          {
+            "name": "海帶",
+            "price": 100
+          },
+          {
+            "name": "滷味拼盤（小份）",
+            "price": 250
+          },
+          {
+            "name": "滷味拼盤（大份）",
+            "price": 380
+          },
+          {
+            "name": "韓式泡菜",
+            "price": 100
+          },
+          {
+            "name": "黃金泡菜",
+            "price": 100
+          }
+        ]
+      },
+      {
+        "title": "喝東西",
+        "en": "DRINKS",
+        "items": [
+          {
+            "name": "BOYLAN 無酒精啤酒",
+            "price": 180,
+            "variants": [
+              "薑汁汽水",
+              "奶油蘇打",
+              "蜂蜜氣泡飲"
+            ]
+          },
+          {
+            "name": "蘇打水果氣泡水",
+            "price": 180,
+            "variants": [
+              "水蜜桃",
+              "哈密瓜",
+              "芒果"
+            ]
+          },
+          {
+            "name": "凍檸茶",
+            "price": 120
+          },
+          {
+            "name": "凍鴛鴦",
+            "price": 120
+          },
+          {
+            "name": "鹹檸七",
+            "price": 120
+          },
+          {
+            "name": "檸檬可樂",
+            "price": 120
+          },
+          {
+            "name": "柳橙紅茶",
+            "price": 150
+          },
+          {
+            "name": "鮮柳橙汁",
+            "price": 120
+          },
+          {
+            "name": "熱美式",
+            "price": 120
+          },
+          {
+            "name": "冰美式",
+            "price": 120
+          },
+          {
+            "name": "熱可可",
+            "price": 160
+          }
+        ]
+      }
+    ]
+  },
+  "cocktail": {
+    "kicker": "04 / HOUSE RULES",
+    "title": "享用餐點前，<br>幾件貼心提醒。",
+    "desc": "來店前的小提醒，讓每一次聚會都更加自在。",
+    "groups": [
+      {
+        "title": "用餐須知",
+        "en": "HOUSE RULES",
+        "items": [
+          {
+            "name": "每人低消：一杯飲品"
+          },
+          {
+            "name": "酌收 10% 服務費"
+          },
+          {
+            "name": "接受現金支付或轉帳"
+          },
+          {
+            "name": "禁止攜帶外食"
+          },
+          {
+            "name": "自帶酒類開瓶費：每瓶 NT$1,000"
+          },
+          {
+            "name": "造成店內環境汙損，清理費 NT$3,000"
+          },
+          {
+            "name": "酒杯碗盤如有損壞，須照價賠償"
+          },
+          {
+            "name": "未滿十八歲禁止飲酒，酒後請勿開車"
+          }
+        ]
+      }
+    ]
+  }
 };
 const tabs=Array.from(document.querySelectorAll(".menu-tab"));
 function renderMenu(key){
- const m=menus[key]; if(!m)return;
- tabs.forEach(function(tab){tab.setAttribute("aria-selected",tab.dataset.menu===key?"true":"false")});
- document.getElementById("menuKicker").textContent=m.kicker;
- document.getElementById("menuHeading").innerHTML=m.title;
- document.getElementById("menuDesc").textContent=m.desc;
- const ul=document.getElementById("menuItems");
- ul.classList.toggle("is-rules",key==="cocktail");
- ul.replaceChildren();
- m.items.forEach(function(item){
-   const li=document.createElement("li"),match=item.match(/^(.*?)\s+(NT\$[0-9,]+)$/);
-   if(match){
-    const name=document.createElement("span"),price=document.createElement("span");
-    name.className="dish-name";name.textContent=match[1];
-    price.className="dish-price";price.textContent=match[2];
-    li.append(name,price);
-   }else{li.className="menu-note-item";li.textContent=item;}
-   ul.append(li);
+ const menu=menus[key]; if(!menu)return;
+ tabs.forEach(function(tab){tab.setAttribute("aria-selected",tab.dataset.menu===key?"true":"false");});
+ document.getElementById("menuKicker").textContent=menu.kicker;
+ document.getElementById("menuHeading").innerHTML=menu.title;
+ document.getElementById("menuDesc").textContent=menu.desc;
+ const root=document.getElementById("menuItems");
+ root.classList.toggle("is-rules",key==="cocktail");
+ root.replaceChildren();
+ menu.groups.forEach(function(group){
+  const groupItem=document.createElement("li");groupItem.className="menu-group";
+  const header=document.createElement("div");header.className="menu-group-header";
+  const title=document.createElement("h4");title.className="menu-group-title";title.textContent=group.title;
+  const english=document.createElement("span");english.className="menu-group-en";english.textContent=group.en;
+  header.append(title,english);
+  if(group.note){const note=document.createElement("span");note.className="menu-group-note";note.textContent=group.note;header.append(note);}
+  groupItem.append(header);
+  const rows=document.createElement("ul");rows.className="menu-group-items";
+  group.items.forEach(function(product){
+   const row=document.createElement("li");row.className="menu-item"+(typeof product.price!=="number"?" is-rule":"");
+   const info=document.createElement("div");info.className="menu-item-main";
+   const nameLine=document.createElement("div");nameLine.className="menu-item-name-line";
+   const name=document.createElement("span");name.className="dish-name";name.textContent=product.name;nameLine.append(name);
+   if(product.tag){const tag=document.createElement("span");tag.className="menu-item-tag";tag.textContent=product.tag;nameLine.append(tag);}
+   info.append(nameLine);
+   if(product.detail){const detail=document.createElement("small");detail.className="menu-item-detail";detail.textContent=product.detail;info.append(detail);}
+   if(product.variants && product.variants.length){
+    const flavor=document.createElement("div");flavor.className="menu-flavors";
+    const legend=document.createElement("span");legend.className="menu-flavors-label";legend.textContent="口味選擇";
+    const values=document.createElement("div");values.className="menu-flavor-list";
+    product.variants.forEach(function(v){const chip=document.createElement("span");chip.textContent=v;values.append(chip);});
+    flavor.append(legend,values);info.append(flavor);
+    row.classList.add("has-flavors");
+   }
+   row.append(info);
+   if(typeof product.price==="number"){const price=document.createElement("span");price.className="dish-price";price.textContent="NT$"+product.price.toLocaleString("en-US");row.append(price);}
+   rows.append(row);
+  });
+  groupItem.append(rows);root.append(groupItem);
  });
 }
 tabs.forEach(function(tab){tab.addEventListener("click",function(){renderMenu(tab.dataset.menu);});});
