@@ -116,6 +116,64 @@ footer{background:#191815;color:#d0c8b9;padding:38px 0}.footer-row{display:flex;
  .booking-actions .btn{width:100%}
 }
 
+
+/* November 2026: clickable CTA treatments & gentle editorial photo zoom */
+.btn,
+.nav-links .nav-cta{
+ position:relative;isolation:isolate;overflow:hidden;display:inline-flex;
+ align-items:center;justify-content:center;min-height:50px;
+ padding:13px 26px;border-radius:5px;font-weight:650;letter-spacing:.1em;
+ line-height:1.4;text-align:center;cursor:pointer;
+ transition:transform .25s ease,box-shadow .25s ease,background-color .25s ease,border-color .25s ease,color .25s ease;
+}
+.btn::after,.nav-links .nav-cta::after{
+ content:"";position:absolute;inset:0 auto 0 -38%;width:34%;
+ background:linear-gradient(90deg,transparent,rgba(255,255,255,.24),transparent);
+ transform:translateX(-250%) skewX(-22deg);pointer-events:none;transition:transform .7s ease;
+}
+.btn.btn-gold,.booking-actions .btn.btn-gold,.contact-band .btn.btn-gold,.nav-links .nav-cta{
+ background:linear-gradient(135deg,#dfc49a,#bd9966);color:#211b14;
+ border:1px solid #cfae79;box-shadow:0 5px 15px rgba(13,10,7,.22);
+}
+.btn.btn-outline{
+ background:rgba(24,21,17,.46);color:#fff8ed;
+ border:1px solid rgba(247,226,191,.85);
+ box-shadow:0 4px 13px rgba(0,0,0,.2);
+}
+.nav-links .nav-cta{min-height:43px;padding:10px 22px}
+.btn:focus-visible,.nav-links .nav-cta:focus-visible,.menu-tab:focus-visible{
+ outline:3px solid #e6c995;outline-offset:4px;
+}
+.btn:active,.nav-links .nav-cta:active{
+ transform:translateY(0) scale(.975);box-shadow:0 2px 5px rgba(0,0,0,.18);
+}
+.menu-tab{cursor:pointer;transition:background-color .24s ease,color .24s ease,box-shadow .24s ease}
+.menu-tab[aria-selected="true"]{box-shadow:inset 0 -3px 0 #e3c89d}
+.intro-photo-frame{display:block;position:relative;overflow:hidden;border-radius:3px;background:#29231e}
+.intro-photo-frame img{
+ display:block;width:100%;height:auto;aspect-ratio:3/2;
+ object-fit:contain;object-position:center;transform:scale(1);
+ transform-origin:center;transition:transform .8s cubic-bezier(.2,.7,.1,1);
+}
+@media (hover:hover) and (pointer:fine){
+ .btn:hover,.nav-links .nav-cta:hover{
+  transform:translateY(-3px);box-shadow:0 11px 27px rgba(0,0,0,.26);
+ }
+ .btn.btn-gold:hover,.booking-actions .btn.btn-gold:hover,
+ .contact-band .btn.btn-gold:hover,.nav-links .nav-cta:hover{
+  background:linear-gradient(135deg,#f1dbb7,#d2ae79);color:#221b13;border-color:#efd09a;
+ }
+ .btn.btn-outline:hover{background:rgba(196,164,119,.22);color:#fff8ed;border-color:#f3d7ae}
+ .btn:hover::after,.nav-links .nav-cta:hover::after{transform:translateX(520%) skewX(-22deg)}
+ .menu-tab:not([aria-selected="true"]):hover{background:#4a3d2d;color:#fff4e2}
+ .intro-photo-frame:hover img{transform:scale(1.065)}
+}
+@media (prefers-reduced-motion:reduce){
+ .btn,.nav-links .nav-cta,.menu-tab,.intro-photo-frame img{transition:none!important}
+ .btn:hover,.nav-links .nav-cta:hover,.intro-photo-frame:hover img{transform:none!important}
+ .btn::after,.nav-links .nav-cta::after{display:none}
+}
+
 </style>
 </head>
 <body>
@@ -131,7 +189,7 @@ footer{background:#191815;color:#d0c8b9;padding:38px 0}.footer-row{display:flex;
 <div class="hero-content wrap"><p class="hero-kicker kicker"><span class="line"></span>GUTING · TAIPEI · EST. ON TONG'AN STREET</p>
 <h1>一碗好麵，<br>一杯好酒。</h1><p class="hero-en">AN EVENING WELL SPENT.</p>
 <p class="hero-desc">城市的節奏慢下來，就在同安街的轉角。<br>從熱騰騰的台式料理，到手裡那杯喜歡的精釀啤酒，<br>讓朋友相聚的夜晚，多一點自在。</p>
-<div class="buttons"><a class="btn btn-gold" href="#menu">探索餐單　↗</a><a class="btn btn-outline" href="#booking">預約席位　↗</a></div>
+<div class="buttons"><a class="btn btn-gold" href="#menu">探索餐單</a><a class="btn btn-outline" href="#booking">預約席位</a></div>
 </div><div class="hero-bottom wrap"><span>100 TAIPEI CITY · TONG'AN STREET 24</span><a href="#story">SCROLL TO EXPLORE ↓</a></div>
 </section>
 <section class="intro" id="story"><div class="wrap intro-grid"><div>
@@ -140,7 +198,7 @@ footer{background:#191815;color:#d0c8b9;padding:38px 0}.footer-row{display:flex;
 <p>不需要隆重的理由。想喝一杯、想吃碗好麵，或只是想和朋友在夜裡好好聊天，都可以從這裡開始。</p>
 <p>老同安小酒館位於古亭站附近，同安街的老屋氛圍裡，結合熟悉的台式料理、精釀啤酒與輕鬆自在的聚會時光。</p>
 <div class="intro-features"><div><b>01.</b><span>台式經典料理</span></div><div><b>02.</b><span>多款精釀啤酒</span></div><div><b>03.</b><span>巷弄酒館氛圍</span></div></div>
-</div><figure class="intro-visual"><img src="assets/scene-01.jpg" alt="老同安小酒館的夜間店面外觀完整照片" loading="lazy"><figcaption>OLD T.A. / 台北同安街 · 店面實景</figcaption></figure></div></section>
+</div><figure class="intro-visual"><div class="intro-photo-frame"><img src="assets/scene-01.jpg" alt="老同安小酒館的夜間店面外觀完整照片" loading="lazy"></div><figcaption>OLD T.A. / 台北同安街 · 店面實景</figcaption></figure></div></section>
 <section class="menu" id="menu"><div class="wrap">
 <div class="center"><div class="kicker" style="color:#c6a87b">THE MENU / 老同安餐單</div><h2 class="section-title">今晚，想吃點什麼？</h2><p class="menu-sub">從家常料理到下酒小食，點選分類查看菜單與價格。</p></div>
 <div class="menu-panel"><div class="menu-tabs" role="tablist" aria-label="餐單分類">
@@ -150,13 +208,13 @@ footer{background:#191815;color:#d0c8b9;padding:38px 0}.footer-row{display:flex;
 <button type="button" class="menu-tab" role="tab" aria-selected="false" data-menu="cocktail"><span class="en">04 / HOUSE RULES</span><strong>用餐須知</strong></button>
 </div>
 <div class="menu-content" id="menuPanel" role="tabpanel" aria-live="polite"><div class="menu-copy"><div class="kicker" id="menuKicker">01 / 熱炒・飯麵</div><h3 id="menuHeading">台式熱炒，<br>一口就有故事。</h3><p id="menuDesc">從熟悉的家常滋味到熱騰騰的飯麵主食，今晚就好好吃一頓。</p><ul class="menu-items" id="menuItems"></ul></div></div></div>
-<div class="menu-foot"><span class="note" style="color:#b8aa95">餐點供應及價格可能調整，請以店家最新公告為準；酒精飲品資訊可向店家洽詢。</span><a href="https://www.instagram.com/oldt.a.beerbar/" target="_blank" rel="noopener noreferrer">Instagram・洽詢最新飲品 ↗</a></div>
+<div class="menu-foot"><span class="note" style="color:#b8aa95">餐點供應及價格可能調整，請以店家最新公告為準；酒精飲品資訊可向店家洽詢。</span><a href="https://www.instagram.com/oldt.a.beerbar/" target="_blank" rel="noopener noreferrer">Instagram・洽詢最新飲品</a></div>
 </div></section>
 <section class="booking" id="booking"><div class="wrap booking-grid"><div class="booking-left" id="visit"><div class="kicker"><span class="line"></span>RESERVATION / CONTACT</div><h2 class="section-title">今晚，<br>一起來坐坐。</h2><p>想和朋友一起聚聚嗎？歡迎先確認營業時間及座位狀況，或透過電話、Instagram 與我們聯繫。</p>
-<div class="booking-info"><div class="info-line"><b>ADDRESS / 地址</b><a href="https://www.google.com/maps/search/?api=1&amp;query=%E8%80%81%E5%90%8C%E5%AE%89%E5%B0%8F%E9%85%92%E9%A4%A8" target="_blank" rel="noopener noreferrer">台北市中正區同安街 24 號　↗</a></div>
+<div class="booking-info"><div class="info-line"><b>ADDRESS / 地址</b><a href="https://www.google.com/maps/search/?api=1&amp;query=%E8%80%81%E5%90%8C%E5%AE%89%E5%B0%8F%E9%85%92%E9%A4%A8" target="_blank" rel="noopener noreferrer">台北市中正區同安街 24 號</a></div>
 <div class="info-line"><b>HOURS / 營業時間</b><span>週日至週四 18:00–00:30<br>週五、週六 18:00–02:30</span></div>
 <div class="info-line"><b>TELEPHONE / 訂位電話</b><a href="tel:+886928914341">0928-914-341</a></div>
-<div class="info-line"><b>INSTAGRAM</b><a target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/oldt.a.beerbar/">@oldt.a.beerbar　↗</a></div>
+<div class="info-line"><b>INSTAGRAM</b><a target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/oldt.a.beerbar/">@oldt.a.beerbar</a></div>
 </div></div>
 <div class="booking-box"><div class="kicker booking-kicker">RESERVATION / 訂位資訊</div><h3>留一個位子給今晚</h3><p class="booking-subtitle">選好日期、時間與人數，確認您的聚會資訊。</p>
 <div class="booking-notice"><strong>訂位提醒：</strong>訂位只保留十分鐘，以店內時間為準，超過保留時間現場候位。<br><strong>線上訂位提醒：</strong>目前尚未開放正式收單，請先電話或私訊洽詢。</div>
@@ -169,7 +227,7 @@ footer{background:#191815;color:#d0c8b9;padding:38px 0}.footer-row{display:flex;
 <div class="field full"><label>本店（五）（六）有駐唱表演 *</label><div class="booking-options"><label class="booking-option"><input type="radio" name="singer" value="想聽駐唱" required><span>想聽駐唱</span></label><label class="booking-option"><input type="radio" name="singer" value="以店家安排為主" required><span>以店家安排為主</span></label></div></div>
 </div><div class="booking-actions"><button class="btn btn-gold" type="submit">確認送出</button></div><p class="privacy-hint">目前尚未開放線上訂位，點選「確認送出」不會傳送資料或成立訂位。如需預約，請先聯絡店家。</p></form>
 </div></div></section>
-<section class="contact-band"><div class="wrap inner"><div><div class="kicker" style="color:#c5a777">SEE YOU AT OLD T.A.</div><h2>好久不見，來喝一杯。</h2><p>下班之後，留點時間給自己，和想見的人。</p></div><a class="btn btn-gold" href="tel:+886928914341">電話洽詢　↗</a></div></section>
+<section class="contact-band"><div class="wrap inner"><div><div class="kicker" style="color:#c5a777">SEE YOU AT OLD T.A.</div><h2>好久不見，來喝一杯。</h2><p>下班之後，留點時間給自己，和想見的人。</p></div><a class="btn btn-gold" href="tel:+886928914341">電話洽詢</a></div></section>
 </main>
 <footer><div class="wrap"><div class="footer-row"><div><div class="footer-name">老同安小酒館</div><div class="footer-meta">OLD T.A. BEER BAR · GUTING, TAIPEI</div></div><div class="footer-links"><a href="https://www.instagram.com/oldt.a.beerbar/" target="_blank" rel="noopener noreferrer">Instagram</a><a href="https://www.facebook.com/OldT.A.BeerBar/" target="_blank" rel="noopener noreferrer">Facebook</a><a href="tel:+886928914341">聯絡電話</a><a href="#top">回到頂端 ↑</a></div></div>
 <div class="legal">本頁為網站設計預覽，並非店家正式營運網站；菜單、價格、營業時間與訂位規則以店家公告為準。未滿十八歲禁止飲酒；酒後請勿開車。</div></div></footer>
